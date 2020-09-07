@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.upsell" remove="true"/>
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Catalog\Block\Product\ProductList\Upsell" name="tab.product.info.upsell" template="Magento_Catalog::product/list/items.phtml" group="detailed_info">
+                <arguments>
+                    <argument name="type" xsi:type="string">upsell</argument>
+                    <argument name="title" xsi:type="string">Upsells</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="argento.sticky.add.to.cart" template="Magento_Theme::catalog/product/sticky-add-to-cart.phtml" />
+            <block class="Magento\Framework\View\Element\Template" name="description.tabbed.add.photo" template="Magento_Theme::catalog/product/photo-in-description.phtml" />
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,64 @@
+<script id="images-template" type="text/x-magento-template">
+    <div class="image item<% if (data.disabled == 1) { %> hidden-for-front<% } %>"
+         data-role="image">
+        <input type="hidden"
+               name="gallery[images][<%- data.file_id %>][position]"
+               value="<%- data.position %>"
+               data-form-part="widget_options_form"
+               class="position"/>
+        <input type="hidden"
+               name="gallery[images][<%- data.file_id %>][file]"
+               data-form-part="widget_options_form"
+               value="<%- data.file %>"/>
+        <input type="hidden"
+               name="gallery[images][<%- data.file_id %>][value_id]"
+               data-form-part="widget_options_form"
+               value="<%- data.value_id %>"/>
+        <input type="hidden"
+               name="gallery[images][<%- data.file_id %>][label]"
+               data-form-part="widget_options_form"
+               value="<%- data.label %>"/>
+        <input type="hidden"
+               name="gallery[images][<%- data.file_id %>][disabled]"
+               data-form-part="widget_options_form"
+               value="<%- data.disabled %>"/>
+        <input type="hidden"
+               name="gallery[images][<%- data.file_id %>][media_type]"
+               data-form-part="widget_options_form"
+               value="image"/>
+        <input type="hidden"
+               name="gallery[images][<%- data.file_id %>][removed]"
+               data-form-part="widget_options_form"
+               value=""
+               class="is-removed"/>
+
+        <div class="product-image-wrapper">
+            <img class="product-image"
+                 data-role="image-element"
+                 src="<%- data.url %>"
+                 alt="<%- data.label %>"/>
+
+            <div class="actions">
+                <button type="button"
+                        class="action-remove"
+                        data-role="delete-button"
+                        title="Delete image">
+                <span>
+                    Delete image
+                </span>
+                </button>
+                <div class="draggable-handle"></div>
+            </div>
+            <div class="image-fade"><span>Hidden</span></div>
+        </div>
+
+        <div class="item-description">
+            <div class="item-title" data-role="img-title"><%- data.label %></div>
+            <div class="item-size">
+              <span data-role="image-dimens"></span>, <span data-role="image-size"><%- data.sizeLabel %></span>
+            </div>
+        </div>
+
+        <ul class="item-roles" data-role="roles-labels"></ul>
+    </div>
+</script>

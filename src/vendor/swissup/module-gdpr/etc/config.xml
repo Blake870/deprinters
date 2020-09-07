@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <swissup_gdpr>
+            <general>
+                <enabled>0</enabled>
+            </general>
+            <request>
+                <delete_data>
+                    <method>anonymize</method>
+                    <placeholder>anonymous</placeholder>
+                    <automate>1</automate>
+                    <days_to_wait>10</days_to_wait>
+                </delete_data>
+            </request>
+            <consents>
+                <privacy>
+                    <enabled>1</enabled>
+                    <sort_order>10</sort_order>
+                    <title><![CDATA[I accept the <a href="{{store url="privacy-policy"}}" title="Privacy Policy">Privacy Policy</a>]]></title>
+                    <forms>magento:customer-registration</forms>
+                </privacy>
+                <terms>
+                    <enabled>1</enabled>
+                    <sort_order>11</sort_order>
+                    <title><![CDATA[I accept the <a href="{{store url="terms-and-conditions"}}" title="Terms and Conditions">Terms &amp; Conditions</a>]]></title>
+                    <forms>magento:customer-registration</forms>
+                </terms>
+                <personal_data>
+                    <enabled>1</enabled>
+                    <sort_order>20</sort_order>
+                    <title>I agree to my personal data being stored and used to provide website services. (Order processing, comments, reviews, questions, testimonials)</title>
+                    <forms>magento:customer-registration</forms>
+                </personal_data>
+                <newsletter>
+                    <enabled>1</enabled>
+                    <sort_order>20</sort_order>
+                    <title>I agree to my email being stored and used to receive information and commercial offers about your products and services</title>
+                    <forms>magento:newsletter-subscription,magento:newsletter-subscription-management</forms>
+                </newsletter>
+                <contacts>
+                    <enabled>1</enabled>
+                    <sort_order>20</sort_order>
+                    <title>I agree to my personal data being stored and used to contact with me</title>
+                    <forms>magento:contact-us</forms>
+                </contacts>
+                <review>
+                    <enabled>1</enabled>
+                    <sort_order>20</sort_order>
+                    <title>I agree to my personal data being stored and used to display my reviews on the site</title>
+                    <forms>magento:product-review</forms>
+                </review>
+            </consents>
+        </swissup_gdpr>
+        <subscriptionchecker>
+            <ignore>
+                <swissup_gdpr/>
+            </ignore>
+        </subscriptionchecker>
+    </default>
+</config>

@@ -1,0 +1,31 @@
+& when (@media-common = true) {
+    .navpro {
+        &-amazon {
+            li.level1 {
+                position: static;
+            }
+            .navpro-departments {
+                .navpro-dropdown-level2 {
+                    top: -1px !important;
+                    left: 100% !important;
+
+                    .rtl &, .navpro-rtl & {
+                        left: auto !important;
+                        right: 100% !important;
+                    }
+                }
+            }
+
+            .navpro-dropdown {
+                & when (@navpro-dropdown__use-animation = true) {
+                    @media (min-width: 1025px) {
+                        transition-delay: .3s;
+                    }
+                }
+                &.shown {
+                    transition-delay: 0s;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <body>
+        <referenceBlock name="swissupamp.styles">
+            <action method="addItem">
+                <argument name="name" xsi:type="string">pages/home</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</layout>

@@ -1,0 +1,29 @@
+<?php
+    $parentBlock = $block->getParentBlock();
+    if (!$parentBlock) {
+        return;
+    }
+
+    $optionsBlock = $parentBlock->getChildBlock('product_options');
+    if (!$optionsBlock || !$optionsBlock->hasOptions()) {
+        return;
+    }
+?>
+<script type="text/javascript">
+require([
+    'jquery'
+], function ($) {
+    'use strict';
+
+    $('#product_addtocart_form').on('change', function (event) {
+        var value = event.target.value,
+            field = $(event.target).closest('.field');
+
+        if (value) {
+            field.attr('option-selected', value);
+        } else {
+            field.removeAttr('option-selected');
+        }
+    });
+});
+</script>

@@ -1,0 +1,54 @@
+<?php
+// @codingStandardsIgnoreFile
+?>
+<?php
+/** @var $block \Swissup\Ajaxsearch\Block\Init */
+/** @var $helper \Swissup\Ajaxsearch\Helper\Data */
+$helper = $this->helper('Swissup\Ajaxsearch\Helper\Data');
+$wildcard = $helper->getWildcard();
+$ajaxActionUrl = $helper->getAjaxActionUrl($wildcard);
+$minQueryLength = $helper->getMinQueryLength();
+$categoryVarName = $helper->getCategoryVarName();
+?>
+<script id="swissup-ajaxsearch-init" type="text/x-magento-init">
+{
+    "#search": {
+        "Swissup_Ajaxsearch/js/ajaxsearch": {
+            "name": "Ajaxsearch",
+            "options": {
+                "elementId": "#search",
+                "url": "<?= $ajaxActionUrl;?>",
+                "wildcard": "<?= $wildcard ?>",
+                "categoryVarName": "<?= $categoryVarName ?>",
+                "classes": {
+                    "container": ".block-swissup-ajaxsearch",
+                    "additional": "<?php /* @escapeNotVerified */ echo  $helper->getAdditionalCssClass();?>",
+                    "mask": ".ajaxsearch-mask",
+                    "formLabel": "#search_mini_form .search label"
+                },
+                "templates": {
+                    "autocomplete": "#swissup-ajaxsearch-autocomplete-template",
+                    "product": "#swissup-ajaxsearch-product-template",
+                    "page": "#swissup-ajaxsearch-page-template",
+                    "category": "#swissup-ajaxsearch-category-template",
+                    "notFound": "#swissup-ajaxsearch-template-not-found"
+                },
+                "loader": {
+                    "container": ".block-swissup-ajaxsearch .actions .action",
+                    "loaderImage": "<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                },
+                "typeahead": {
+                    "options": {
+                        "highlight": <?php /* @escapeNotVerified */ echo $block->isHighligth() ? 'true' : 'false';?>,
+                        "hint": <?php /* @escapeNotVerified */ echo $block->isHint() ? 'true' : 'false';?>,
+                        "minLength": <?php /* @escapeNotVerified */ echo $minQueryLength ;?>,
+                        "classNames": <?php /* @escapeNotVerified */ echo $block->getClassNames()?>
+                    },
+                    "limit": <?php /* @escapeNotVerified */ echo $block->getLimit()?>
+                },
+                "settings": <?php /* @escapeNotVerified */ echo $block->getJsonConfig()?>
+            }
+        }
+    }
+}
+</script>

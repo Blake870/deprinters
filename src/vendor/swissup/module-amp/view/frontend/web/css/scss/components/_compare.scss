@@ -1,0 +1,34 @@
+$compare-icon-width: 40px !default;
+$compare-icon-height: 40px !default;
+$compare-icon: $fa-icon-arrow-swap !default;
+$compare-icon-size: null !default;
+$compare-icon-color: $icon-color !default;
+$compare-icon-weight: null !default;
+
+.compare-icon {
+    text-align: center;
+
+    @include on-event {
+        color: $compare-icon-color;
+    }
+
+    @include icon-fa(
+        $icon: $compare-icon,
+        $size: $compare-icon-size,
+        $color: $compare-icon-color,
+        $width: $compare-icon-width,
+        $height: $compare-icon-height,
+        $weight: $compare-icon-weight
+    );
+
+    &::after {
+        transform: scaleY(-1);
+    }
+}
+
+.minicompare {
+    align-self: center;
+    .compare-icon {
+        display: block;
+    }
+}

@@ -1,0 +1,29 @@
+& when (@media-common = true) {
+    .slick-slider {
+        .slick-prev {
+            &, &:hover, &:focus {
+                .stripes-icon('arrow-left', null, 30px);
+            }
+            left: -40px; // no need to use rtl mixin; slick carousel handles it
+        }
+
+        .slick-next {
+            &, &:hover, &:focus {
+                .stripes-icon('arrow-right', null, 30px);
+            }
+            right: -40px; // no need to use rtl mixin; slick carousel handles it
+        }
+
+        .slick-arrow {
+            opacity: 0.3;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &::before {
+                content: '';
+            }
+        }
+    }
+}

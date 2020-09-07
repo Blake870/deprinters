@@ -1,0 +1,34 @@
+$language-icon-width: 30px !default;
+$language-icon-height: 30px !default;
+$language-icon-color: null !default;
+$language-icon: $fa-icon-world !default;
+$language-icon-size: null !default;
+$language-icon-weight: null !default;
+
+.switcher-language {
+    amp-accordion {
+        section {
+            .current {
+                line-height: normal;
+                @include padding-left($language-icon-width + 3px);
+
+                &::before {
+                    @include icon-fa(
+                        $icon: $language-icon,
+                        $size: $language-icon-size,
+                        $color: $language-icon-color,
+                        $width: $language-icon-width,
+                        $height: $language-icon-height,
+                        $weight: $language-icon-weight,
+                        $pos: ''
+                    );
+
+                    text-align: center;
+                    position: absolute;
+                    top: 0;
+                    @include left(0);
+                }
+            }
+        }
+    }
+}

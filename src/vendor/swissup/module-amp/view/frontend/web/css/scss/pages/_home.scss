@@ -1,0 +1,12 @@
+$homepage-footer-margin-top: 0 !default;
+
+.cms-swissupamp-homepage {
+    .page-main {
+        padding: 0;
+    }
+    footer {
+        .content {
+            margin-top: $homepage-footer-margin-top;
+        }
+    }
+}

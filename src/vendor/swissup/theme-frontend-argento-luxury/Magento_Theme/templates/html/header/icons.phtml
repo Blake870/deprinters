@@ -1,0 +1,24 @@
+<div class="wishlist">
+    <a href="<?php echo $this->getUrl('wishlist') ?>" title="<?php echo __('My Wish List') ?>"><i></i></a>
+</div>
+<div class="customer dropdown switcher">
+    <a class="customer-toggle" href="<?php echo $this->getUrl('customer/account') ?>" title="<?php echo __('My Account') ?>"><i></i></a>
+    <div class="options"></div>
+</div>
+
+<?php echo $this->getLayout()->getBlock('top.links')->setCssClass('dropdown customer-dropdown')->toHtml(); ?>
+
+<script type="text/x-magento-init">
+{
+    ".dropdown.customer-dropdown": {
+        "dropdownDialog": {
+            "appendTo":".customer.dropdown .options",
+            "triggerTarget":".customer .customer-toggle",
+            "closeOnMouseLeave": false,
+            "triggerClass":"active",
+            "parentClass":"active",
+            "buttons":null
+        }
+    }
+}
+</script>

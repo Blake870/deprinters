@@ -1,0 +1,6 @@
+<img class="hover-image"
+    <?= /* @escapeNotVerified */ $block->getCustomAttributes() ?>
+    src="<?= /* @escapeNotVerified */ $block->getImageUrl() ?>"
+    width="<?= /* @escapeNotVerified */ $block->getWidth() ?>"
+    height="<?= /* @escapeNotVerified */ $block->getHeight() ?>"
+    alt="<?= /* @escapeNotVerified */ $block->stripTags($block->getLabel(), null, true) ?>"/>

@@ -1,0 +1,183 @@
+& when (@media-common = true) {
+    .page-footer {
+        background: #f6f6f6;
+        padding: 0 @layout-indent__width;
+
+        .footer.content {
+            border: none;
+            text-align: center;
+
+            .block.newsletter {
+                float: none;
+                margin: 0 auto;
+                text-align: center;
+                padding: 40px 0;
+
+                .field.newsletter + .field.consent {
+                    margin-top: 40px;
+                }
+
+                .content {
+                    position: relative;
+                }
+
+                .label {
+                    .lib-visually-hidden-reset();
+                    .lib-heading(h4);
+                    text-transform: uppercase;
+                    padding-bottom: 40px;
+                }
+
+                .control {
+                    position: relative;
+
+                    &:before {
+                        .luxury-icon(letter);
+                        position: absolute;
+                        bottom: 6px;
+                        .left(0);
+                    }
+
+                    input {
+                        margin-top: 40px;
+                        background: transparent;
+                        border-width: 0;
+                        border-bottom-width: 1px;
+                        min-width: 250px;
+                    }
+
+                    div.mage-error {
+                        position: absolute;
+                    }
+                }
+
+                .actions {
+                    vertical-align: bottom;
+                    position: absolute;
+                    top: 55px;
+                    .right(100px);
+
+                    .action.subscribe {
+                        background: transparent;
+                        border: none;
+                        color: @footer__font-color;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            .footer.links {
+                a, a:visited {
+                    color: @footer__font-color;
+                }
+
+                > li {
+                    border: 1px solid #c3c3c3;
+                    margin: -1px 0 0 0;
+
+                    ul.links {
+                        .padding-left(20px);
+                    }
+                }
+
+                div.h4 {
+                    margin: 0;
+                    padding: 15px;
+
+                    span {
+                        width: 11px;
+                        .float(left);
+
+                        &.plus:before {
+                            content: '+';
+                        }
+
+                        &.minus:before {
+                            content: '-';
+                        }
+                    }
+                }
+            }
+
+            .social-icons {
+                text-align: center;
+                padding-top: 40px;
+
+                a {
+                    .margin-right(15px);
+                    color: #a5a5a5;
+                }
+            }
+        }
+
+        .footer-toolbar-bottom {
+            padding: 10px 0;
+
+            .content {
+                padding: 10px 0;
+                position: relative;
+            }
+
+            &, a {
+                background: #f6f6f6;
+                color: @footer__font-color;
+            }
+
+            .switcher-store {
+                text-align: center;
+
+                .label {
+                    .lib-visually-hidden-reset();
+                }
+
+                .switcher-options {
+                    border: 1px solid #cacaca;
+                    padding: 5px 10px;
+                }
+            }
+
+            .switcher-dropdown a {
+                background: transparent;
+            }
+
+            .copyright {
+                display: block;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .page-footer {
+        .footer-toolbar-bottom {
+            .switcher-store {
+                position: absolute;
+                top: 0;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-footer {
+        background: #f6f6f6;
+
+        .footer.content {
+            .text-align(left);
+
+            .footer.links > li {
+                border: none;
+
+                ul.links {
+                    .padding-left(0);
+                }
+
+                div.h4 {
+                    padding: 0 0 15px 0;
+                }
+            }
+        }
+    }
+}

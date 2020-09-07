@@ -1,0 +1,8 @@
+<div class="easybanner__control-content">
+    <!-- ko if: ($row().mode === 'html') -->
+        <span title="HTML Content">HTML</span>
+    <!-- /ko -->
+    <!-- ko if: ($row().mode === 'image' && $row().image) -->
+        <img class="admin__control-thumbnail" attr="src: $col.getSrc($row()), alt: $col.getAlt($row()), title: $col.getSrc($row())"/>
+    <!-- /ko -->
+</div>

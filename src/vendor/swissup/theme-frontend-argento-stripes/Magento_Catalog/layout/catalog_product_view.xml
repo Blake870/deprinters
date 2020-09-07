@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.wrapper">
+            <container name="before-footer-customers-also-buy-wrapper" before="footer" label="Page Before Footer Container" htmlTag="div" htmlClass="page-before-footer xml-container">
+                <container name="before-footer-customers-also-buy" htmlTag="div" htmlClass="content" />
+            </container>
+
+            <container name="before-footer-related-products-wrapper" as="beforeFooter.related" before="footer" label="Page Before Footer Container" htmlTag="div" htmlClass="page-before-footer xml-container">
+                <container name="before-footer-related-products" htmlTag="div" htmlClass="content argento-init-slick" />
+            </container>
+
+            <container name="before-footer-viewed-products-wrapper" after="beforeFooter.related" htmlTag="div" htmlClass="page-before-footer xml-container">
+                <container name="before-footer-viewed-products" htmlTag="div" htmlClass="content argento-init-slick">
+                    <block class="Magento\Catalog\Block\Widget\RecentlyViewed" name="catalog.product.viewed" template="product/widget/viewed/grid.phtml">
+                        <arguments>
+                            <argument name="page_size" xsi:type="string">10</argument>
+                            <argument name="uiComponent" xsi:type="string">widget_recently_viewed</argument>
+                            <argument name="show_attributes" xsi:type="string">name,image,price</argument>
+                            <argument name="show_buttons" xsi:type="string">add_to_cart,add_to_compare,add_to_wishlist</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+        </referenceContainer>
+        <!-- move Frequently Bought Together block before tabs -->
+        <move element="soldtogether.product.order" destination="content" before="product.info.tabs" />
+        <!-- move product add to cart form under product image -->
+        <move element="product.info" destination="product.info.media" after="-" />
+        <!-- add product attributes before social links -->
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.attributes" as="additional" template="Magento_Catalog::product/view/attributes.phtml" before="extrahint">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">More Information</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <!-- move short decription before product attributes -->
+        <move element="product.info.overview" destination="product.info.main" before="product.attributes" />
+        <!-- move Customers Also Buy to before-footer container -->
+        <move element="soldtogether.product.customer" destination="before-footer-customers-also-buy" />
+        <move element="catalog.product.related" destination="before-footer-related-products" />
+
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Text" name="move.image.under.title.on.mobile">
+                <arguments>
+                  <argument name="text" xsi:type="string"><![CDATA[
+<script type="text/javascript">
+require([
+    'jquery',
+    'matchMedia'
+], function ($, mediaCheck){
+    mediaCheck({
+        media: '(min-width: 768px)',
+        entry: function () {
+            $('.product-info-main .product.media').detach().insertAfter('.column.main > .product-info-main');
+        },
+        exit: function () {
+            $('.column.main > .product.media').detach().insertAfter('.product-info-main .product-info-price');
+        }
+    });
+});
+</script>
+]]>
+                    </argument>
+                </arguments>
+            </block>
+    </referenceContainer>
+    </body>
+</page>

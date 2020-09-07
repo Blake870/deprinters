@@ -1,0 +1,182 @@
+& when (@media-common = true) {
+    .logo {
+        margin-top: 4px;
+        margin-bottom: 13px;
+    }
+
+    .page-header {
+        .lib-css(margin-bottom, @header__margin-bottom);
+    }
+
+    // fix for enabled template minification
+    .page-header .switcher .options .action.toggle,
+    .page-footer .switcher .options .action.toggle,
+    .page-footer .footer.content .switcher .options .action.toggle {
+        &,
+        &.active {
+            display: flex;
+            align-items: center;
+            &::after {
+                .margin-left(4px);
+            }
+        }
+    }
+
+    .customer-welcome .customer-menu .header.links,
+    .page-header .switcher .options ul.dropdown,
+    .page-footer .switcher .options ul.dropdown {
+        .lib-css(padding, @dropdown-list__padding);
+        .lib-css(border-radius, @dropdown-list__border-radius);
+        li {
+            transition: 200ms background-color linear;
+        }
+    }
+
+    .page-header {
+        .lib-css(box-shadow, @header__box-shadow);
+    }
+
+    .page-header {
+        .switcher {
+            .options {
+                ul.dropdown {
+                    .argento-dropdown-to-left();
+                }
+            }
+        }
+    }
+
+    .block-search {
+        .input-text {
+            .lib-css(height, @argento-search-input__height);
+            .padding(@argento-search-input__padding);
+        }
+    }
+
+    .minicart-wrapper {
+        .block-minicart {
+            .right(-5px);
+            .lib-css(border-radius, @dropdown-list__border-radius);
+        }
+    }
+}
+
+.header {
+    &.panel {
+        > .header.links {
+            &.header-cms-links {
+                .float(left);
+                > li {
+                    .margin(0, 15px, 0, 0);
+                }
+            }
+        }
+    }
+    .header-cms-content {
+        .float(left);
+        margin: -10px 20px 0;
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .nav-sections {
+        .header.links {
+            + .header.links {
+                margin-top: -1px;
+            }
+        }
+    }
+    .header {
+        .header-cms-content {
+            display: none;
+        }
+    }
+}
+// sticky header
+.header.wrapper {
+    &.is_stuck {
+        .lib-css(box-shadow, @header-sticked__box-shadow);
+        .lib-css(background, @header-sticked__background);
+    }
+}
+
+//  Justify icons and logo
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .block-search,
+    .minicart-wrapper {
+        margin-top: @indent__s;
+    }
+    .page-header {
+        .header.content {
+            .logo {
+                min-height: 40px;
+                line-height: 40px;
+                img {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+// Justify cart and search icons
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .header.content {
+        padding-left: @layout-indent__width;
+        padding-right: @layout-indent__width;
+    }
+    .minicart-wrapper {
+        .action.showcart,
+        .action.showcart.active {
+            &:before,
+            &:after {
+                line-height: 30px;
+            }
+        }
+    }
+    .block-search {
+        z-index: 6;
+        .action.search {
+            &:before {
+                line-height: 30px;
+            }
+        }
+    }
+}
+
+//
+//  Reset lib-dropdown styles in navigation sidebar
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-wrapper {
+        .nav-sections {
+            .nav-sections-items {
+                .switcher {
+                    .label {
+                        .lib-visually-hidden-reset();
+                    }
+                    .argento-lib-dropdown-reset();
+                }
+            }
+        }
+    }
+}
+
+//
+//  Customer welcome message fixes
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .customer-welcome {
+        .action.switch {
+            .lib-css(color, inherit);
+            &:hover,
+            &:focus {
+                .lib-css(color, inherit);
+            }
+
+            &:after {
+                font-size: @icon-font__size;
+                line-height: @icon-font__line-height;
+            }
+        }
+    }
+}

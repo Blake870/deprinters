@@ -1,0 +1,180 @@
+//
+//  Desktop
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .navigation {
+        li {
+            .lib-css(margin, @navigation-desktop-item-margin);
+        }
+    }
+    .nav-sections {
+        > .nav-sections-items {
+            // Compatbility between sticky navbar and navpro (fullwidth, fullscreen and boxed modes)
+            position: relative;
+        }
+    }
+    .navigation {
+        .parent {
+            > a {
+                .lib-icon-font(
+                    @icon-next,
+                    @_icon-font-margin: 0 0 0 3px,
+                    @_icon-font-position: after
+                );
+                &:after {
+                    .float(right);
+                    line-height: normal;
+                }
+            }
+            &.level-top > a {
+                .lib-icon-font-symbol(@icon-down, after);
+                &:after {
+                    .float(none);
+                    vertical-align: baseline;
+                }
+            }
+            .ui-menu-icon::after {
+                display: none !important;
+            }
+        }
+    }
+
+    // Sticky Navigation
+    .nav-sections {
+        &.is_stuck {
+            // cover other sticked elements
+            z-index: @sticky-kit__z-index + 5;
+
+            .lib-css(box-shadow, @navigation-sticked-level0__box-shadow);
+            .lib-css(background, @navigation-sticked-section__background);
+
+            .navigation {
+                .lib-css(max-width, @navigation-sticked-level0__max-width);
+                .lib-css(background, @navigation-sticked-level0__background);
+
+                .level0 > .level-top {
+                    .lib-css(color, @navigation-sticked-level0__color);
+                }
+            }
+        }
+    }
+}
+
+//
+//  Mobile Navigation
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .nav-sections .switcher-trigger strong:after {
+        .lib-font-size(21);
+        top: -3px;
+    }
+    .navigation .parent .level-top:after {
+        .lib-font-size(21);
+        top: 5px;
+    }
+    .nav-sections {
+        &-item-title {
+            .lib-css(background, @argento-navigation-mobile-item-title__background);
+            .lib-css(border, @argento-navigation-mobile-item-title__border);
+            .lib-css(border-width, @argento-navigation-mobile-item-title__border-width);
+            .lib-css(font-family, @argento-navigation-mobile-item-title__font-family);
+            .lib-css(font-weight, @argento-navigation-mobile-item-title__font-weight);
+            .lib-css(height, @argento-navigation-mobile-item-title__height);
+            .lib-css(text-transform, @argento-navigation-mobile-item-title__text-transform);
+            .padding(@argento-navigation-mobile-item-title__padding);
+
+            &:first-child {
+                .border-left-width(0);
+            }
+
+            a {
+                .lib-css(color, @argento-navigation-mobile-item-title__color);
+            }
+
+            &.active {
+                .lib-css(background, @argento-navigation-mobile-active-item-title__background);
+                .lib-css(box-shadow, @argento-navigation-mobile-active-item-title__box-shadow);
+                .lib-css(border, @argento-navigation-mobile-active-item-title__border);
+                .lib-css(border-width, @argento-navigation-mobile-active-item-title__border-width);
+
+                a {
+                    .lib-css(color, @argento-navigation-mobile-active-item-title__color);
+                }
+            }
+        }
+
+        &-item-content {
+            .lib-css(margin-top, @argento-navigation-mobile-item-title__height);
+            .padding(@argento-navigation-mobile-item-content__padding);
+        }
+
+        .header.links {
+            .lib-css(border, @argento-navigation-mobile-account__border);
+            .lib-css(border-width, @argento-navigation-mobile-account__border-width);
+            .margin(@argento-navigation-mobile-account__margin);
+            .padding(@argento-navigation-mobile-account__padding);
+
+            li {
+                &.greet.welcome {
+                    .lib-css(border, @argento-navigation-mobile-account-greet__border);
+                    .lib-css(border-width, @argento-navigation-mobile-account-greet__border-width);
+                    .lib-css(font-weight, @argento-navigation-mobile-account-greet__font-weight);
+                }
+
+                > a {
+                    .lib-css(background, @argento-navigation-mobile-account-li-a__background);
+                    .lib-css(border, @argento-navigation-mobile-account-li-a__border);
+                    .lib-css(border-radius, @argento-navigation-mobile-account-li-a__border-radius);
+                    .lib-css(border-width, @argento-navigation-mobile-account-li-a__border-width);
+                    .lib-css(font-family, @argento-navigation-mobile-account-li-a__font-family);
+                    .lib-css(text-align, @argento-navigation-mobile-account-li-a__text-align);
+                    .lib-css(text-transform, @argento-navigation-mobile-account-li-a__text-transform);
+                    .margin(@argento-navigation-mobile-account-li-a__margin);
+                }
+            }
+        }
+
+        .nav-sections-items .switcher {
+            .lib-css(border, @argento-navigation-mobile-settings-switcher__border);
+            .lib-css(border-width, @argento-navigation-mobile-settings-switcher__border-width);
+            .margin(@argento-navigation-mobile-settings-switcher__margin);
+
+            .switcher-label {
+                .lib-css(font-weight, @argento-navigation-mobile-settings-switcher-label__font-weight);
+                .lib-css(text-transform, @argento-navigation-mobile-settings-switcher-label__text-transform);
+            }
+
+            .options ul.dropdown a {
+                &,
+                &:visited {
+                    .lib-css(color, @argento-navigation-mobile-settings-switcher-link__color);
+                }
+            }
+        }
+
+        /* Theme editor overrides */
+        background-color: @argento-navigation-mobile__background !important;
+        .navigation {
+            a.level-top {
+                color: @navigation-level0-item__color !important;
+            }
+        }
+    }
+
+    .nav-open {
+        .nav-toggle {
+            &:after{
+                .lib-css(background, @argento-navigation-mobile-overlay__background);
+            }
+        }
+    }
+
+    .navigation .level0 {
+        .lib-css(border, @argento-navigation-mobile-menu-level0__border);
+        .lib-css(border-width, @argento-navigation-mobile-menu-level0__border-width);
+
+        > .level-top {
+            .lib-css(font-family, @argento-navigation-mobile-menu-level0__font-family);
+        }
+    }
+}

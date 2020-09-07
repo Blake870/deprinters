@@ -1,0 +1,20 @@
+& when (@media-common = true) {
+    .product.featured-attributes {
+        display: none;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .products.list .product.featured-attributes {
+        display: block;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .product.featured-attributes {
+        display: block;
+    }
+    .products.grid .product.featured-attributes {
+        margin-top: 10px;
+    }
+}

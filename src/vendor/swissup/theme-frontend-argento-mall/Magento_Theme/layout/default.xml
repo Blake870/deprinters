@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">245</argument>
+                <argument name="logo_img_height" xsi:type="number">67</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="footer">
+            <block class="Magento\Cms\Block\Block" name="footer_cms_content">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_cms_content</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <move element="store_language" destination="header-wrapper" />
+        <move element="minicart" destination="header-wrapper" before="store_language" />
+        <move element="store_switcher" destination="footer" after="-" />
+
+        <referenceBlock name="form.subscribe" remove="true"/>
+    </body>
+</page>

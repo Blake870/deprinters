@@ -1,0 +1,54 @@
+<div class="cd-cart-container empty">
+    <a href="#" class="cd-cart-trigger">
+      Cart
+        <ul class="count">
+            <li text="getCartParam('summary_count')">1</li>
+            <li>0</li>
+        </ul>
+    </a>
+
+    <div class="cd-cart">
+        <div class="wrapper">
+            <header>
+                <strong class="subtitle" translate="'Shopping Cart'"/>
+            </header>
+
+            <div class="body">
+                <if args="getCartParam('summary_count')">
+                    <div data-action="scroll" class="minicart-items-wrapper">
+                        <ul class="minicart-items" data-bind="foreach: { data: getCartItems(), as: 'item' }">
+                            <each args="$parent.getRegion($parent.getItemRenderer(item.product_type))"
+                                  render="{name: getTemplate(), data: item, afterRender: function() {$parents[1].initFloatingCart()}}"
+                            />
+                        </ul>
+                    </div>
+                </if>
+
+                <ifnot args="getCartParam('summary_count')">
+                    <strong class="subtitle empty"
+                            data-bind="visible: closeSidebar()"
+                            translate="'You have no items in your shopping cart.'"
+                    />
+                    <if args="getCartParam('cart_empty_message')">
+                        <p class="minicart empty text" text="getCartParam('cart_empty_message')"/>
+                        <div class="actions">
+                            <div class="secondary">
+                                <a class="action viewcart" data-bind="attr: {href: shoppingCartUrl}">
+                                    <span translate="'View and Edit Cart'"/>
+                                </a>
+                            </div>
+                        </div>
+                    </if>
+                </ifnot>
+            </div>
+
+            <footer>
+                <if args="getCartParam('summary_count')">
+                    <a class="checkout btn" if="getCartParam('possible_onepage_checkout')" data-bind="attr: {href: checkoutUrl}">
+                        <em><!-- ko i18n: 'Checkout' --><!-- /ko --> - <span data-bind="html: getCartParam('subtotal')"></span></em>
+                    </a>
+                </if>
+            </footer>
+        </div>
+    </div>
+</div>

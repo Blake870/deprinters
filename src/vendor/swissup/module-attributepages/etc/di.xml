@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Swissup\Attributepages\Api\Data\EntityInterface" type="Swissup\Attributepages\Model\Entity" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="attributepages_page_listing_data_source" xsi:type="string">Swissup\Attributepages\Model\ResourceModel\Entity\Grid\PageCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="attributepages_option_listing_data_source" xsi:type="string">Swissup\Attributepages\Model\ResourceModel\Entity\Grid\OptionCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Swissup\Attributepages\Model\ResourceModel\Entity\Grid\PageCollection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">swissup_attributepages_entity</argument>
+            <argument name="eventPrefix" xsi:type="string">attributepages_page_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">attributepages_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Swissup\Attributepages\Model\ResourceModel\Entity</argument>
+        </arguments>
+    </type>
+    <type name="Swissup\Attributepages\Model\ResourceModel\Entity\Grid\OptionCollection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">swissup_attributepages_entity</argument>
+            <argument name="eventPrefix" xsi:type="string">attributepages_option_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">attributepages_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Swissup\Attributepages\Model\ResourceModel\Entity</argument>
+        </arguments>
+    </type>
+    <virtualType name="AttributepagesGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AttributepagesGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Swissup\Attributepages\Model\ResourceModel\Entity\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">AttributepagesGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+</config>

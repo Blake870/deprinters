@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">200</argument>
+                <argument name="logo_img_height" xsi:type="number">64</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="header-wrapper">
+            <block class="Magento\Cms\Block\Block" name="header_cms_content">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">header_cms_content</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="footer-toolbar-top">
+            <block class="Magento\Cms\Block\Block" name="footer_social">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_social_icons</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="footer">
+            <block class="Magento\Cms\Block\Block" name="footer_cms_content">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_cms_content</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <move element="form.subscribe" destination="footer-toolbar-top"/>
+    </body>
+</page>

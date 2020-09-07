@@ -1,0 +1,244 @@
+//
+//  MOBILE
+//
+& when (@media-common = true) {
+    .filter {
+        & &-current {
+            &-subtitle {
+                font-size: 18px;
+                .padding(16px, @indent__s + 30px, 16px, 16px);
+                &::before {
+                    &:extend(.argento-force-toggle-trigger);
+                    content: '';
+                    top: 12px;
+                    right: 8px;
+                }
+            }
+
+            &.active {
+                .filter-current-subtitle {
+                    &::before {
+                        content: '';
+                        transform: scale(1, -1);
+                    }
+                }
+            }
+
+            .item {
+                margin: @indent__s;
+
+                &s {
+                    border: 0 solid @force-color__lightgray;
+                    border-width: 0 2px;
+                    padding: @indent__s 18px @indent__s;
+                }
+            }
+        }
+
+        &-actions {
+            margin: 0;
+            padding: 0 18px 16px;
+        }
+
+        .action.remove {
+            &:extend(.abs-argento-remove-button all);
+        }
+    }
+
+    /**
+     * Use full selectors (not concatenated):
+     *  -  .filter-options-item
+     *  -  .filter-options-title
+     *  -  .filter-options-content
+     *
+     *  Becuase there are extends from them in _no-layered-navigation.less
+     */
+    .filter-options-item {
+        border: 0 solid @border-color__base;
+        border-width: 2px 0;
+        margin-bottom: -2px;
+        padding-bottom: 0;
+    }
+
+    .filter-options-title {
+        .lib-text-overflow();
+        .lib-css(font-family, @font-additional);
+        .padding(16px, @indent__s + 30px, 16px, 16px);
+        font-size: 18px;
+        text-transform: uppercase;
+        margin: 0;
+
+        &::after {
+            &:extend(.argento-force-toggle-trigger);
+            content: '';
+            top: 12px;
+            right: 8px;
+
+            .active > & {
+                content: '';
+                transform: scale(1, -1);
+            }
+        }
+    }
+
+    .filter-options-content {
+        margin: 0;
+        padding: 0 18px 16px;
+
+        .item {
+            margin: @indent__s;
+        }
+    }
+
+    // Prevent filters from jumping on init.
+    // Better to remove this styles if filters expanded initially
+    // with JS mixin 'js/mixin/accordion/layered-navigation-expanded'.
+    #narrow-by-list:not([role=tablist]) .filter-options-item:not(.active) .filter-options-content {
+        &:extend(.abs-no-display);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .filter {
+        &.active {
+            .filter-title {
+                border: none;
+
+                strong {
+                    margin: 0;
+                    padding: 0;
+                    top: 18px;
+
+                    .argento-close-icon(
+                        @_icon-position-left: false,
+                        @_icon-position-right: 22px,
+                        @_icon-position-top: false
+                    );
+                }
+            }
+
+            .filter-subtitle {
+                .lib-css(background, @argento-layered-block-subtitle__background);
+                line-height: normal;
+                height: auto;
+            }
+
+            .filter-options {
+                top: 56px;
+                z-index: 0;
+            }
+        }
+
+        .filter-current {
+            border: none;
+            border-color: @force-color__lightgray;
+            margin: 0 0 @indent__m;
+
+            &-subtitle {
+                &::before {
+                    &:extend(.argento-force-toggle-trigger);
+                    content: '';
+                    top: 12px;
+                    right: 8px;
+                }
+            }
+
+            &.active {
+                padding-bottom: 0;
+                margin-bottom: 0;
+
+                + .filter-actions {
+                    border: solid @force-color__lightgray;
+                    border-width: 0 2px 2px;
+                    margin: 0 0 @indent__m;
+                }
+            }
+        }
+    }
+}
+
+//
+//  DESKTOP
+//
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .filter {
+        box-sizing: border-box;
+
+        .sidebar &-current {
+            .item {
+                margin: @indent__s;
+            }
+        }
+
+        .sidebar &-actions {
+            border: 2px solid @force-color__lightgray;
+            border-top: none;
+            border-bottom: none;
+            margin: 0;
+        }
+
+        .sidebar & .block-subtitle {
+            .lib-text-overflow();
+            position: relative;
+            z-index: 1;
+        }
+
+        .filter-current {
+            ~ .filter-subtitle {
+                &:extend(.abs-no-display-desktop);
+            }
+        }
+
+        .page-layout-1column & .filter-current {
+            &-subtitle {
+                background: none;
+                border: none;
+                color: inherit;
+                font-weight: bold;
+            }
+
+            .items {
+                border: none;
+            }
+        }
+
+        .sidebar & .filter-current-subtitle {
+            border-width: 2px;
+            font-size: 18px;
+
+            &::before {
+                &:extend(.abs-no-display-desktop);
+            }
+        }
+
+        &-options {
+            &-title {
+                .page-layout-1column &::after {
+                    top: 1px;
+                    width: @indent__base;
+                    height: @indent__base;
+                    background-position: center;
+                }
+            }
+
+            &-item {
+                border-width: 2px;
+                &::before,
+                &::after {
+                    display: none !important;
+                }
+            }
+
+            &-content {
+                &:extend(.argento-force-dropdown-pointer all);
+                &::before {
+                    .right(auto);
+                    .left(0);
+                }
+                .item {
+                    margin: @indent__s;
+                }
+            }
+        }
+    }
+}

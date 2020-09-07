@@ -1,0 +1,40 @@
+& when (@media-common = true) {
+
+    p {
+        line-height: 1.5em;
+    }
+
+    select {
+        .lib-css(height, @select__height);
+    }
+    section {
+        margin-bottom: 6em;
+    }
+
+    .block .block-title [role="heading"] {
+        .lib-heading(h4);
+        .lib-css(text-transform, @h4__text-transform);
+    }
+
+    /* Table specific styles */
+    .table-striped,
+    .additional-attributes {
+
+        > caption {
+            .lib-visually-hidden-reset();
+            .text-align(left);
+        }
+
+        .lib-table-caption(@_table-caption-hide: false);
+
+        > tbody {
+            > tr:nth-child(odd) {
+                background-color: @color-white-fog
+            }
+        }
+
+        > thead {
+            border-bottom: @border-width__base solid @border-color__base;
+        }
+    }
+}

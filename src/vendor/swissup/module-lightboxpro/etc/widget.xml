@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="swissup_lightboxpro_gallery" class="Swissup\Lightboxpro\Block\Widgets\Gallery" is_email_compatible="false" placeholder_image="Swissup_Lightboxpro::images/list.png" ttl="86400">
+        <label translate="true">Lightbox Pro: Gallery</label>
+        <description>Shows images gallery</description>
+        <parameters>
+            <parameter name="img_width" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label translate="true">Main Image Width, px</label>
+                <value>500</value>
+            </parameter>
+            <parameter name="img_height" xsi:type="text" required="true" visible="true" sort_order="20">
+                <label translate="true">Main Image Height, px</label>
+                <value>500</value>
+            </parameter>
+            <parameter name="thumb_width" xsi:type="text" required="true" visible="true" sort_order="30">
+                <label translate="true">Thumbnail Width, px</label>
+                <value>100</value>
+            </parameter>
+            <parameter name="thumb_height" xsi:type="text" required="true" visible="true" sort_order="40">
+                <label translate="true">Thumbnail Height, px</label>
+                <value>100</value>
+            </parameter>
+            <parameter name="gallery" xsi:type="block" required="true" visible="true" sort_order="50">
+                <label translate="true">Images</label>
+                <block class="Swissup\Lightboxpro\Block\Adminhtml\Widget\Gallery" />
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">200</argument>
+                <argument name="logo_img_height" xsi:type="number">49</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="footer-container">
+            <container name="footer-toolbar-top-container" htmlTag="div" htmlClass="page-container footer-toolbar footer-toolbar-top" before="-">
+                <container name="footer-toolbar-top" as="footer-toolbar-top" label="Page Footer Toolbar Content" htmlTag="div" htmlClass="content"/>
+            </container>
+            <container name="footer-toolbar-bottom-container" htmlTag="div" htmlClass="page-container footer-toolbar footer-toolbar-bottom" after="-">
+                <container name="footer-toolbar-bottom" as="footer-toolbar-bottom" label="Page Footer Bottom Toolbar Content" htmlTag="div" htmlClass="content"/>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="header.panel">
+            <block class="Magento\Cms\Block\Block" name="header_cms_links">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">header_cms_links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="header.container">
+            <container name="header-content-wrapper" label="Page Header Wrapper" as="header-content-wrapper" htmlTag="div" htmlClass="header wrapper"/>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Cms\Block\Block" name="argento_scroll_up">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">argento_scroll_up</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <!-- Move header to additional wrapper to make it possible to stick it and leave centered -->
+        <move element="header-wrapper" destination="header-content-wrapper"/>
+        <move element="copyright" destination="footer-toolbar-bottom"/>
+        <move element="footer_links" destination="footer-toolbar-bottom"/>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+    </body>
+</page>

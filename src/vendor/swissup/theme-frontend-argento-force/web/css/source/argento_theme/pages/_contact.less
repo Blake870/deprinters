@@ -1,0 +1,62 @@
+& when (@media-common = true) {
+    .contact.form {
+        .legend {
+            &:extend(h3);
+            margin: 0 0 5px;
+        }
+        .contact-index-index .column.main & {
+            &:extend(.argento-force-section all);
+            width: 100%;
+        }
+    }
+    .block-contact-info {
+        &:extend(.argento-force-section all);
+        background: transparent;
+    }
+}
+
+//  Desktop
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .contact.form {
+        .actions-toolbar {
+            > .primary {
+                display: block;
+                float: none;
+            }
+            .action.submit {
+                width: 100%;
+                margin: 0;
+                float: none;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .contact.form {
+        .field {
+            &.email {
+                width: ~"calc(50% - @{form-field__vertical-indent} / 2)";
+                .float(right);
+            }
+
+            &.name {
+                width: ~"calc(50% - @{form-field__vertical-indent} / 2)";
+                .float(left);
+            }
+
+            &.telephone,
+            &.comment {
+                clear: both;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .contact.form .legend,
+    .block-contact-info .block-title {
+        text-align: center;
+    }
+}

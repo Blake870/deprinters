@@ -1,0 +1,22 @@
+//
+//  MOBILE
+//  _____________________________________________
+& when (@media-common = true) {
+    .argento-float-photo {
+        .lib-css(display, @argento-float-photo__display);
+        .lib-css(margin, @argento-float-photo__margin);
+        .lib-css(max-height, @argento-float-photo__max-height);
+    }
+}
+
+//
+//  DESKTOP
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .argento-float-photo {
+        .float(@argento-float-photo__desktop__float);
+        .margin(@argento-float-photo__desktop__margin);
+        .lib-css(max-width, @argento-float-photo__desktop__max-width);
+        .padding(@argento-float-photo__desktop__padding);
+    }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.media">
+            <container name="bundle.actions.container.wrapper" htmlTag="div" htmlClass="bundle-actions-container-wrapper" after="product.info.media">
+                <container name="bundle.actions.container" htmlTag="div" htmlClass="bundle-actions-container" />
+            </container>
+        </referenceBlock>
+        <move element="customize.button" destination="bundle.actions.container" before="-"/>
+        <move element="product.info.addto" destination="bundle.actions.container" />
+    </body>
+</page>

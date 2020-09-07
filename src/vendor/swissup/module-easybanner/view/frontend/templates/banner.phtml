@@ -1,0 +1,65 @@
+<?php if ($banner = $this->getBannerData()) : ?>
+    <?php $_id = $banner->getHtmlId(); ?>
+    <div class="<?php echo $banner->isPopupType() ? $this->getSystemClassName() : $this->getClassName() ?>"
+        data-class="<?php echo $this->getClassName() ?>"
+        id="<?php echo $_id ?>">
+    <?php if ('image' === $banner->getMode()) : ?>
+    <?php
+        $onclick = '';
+        $options = '\'\'';
+        if ($banner->getTarget() == 'popup') {
+            $options = '\'width=600,height=400\'';
+        }
+        if ($banner->getTarget() != 'self') {
+            $onclick = 'onclick="return !window.open(this.href, \'easybanners'.$banner->getBannerId().'\', '.$options.')"';
+        }
+
+        $height = $banner->getHeight();
+        $width  = $banner->getWidth();
+    ?>
+        <a class="easybanner-image-link"
+            rel="nofollow"
+            href="<?php echo $this->getUrl() . $this->getBannerUrl() ?>"
+            title="<?php echo $banner->getTitle() ?>"
+            <?php echo $onclick ?>>
+
+            <?php
+            $src = $this->getBannerImage();
+            if ($banner->getResizeImage() && $_src = $this->resizeImage($width, $height)) :
+                $src = $_src;
+            endif ?>
+
+            <img src="<?php echo $src ?>" alt="<?php echo $block->escapeHtml($banner->getTitle()) ?>"
+                <?php if (!$banner->getResizeImage()) : ?>
+                    <?php
+                        $style = '';
+                        if (!empty($width)):
+                            $style = 'width: ' . $width . 'px';
+                        elseif (!empty($height)):
+                            $style = 'height: ' . $height . 'px';
+                        endif;
+                    ?>
+                    style="<?php echo $style ?>"
+                <?php else : ?>
+                    <?php if ($banner->getRetinaSupport()) : ?>
+                        srcset="<?php echo $src ?> 1x, <?php echo $this->resizeImage($width * 2, $height * 2) ?> 2x"
+                    <?php endif ?>
+
+                    width="<?php echo $width ?>"
+                    height="<?php echo $height ?>"
+                <?php endif; ?>
+            />
+        </a>
+    <?php else : ?>
+        <?php echo $this->getBannerHtml() ?>
+    <?php endif; ?>
+
+    <?php if ($banner->isPopupType()) : ?>
+        <a href="#"
+            class="easybanner-close-permanent easybanner-close-permanent-core"
+            title="<?php echo __("Don't show this popup anymore") ?>">
+            <?php echo __("Don't show anymore") ?>
+        </a>
+    <?php endif ?>
+    </div>
+<?php endif; ?>

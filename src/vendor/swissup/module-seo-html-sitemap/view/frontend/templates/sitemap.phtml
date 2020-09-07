@@ -1,0 +1,38 @@
+<?php
+    $config = $this->helper('Swissup\SeoHtmlSitemap\Helper\Config');
+    $items = $block->getCollection();
+
+    if ($items) :
+        $itemsNumber = count($items);
+        $columnsNumber = $this->config->getColumnsNumber();
+        $itemsPerColumn = (int)ceil($itemsNumber / $columnsNumber);
+?>
+<?php if ($items): ?>
+<div class="sitemap-block">
+    <h3 class="block-subtitle subtitle"><?php echo $this->getTitle() ?></h3>
+    <div class="sitemap-block-content">
+        <?php if ($columnsNumber > 1) : ?>
+        <div class="col<?php echo $columnsNumber?>-set">
+            <div class="col-1">
+        <?php endif ?>
+        <?php $i = 0; $col = 1; ?>
+        <?php foreach ($items as $item): ?>
+            <div><a href="<?php echo $block->getItemUrl($item) ?>">
+                <?php echo $block->getItemName($item) ?></a></div>
+            <?php
+                $i++;
+                if ($columnsNumber > 1 && $col < $columnsNumber && $i == $itemsPerColumn) :
+                    $col++; $i = 0;
+            ?>
+            </div>
+            <div class="col-<?php echo $col ?>">
+        <?php endif ?>
+        <?php endforeach; ?>
+        <?php if ($columnsNumber > 1): ?>
+            </div>
+        </div>
+        <?php endif ?>
+    </div>
+</div>
+<?php endif ?>
+<?php endif ?>

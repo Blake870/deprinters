@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">161</argument>
+                <argument name="logo_img_height" xsi:type="number">32</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="header.panel" htmlClass="panel header argento-grid">
+            <container name="header.panel.left" htmlClass="col-md-4" htmlTag="div" />
+            <container name="header.panel.center" htmlClass="col-md-4" htmlTag="div">
+                <block class="Magento\Cms\Block\Block" name="header_slider">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">header_slider</argument>
+                    </arguments>
+                </block>
+            </container>
+            <container name="header.panel.right" htmlClass="col-md-4" htmlTag="div">
+                <block class="Magento\Framework\View\Element\Template" name="header_account" template="Magento_Theme::html/header/my-account.phtml" />
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="footer">
+            <block class="Magento\Cms\Block\Block" name="footer_cms_content">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_cms_content</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="footer-toolbar-top" htmlClass="content argento-grid">
+            <block class="Magento\Cms\Block\Block" name="footer_information">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_information</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <move element="skip_to_content" destination="header.panel.left" />
+        <move element="currency" destination="header.panel.right" before="-" />
+        <move element="store_language" destination="header.panel.right" before="-" />
+        <move element="header_account" destination="header.panel.right" before="-" />
+        <move element="navigation.sections" destination="header-wrapper" after="logo" />
+        <referenceBlock name="store_switcher" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
+        <referenceContainer name="footer-toolbar-bottom-container" remove="true"/>
+    </body>
+</page>

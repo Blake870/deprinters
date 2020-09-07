@@ -1,0 +1,16 @@
+<?php
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\ListProduct */
+?>
+<?php if (!$block->isRedirectToCartEnabled()) : ?>
+<script type="text/x-magento-init">
+    {
+        "[data-role=tocart-form], .form.map.checkout": {
+            "catalogAddToCart": {
+                "submitForcePreventValidation": <?php echo $block->isForceValidation() ? 'true' : 'false' ?>
+            }
+        }
+    }
+</script>
+<?php endif; ?>

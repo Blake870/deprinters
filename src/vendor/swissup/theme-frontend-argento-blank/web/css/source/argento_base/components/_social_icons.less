@@ -1,0 +1,49 @@
+& when (@media-common = true) {
+    .argento-colorize-icons(@selector, @i: length(@social-icons)) when (@i > 0) {
+        @entry: extract(@social-icons, @i);
+        @name: extract(@entry, 1);
+        @color: extract(@entry, 2);
+        @raw-selector: replace(~"@{selector}", "{{name}}", @name);
+        @{raw-selector} {
+            color: @color;
+        }
+        .argento-colorize-icons(@selector, (@i - 1));
+    }
+
+    .social-icons {
+        a {
+            vertical-align: middle;
+            display: inline-block;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        .fa-stack {
+            color: @social-icons-stack__color;
+            &:hover {
+                color: darken(@social-icons-stack__color, 10%);
+            }
+        }
+
+        &.colorize-fa {
+            .argento-colorize-icons('.fa-{{name}}');
+        }
+        &.colorize-fa-hover {
+            .fa {
+                transition: color 200ms ease-out;
+            }
+            .argento-colorize-icons('a:hover .fa-{{name}}');
+            .argento-colorize-icons('.fa-{{name}}:hover');
+        }
+        &.colorize-fa-stack {
+            .argento-colorize-icons('.icon-{{name}} .fa-stack .fa:first-child');
+        }
+        &.colorize-fa-stack-hover {
+            .fa-stack .fa:first-child {
+                transition: color 200ms ease-out;
+            }
+            .argento-colorize-icons('.icon-{{name}}:hover .fa-stack .fa:first-child');
+        }
+    }
+}

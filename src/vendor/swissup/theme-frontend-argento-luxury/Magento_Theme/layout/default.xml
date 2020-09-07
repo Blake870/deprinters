@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">295</argument>
+                <argument name="logo_img_height" xsi:type="number">29</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceContainer name="footer">
+            <block class="Magento\Cms\Block\Block" name="footer_cms_content">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_cms_content</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="header-wrapper">
+            <container name="header-content-right" label="Page Header Content Right" as="header-content-right" htmlTag="div" htmlClass="header-content-right" after="logo">
+                <block class="Magento\Framework\View\Element\Template" name="header-right-icons" template="Magento_Theme::html/header/icons.phtml" />
+            </container>
+        </referenceContainer>
+
+        <move element="minicart" destination="header-content-right" />
+        <move element="currency" destination="header-content-right" before="-" />
+        <move element="store_language" destination="header-wrapper" before="logo" />
+        <move element="store_switcher" destination="footer-toolbar-bottom" before="-" />
+        <move element="navigation.sections" destination="header.container"/>
+
+        <referenceBlock name="footer_links" remove="true" />
+    </body>
+</page>

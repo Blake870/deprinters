@@ -1,0 +1,83 @@
+<?php
+    /** @var \Swissup\Askit\Block\Question\Listing $block */
+    $isLoggedIn   = $block->isCustomerLoggedIn();
+    $configHelper = $block->getConfigHelper();
+
+    $isAllowedCustomerAnswer = $configHelper->isAllowedCustomerQuestion();
+    $isAllowedGuestAnswer    = $configHelper->isAllowedGuestAnswer();
+    $isEnabledGravatar       = $configHelper->isEnabledGravatar();
+    $isEnabledNoQuestions    = $configHelper->isEnabledNoQuestions();
+
+    $showNewAnswerForm = ($isAllowedCustomerAnswer && $isLoggedIn) || $isAllowedGuestAnswer;
+    $collection = $this->getCollection();
+    $isEmptyCollection = $collection->getSize() == 0;
+    if ($isEmptyCollection && $isEnabledNoQuestions) : ?>
+        <div class="message info empty">
+            <span><?php echo $block->escapeHtml(__('You have no approved questions.'));?></span>
+        </div>
+    <?php
+    endif;
+    if ($isEmptyCollection) {
+        return;
+    }
+?>
+<div class="block askit-questions">
+    <div class="title block-title">
+        <strong><?php echo $block->escapeHtml(__('Questions')); ?></strong>
+    </div>
+    <div class="block-content">
+
+        <div class="toolbar">
+            <?php /* @escapeNotVerified */ echo $block->getChildHtml('pager')?>
+        </div>
+
+        <ol class="items askit-items<?php /* @escapeNotVerified */  echo $isEnabledGravatar ? '' : ' no-avatar' ?>">
+        <?php
+        $blockQuestionView = $block->getChildBlock('askit_question_view');
+        $blockAnswerView = $block->getChildBlock('askit_answer_view');
+        $blockAnswerNew = $block->getChildBlock('askit_answer_form');
+        foreach ($collection as $question) : ?>
+            <li class="item askit-item">
+                <?php /* @escapeNotVerified */ echo $blockQuestionView
+                    ->setQuestion($question)
+                    ->toHtml()
+                ?>
+
+                <div class="askit-item-actions">
+                    <?php $answerCollecion = $question->getApprovedAnswerCollection();?>
+                    <?php if ($answerCollecion->getSize() > 0 || $showNewAnswerForm) :?>
+                    <label class="askit-item-trigger" for="askit-item-trigger-<?= $question->getId()?>">
+                        <?php echo $block->escapeHtml($answerCollecion->getSize());?>
+                        <span><?php echo $block->escapeHtml(' ' . __($answerCollecion->getSize() == 1 ? 'answer' : 'answers'))?></span>
+                    </label>
+                    <input type="checkbox" id="askit-item-trigger-<?= $question->getId()?>">
+
+                    <ol class="items askit-item-answers">
+                        <?php foreach ($answerCollecion as $answer) :?>
+                        <li class="item askit-item askit-item-answer">
+                            <?php /* @escapeNotVerified */ echo $blockAnswerView
+                                ->setAnswer($answer)
+                                ->toHtml()
+                            ?>
+                        </li>
+                        <?php endforeach;?>
+
+                        <?php if ($showNewAnswerForm || ($isAllowedCustomerAnswer && !$isLoggedIn)) :?>
+                        <li>
+                            <?php /* @escapeNotVerified */ echo $blockAnswerNew
+                            ->setQuestion($question)
+                            ->toHtml()?>
+                        </li>
+                        <?php endif?>
+                    </ol>
+                    <?php endif?>
+                </div>
+            </li>
+        <?php endforeach; ?>
+        </ol>
+
+        <div class="toolbar">
+            <?php /* @escapeNotVerified */ echo $block->getChildHtml('pager')?>
+        </div>
+    </div>
+</div>

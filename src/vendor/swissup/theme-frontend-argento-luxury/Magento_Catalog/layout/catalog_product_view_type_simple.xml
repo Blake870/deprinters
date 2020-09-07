@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info">
+            <!-- we use this conteiner to output price for products with or without custom options -->
+            <container name="product.info.luxuryFormTop" as="form_top" />
+        </referenceBlock>
+
+        <move element="product.info.simple" destination="product.info.main" after="product.info.overview"/>
+        <move element="product.info.price" destination="product.info.luxuryFormTop" before="-"/>
+        <move element="product.info.addto" destination="product.info.addtocart" before="-"/>
+
+        <referenceBlock name="product.info.addtocart.additional">
+            <!-- products with custom options output block 'product.info.addtocart.additional' and do not output 'product.info.addtocart' -->
+            <block class="Magento\Framework\View\Element\Template" name="view.addto.buttons.luxuryAdditional" as="options_container" template="Magento_Theme::catalog/product/custom-options/add-to-buttons.phtml" before="-" />
+        </referenceBlock>
+    </body>
+</page>

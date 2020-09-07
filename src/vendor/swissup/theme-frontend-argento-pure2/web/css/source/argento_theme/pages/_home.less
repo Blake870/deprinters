@@ -1,0 +1,59 @@
+.cms-index-index {
+    .page-main {
+        .argento-page-container(~"> .page.messages", 0);
+        max-width: none;
+        padding: 0;
+    }
+    .column.main {
+        .easycatalogimg {
+            li.item {
+                position: relative;
+            }
+            .parent-category {
+                margin: 0;
+                text-transform: uppercase;
+                position: absolute;
+                left: 50%;
+                top: 80px;
+                transform: translateX(-50%);
+                padding: 5px 10px;
+                background-color: @color-black;
+                a {
+                    font-size: 14px;
+                    color: @color-white;
+                }
+            }
+            .list-subcategories {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                text-align: center;
+                li {
+                    margin: 0;
+                    padding: 0;
+                    display: inline;
+                    text-transform: uppercase;
+                    font-size: .9em;
+                    a {
+                        color: @color-black;
+                        &:after {
+                            content: ','
+                        }
+                    }
+                    &:last-child a:after {
+                        content: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .cms-index-index {
+        .page-header {
+            // Use for homepage only to cover main content
+            // Do not use globally to prevent elements overlapping (checkout page Log In link)
+            z-index: 499; // 499 - is a navigationpro overlay fix
+        }
+    }
+}

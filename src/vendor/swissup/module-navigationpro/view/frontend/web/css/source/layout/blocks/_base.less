@@ -1,0 +1,27 @@
+& when (@media-common = true) {
+    .navpro {
+        .block {
+            &:first-child {
+                margin-top: 0;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .subtitle {
+                display: none;
+            }
+
+            .product-items {
+                .product-item {
+                    position: relative;
+                }
+                .action.delete {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+        }
+    }
+}

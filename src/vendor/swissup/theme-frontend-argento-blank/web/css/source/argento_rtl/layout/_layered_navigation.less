@@ -1,0 +1,100 @@
+& when (@media-common = true) {
+    & when (@argento-dir = rtl) {
+        .filter {
+            &-title strong {
+                right: 0;
+                left: auto;
+            }
+
+            &-current {
+                .item {
+                    padding-left: 0;
+                    padding-right: 17px;
+                }
+
+                .action.remove {
+                    left: auto;
+                    right: -2px;
+                }
+            }
+
+            &-options {
+                &-title {
+                    padding: @indent__s @indent__s 0 @indent__s + 30px;
+
+                    &:after {
+                        left: 13px;
+                        right: auto;
+                    }
+                }
+
+                &-content a {
+                    padding-left: 7px;
+                    padding-right: 5px;
+                }
+            }
+        }
+
+        .filtered  .item  .action.remove {
+            left: auto;
+            right: -6px;
+        }
+
+        .page-products .sorter {
+            left: 10px;
+            right: auto;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when (@argento-dir = rtl) {
+        .page-layout-1column .filter-options {
+            &-item {
+                margin-left: 0;
+                margin-right: @indent__m;
+
+                &.active:after,
+                &.active:before {
+                    left: auto;
+                    right: @indent__xs;
+                }
+            }
+
+            &-title {
+                padding: 0 0 0 @indent__base;
+
+                &:after {
+                    left: 2px;
+                    right: auto;
+                }
+            }
+
+            &-content .item a {
+                margin-left: -5px;
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    & when (@argento-dir = rtl) {
+        .filter {
+            &.active .filter-title strong {
+                left: 3px;
+                right: auto;
+            }
+
+            .filter-current-subtitle:before {
+                left: 10px;
+                right: auto;
+            }
+
+            &-no-options .filter-title:before {
+                left: auto;
+                right: -15px;
+            }
+        }
+    }
+}

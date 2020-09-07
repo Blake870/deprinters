@@ -1,0 +1,26 @@
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Small screen / tablet
+@screen-sm-min:              @screen__m;
+
+// Medium screen / desktop
+@screen-md-min:              @screen__l;
+
+// Large screen / wide desktop
+@screen-lg-min:              @screen__xl;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Number of columns in the grid.
+@grid-columns:              12;
+//** Padding between columns. Gets divided in half for the left and right.
+@grid-gutter-width:         12px;

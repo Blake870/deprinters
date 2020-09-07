@@ -1,0 +1,16 @@
+{
+    "name": "swissup/module-rich-snippets",
+    "description": "Structured data markup for Google's crawlers",
+    "type": "magento2-module",
+    "version": "1.4.6",
+    "license": ["OSL-3.0"],
+    "require": {
+        "swissup/module-seo-core": "^1.2.1"
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Swissup\\RichSnippets\\": ""
+        }
+    }
+}

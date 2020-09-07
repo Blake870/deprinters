@@ -1,0 +1,20 @@
+<style type="text/css">
+[data-index=widget_options] .action-select-wrap .action-menu._active {
+    overflow: hidden;
+}
+[data-index=widget_options] .action-select-wrap .action-menu._active .admin__action-multiselect-menu-inner {
+    max-height: 20em;
+}
+</style>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+    }
+}
+</script>
+<div class="admin__field-control control">
+<!-- ko scope: '<?= $block->getScopeName() ?>' -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->
+</div>

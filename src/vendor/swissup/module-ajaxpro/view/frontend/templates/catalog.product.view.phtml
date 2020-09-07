@@ -1,0 +1,15 @@
+<div data-bind="scope: 'ajaxpro'">
+    <div class="ajaxpro-wrapper" data-block="ajaxpro" data-bind="visible: isActive()">
+        <!-- <button type="button" class="action action-auth-toggle" data-trigger="ajaxpro">
+            <span data-bind="i18n: 'Modal Ajaxpro'"></span>
+        </button> -->
+        <div class="block-ajaxpro" style="display: none" data-bind="mageInit: {
+                'Swissup_Ajaxpro/js/modal':{
+                    'responsive': true,
+                    'innerScroll': true,
+                    'buttons': []
+                }}">
+            <div id="ajaxpro-catalog.product.view" class="column main" data-bind="afterRender: setModalElement, bindHtml: getAjaxproParam('catalog.product.view')"></div>
+        </div>
+    </div>
+</div>

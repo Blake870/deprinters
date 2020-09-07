@@ -1,0 +1,57 @@
+<?php
+    $slider = $block->getSlider();
+    if (!$slider || !$slider->getSlides()) {
+        return;
+    }
+
+    $startRandom = $slider->getData('startRandomSlide');
+?>
+<div class="swiper-container easyslide-swiper-<?= $slider->getIdentifier() ?>" data-mage-init='{"Swissup_EasySlide/js/easyslide":<?= $block->getSliderConfig() ?>}' style="<?= $startRandom ? 'opacity: 0; transition: opacity .1s ease-in-out;' : ''; ?>">
+    <div class="swiper-wrapper">
+        <?php $i = 0; foreach ($slider->getSlides() as $slide) : ?>
+            <div class="swiper-slide">
+                <?php
+                    $i++;
+                    $isLazy = $i === 1 ? false: $slider->getData('lazy');
+                    $imageHtml = $block->getImageRenderer()->render($slide, $slider->getSizes(), $isLazy);
+                ?>
+                <?php if ($isLazy): ?>
+                <div class="swiper-lazy-preloader"></div>
+                <?php endif; ?>
+                <?php if ($slide['url']): ?>
+                <a href="<?= $slide['url'] ?>"
+                    class="easyslide-link easyslide-link-<?= $i ?>"
+                    target="<?= $slide['target'] ?>">
+                    <?= $imageHtml ?>
+                </a>
+                <?php else: ?>
+                    <?= $imageHtml ?>
+                <?php endif; ?>
+                <?php if (!empty($slide['description'])) : ?>
+                    <?php $className = implode(' ', [
+                        'easyslide-description',
+                        "easyslide-description-{$slide['desc_position']}",
+                        "easyslide-background-{$slide['desc_background']}"
+                    ]) ?>
+                    <div class="<?= $className ?>">
+                        <?= $block->getSlideDescription($slide['description']) ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <?php $theme = $slider->getData('theme') ?>
+    <?php if ($slider->getData('pagination')) : ?>
+        <div class="swiper-pagination<?= $theme ? ' swiper-pagination-' . $theme : '' ?>"></div>
+    <?php endif ?>
+
+    <?php if ($slider->getData('navigation')) : ?>
+        <div class="swiper-button-prev<?= $theme ? ' swiper-button-' . $theme : '' ?>"></div>
+        <div class="swiper-button-next<?= $theme ? ' swiper-button-' . $theme : '' ?>"></div>
+    <?php endif ?>
+
+    <?php if ($slider->getData('scrollbar')) : ?>
+        <div class="swiper-scrollbar"></div>
+    <?php endif ?>
+</div>

@@ -1,0 +1,24 @@
+@navpro-basscss-caps-letter-spacing: .2em;
+@navpro-basscss-bold-font-weight: bold;
+
+& when (@media-common = true) {
+    .bold    { font-weight: @navpro-basscss-bold-font-weight }
+    .regular { font-weight: normal }
+    .italic  { font-style: italic }
+    .caps    { text-transform: uppercase; letter-spacing: @navpro-basscss-caps-letter-spacing; }
+
+    .text-left      { text-align: left }
+    .text-center    { text-align: center }
+    .text-right     { text-align: right }
+    .text-justify   { text-align: justify }
+
+    .nowrap { white-space: nowrap }
+    .break-word { word-wrap: break-word }
+
+    .underline { text-decoration: underline }
+
+    .va-middle { vertical-align: middle; }
+    .va-top { vertical-align: top; }
+    .va-bottom { vertical-align: bottom; }
+    .va-baseline { vertical-align: baseline; }
+}

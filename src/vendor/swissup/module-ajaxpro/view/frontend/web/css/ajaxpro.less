@@ -1,0 +1,179 @@
+.ajaxpro-modal-dialog {
+
+    .column.main {
+        width: 100% !important;
+    }
+
+    .modal-inner-wrap {
+        max-width: 900px;
+        .block.crosssell {
+            margin-top: 0;
+            width: auto;
+            margin-bottom: 0;
+            .products {
+                margin: 0;
+                .product-item {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    &.ajaxpro-popup-simple,
+    &.ajaxpro-popup-suggestpage-view {
+        .modal-inner-wrap {
+            .modal-footer {
+                border: 0;
+            }
+        }
+    }
+
+    &.ajaxpro-popup-simple {
+        &:not(.ajaxpro-modal-dialog-slide) .modal-inner-wrap {
+            max-width: 400px;
+        }
+        .modal-inner-wrap {
+
+            .modal-content {
+                padding-bottom: 0;
+            }
+            .modal-footer {
+                padding-top: 1rem;
+            }
+        }
+    }
+
+    &.ajaxpro-popup-minicart {
+        .modal-inner-wrap {
+            width: 100%;
+        }
+        &.ajaxpro-modal-dialog-popup .modal-inner-wrap {
+            max-width: 600px;
+        }
+        .minicart-wrapper {
+            margin: 0;
+            float: none;
+            display: block;
+            .block-minicart {
+                right: 0;
+                display: block;
+                border: none;
+                box-shadow: none;
+                position: relative;
+                &:before,
+                &:after {
+                    display: none;
+                }
+                .action.close {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .ajaxpro-modal-dialog .modal-inner-wrap .block.crosssell .products-grid .product-items {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .product-item {
+            flex-grow: 1;
+        }
+    }
+    .ajaxpro-modal-dialog.modal-popup.modal-slide .modal-footer {
+        text-align: center;
+    }
+    .ajaxpro-modal-dialog.ajaxpro-modal-dialog-slide.modal-slide {
+        left: 65%;
+        .ajaxpro-continue-button {
+            display: none;
+        }
+        &.ajaxpro-popup-suggestpage-view {
+            left: 70%;
+            .suggestpage-activity {
+                flex-direction: column;
+                .col-1, .col-2 {
+                    width: 100%;
+                }
+                .actions button {
+                    margin: 5px 0;
+                }
+                .col-suggest-list ol li {
+                    flex-direction: column;
+                    a {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        &.ajaxpro-popup-checkout-cart-index {
+            .cart-container {
+                display: flex;
+                flex-direction: column;
+                .cart-summary, form.form-cart {
+                    width: 100%;
+                    .cart.table-wrapper {
+                        .col {
+                            &.price,
+                            &.subtotal,
+                            &.qty {
+                                font-size: 1.3rem;
+                            }
+                        }
+                        .product-item-photo {
+                            max-width: 80px;
+                        }
+                    }
+                }
+            }
+            .cart-discount {
+                #block-discount {
+                    min-width: 200px;
+                }
+                #coupon_code {
+                    min-width: 155px;
+                }
+            }
+        }
+        &.ajaxpro-popup-minicart {
+            left: auto;
+            min-width: 440px;
+        }
+    }
+}
+
+@media (device-width: 768px) {
+    .ajaxpro-modal-dialog.ajaxpro-popup-checkout-cart-index {
+        .cart-container {
+            display: flex;
+            flex-direction: column-reverse;
+            .cart-summary, form.form-cart {
+                width: 100%;
+            }
+        }
+    }
+}
+
+/* Disable off-canvas popup, when using simple popup mode */
+@media (max-width: 768px) {
+    .ajaxpro-continue-button {
+        display: none;
+    }
+    .ajaxpro-popup-simple {
+        &.modal-popup.modal-slide {
+            left: 0;
+
+            .modal-inner-wrap {
+                margin: 5rem auto;
+                min-height: auto;
+                transform: translateY(-200%);
+            }
+            &._show {
+                .modal-inner-wrap {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}

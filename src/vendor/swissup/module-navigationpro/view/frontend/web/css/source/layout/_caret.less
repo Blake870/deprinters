@@ -1,0 +1,169 @@
+& when (@media-common = true) {
+    .navpro {
+        // Luma and other third-party themes
+        &-icon-caret,
+        &.navigation .level0.parent > .level-top > .ui-menu-icon {
+            position: static;
+            display: block;
+        }
+        &-icon-caret::after {
+            display: none !important;
+        }
+
+        .caret-hidden > a.level-top {
+            padding: @navpro-link-level0__padding !important;
+            > .navpro-icon-caret::before {
+                display: none !important;
+            }
+        }
+
+        &-icon-caret::before {
+            content: '';
+
+            position: absolute;
+            right: 1px;
+            top: calc(~"50% - 10px");
+            transform: rotate(-90deg);
+
+            .rtl &, .navpro-rtl & {
+                left: 1px;
+                right: auto;
+                transform: rotate(90deg);
+            }
+
+            opacity: .8;
+            background-image: url(@navpro-parent-item__caret);
+            background-repeat: no-repeat;
+            background-size: 12px 12px;
+            background-position: 50% 50%;
+            width: 20px;
+            height: 20px;
+
+            .orientation-horizontal a.level-top > & {
+                transform: rotate(0);
+            }
+
+            a.level-top > & {
+                background-image: url(@navpro-parent-item-level0__caret);
+            }
+
+            .caret-bottom a.level-top > & {
+                top: auto;
+                right: auto;
+                left: calc(~"50% - 8px");
+                bottom: 5px;
+            }
+            .caret-light > a > & {
+                background-image: url(@navpro-parent-item__caret-light) !important;
+            }
+            .caret-dark > a > & {
+                background-image: url(@navpro-parent-item__caret-dark) !important;
+            }
+        }
+
+        &.navpro {
+            .caret-hidden {
+                .level0 {
+                    > .level-top {
+                        padding: @navpro-link-level0__padding !important;
+                        > .navpro-icon-caret::before {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        // change caret styles for top level items (parent indicator)
+        &.orientation-horizontal {
+            .caret-bottom {
+                .level0 {
+                    > .level-top {
+                        &,
+                        .rtl & {
+                            padding:  @navpro-link-level0__padding;
+                            padding-bottom: @navpro-link-level0-caret__padding;
+                        }
+                    }
+                }
+            }
+
+            .caret-light {
+                .level0 {
+                    > .level-top > .navpro-icon-caret::before {
+                        background-image: url(@navpro-parent-item__caret-light) !important;
+                    }
+                }
+            }
+            .caret-dark {
+                .level0 {
+                    > .level-top > .navpro-icon-caret::before {
+                        background-image: url(@navpro-parent-item__caret-dark) !important;
+                    }
+                }
+            }
+        }
+
+        &.dropdown-left {
+            .children .navpro-icon-caret::before {
+                right: auto;
+                left: 1px;
+                transform: rotate(90deg);
+
+                .rtl &, .navpro-rtl & {
+                    right: 1px;
+                    left: auto;
+                    transform: rotate(-90deg);
+                }
+            }
+            .navpro-dropdown .children .parent > a {
+                padding-right:  @navpro-link__padding-right;
+                padding-left: @navpro-link-caret__padding;
+
+                .rtl &, .navpro-rtl & {
+                    padding-right: @navpro-link-caret__padding;
+                    padding-left: @navpro-link__padding-left;
+                }
+            }
+            // apply styles to the level0 of vertical oriented menu's
+            &.orientation-vertical {
+                .navpro-icon-caret::before {
+                    right: auto;
+                    left: 1px;
+                    transform: rotate(90deg);
+
+                    .rtl &, .navpro-rtl & {
+                        right: 1px;
+                        left: auto;
+                        transform: rotate(-90deg);
+                    }
+                }
+                .level0.parent > .level-top {
+                    padding:  @navpro-link-level0__padding;
+                    padding-left: @navpro-link-level0-caret__padding;
+
+                    .rtl &, .navpro-rtl & {
+                        padding: @navpro-link-level0__padding;
+                        padding-right: @navpro-link-level0-caret__padding;
+                    }
+                }
+            }
+        }
+    }
+}
+
+& when (@media-target = 'desktop') {
+    @media @navpro-breakpoint-md {
+        .navpro {
+            &.dropdown-top {
+                &.orientation-horizontal {
+                    a.level-top > {
+                        .navpro-icon-caret::before {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

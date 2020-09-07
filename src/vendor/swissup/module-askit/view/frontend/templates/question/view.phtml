@@ -1,0 +1,47 @@
+<?php
+    $isLoggedIn   = $block->isCustomerLoggedIn();
+    $configHelper = $block->getConfigHelper();
+    $urlHelper    = $block->getUrlHelper();
+    $currentUrl   = $urlHelper->getCurrentUrl();
+
+    $isAllowHint             = $configHelper->isAllowedHint();
+    $isShareCustomerName     = $configHelper->isAllowedShareCustomerName();
+    $isShowItem              = $configHelper->isAllowedShareItem();
+    $isEnabledGravatar       = $configHelper->isEnabledGravatar();
+
+    $question = $block->getQuestion();
+?>
+
+<div class="askit-item-avatar">
+    <?= $isEnabledGravatar ? $urlHelper->getGravatar($question->getEmail(), 100) : '' ?>
+</div>
+<?php if ($isShareCustomerName) :?>
+<p class="askit-item-title">
+    <strong class="askit-item-author"><?= /* @escapeNotVerified */ $block->escapeHtml($question->getCustomerName());?></strong>
+    <span><?= $block->escapeHtml(__('asks')) ?></span>
+    <?php if ($isShowItem) :
+        $a = $urlHelper->get($question['item_type_id'], $question['item_id'], false);
+        if ($a['href'] != $currentUrl) :
+    ?>
+    <span><?= $block->escapeHtml(__('about')) ?></span>
+        <a class="askit-item-parent" href="<?= /* @escapeNotVerified */ $a['href'] ?>"><?= /* @escapeNotVerified */ $a['label']?></a>
+        <?php endif;?>
+    <?php endif;?>
+    <span class="askit-item-timestamp"><?= $block->formatDate($question->getCreatedTime(), \IntlDateFormatter::MEDIUM);?></span>
+</p>
+<?php endif;?>
+
+<p class="askit-item-body">
+    <?= /* @escapeNotVerified */ nl2br($block->escapeHtml($question->getText()))?>
+</p>
+
+<p class="askit-item-same">
+    <span class="askit-item-vote">
+        <small>
+        <?php if ($isAllowHint && $isLoggedIn && $this->canVoted($question->getId())) :?>
+                <a href="#" data-post='<?= /* @escapeNotVerified */ $block->getPostDataHelper()->getPostData($block->getUrl('askit/vote/inc'), ['id' => $question->getId()]);?>' class="action"><?= $block->escapeHtml(__('Vote for It')) ?></a>
+        <?php endif;?>
+            <span><?= $question->getHint() ? $block->escapeHtml(__('%1 people already voted for this question.', $question->getHint())) : '' ?></span>
+        </small>
+    </span>
+</p>

@@ -1,0 +1,41 @@
+& when (@media-common = true) {
+    .checkout-cart-index {
+        .page-title-wrapper {
+            .text-align(left);
+
+            h1.page-title {
+                .lib-heading(h2);
+                letter-spacing: 1.38px;
+                text-transform: none;
+
+                &:after {
+                    display: none;
+                    margin: 16px 0 0 0;
+                }
+            }
+        }
+
+        .cart.items {
+            color: #2e2e2e;
+        }
+
+        .item-info {
+            .product-item-name a {
+                font-size: 20px;
+                font-weight: 800;
+                color: #454545;
+                letter-spacing: 0.77px;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .checkout-cart-index {
+        .page-title-wrapper {
+            h1.page-title:after {
+                display: block;
+            }
+        }
+    }
+}

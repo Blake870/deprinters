@@ -1,0 +1,91 @@
+& when (@media-common = true) {
+    .customer-address-form,
+    .multishipping-checkout-address-newshipping {
+         .form-address-edit  {
+            .field.fullname {
+                .lib-clearfix();
+            }
+        }
+    }
+
+    .account .toolbar .limiter {
+        display: none;
+    }
+
+    .block-reorder {
+        input[type="checkbox"] {
+            margin-top: 0;
+            .argento-checkbox(
+                @_checkbox-border: 1px solid @stripes-green__color,
+                @_checkbox-checkmark-color: @stripes-green__color,
+                @_checkbox-height: 1.5rem,
+                @_checkbox-width: 1.5rem,
+                @_checkbox-checkmark-width: 2px
+            );
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .wishlist-index-index .products-grid.wishlist .product-item {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        .box-tocart {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .product-item-actions {
+            .text-align(left);
+
+            .action.edit,
+            .action.delete {
+                float: none;
+                display: inline-block;
+            }
+        }
+    }
+
+    .account {
+        .sidebar .product-items .product-item-info {
+            .product-item-photo {
+                width: auto;
+            }
+
+            .product-item-details {
+                .margin-left(80px);
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .products-grid.wishlist {
+        .product-item {
+            border-bottom: @stripes-home__border;
+
+            &:first-child {
+                border-top: @stripes-home__border;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .account {
+        .block-dashboard-orders .block-title {
+            margin-bottom: 25px;
+        }
+
+        .toolbar {
+            padding: 13px 0;
+            text-align: center;
+
+            .limiter {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <remove src="fonts/opensans/light/opensans-300.woff2"/>
+        <remove src="fonts/opensans/regular/opensans-400.woff2"/>
+        <remove src="fonts/opensans/semibold/opensans-600.woff2"/>
+        <remove src="fonts/opensans/bold/opensans-700.woff2"/>
+
+        <link rel="preload" src_type="url" src="fonts/muli/v16/7Auwp_0qiz-afTLGLQ.woff2"/>
+        <link rel="preload" src_type="url" src="fonts/muli/v16/7Au_p_0qiz-adYnjOCX2zw.woff2"/>
+        <link rel="preload" src_type="url" src="fonts/muli/v16/7Au_p_0qiz-adZXgOCX2zw.woff2"/>
+        <link rel="preload" src_type="url" src="fonts/muli/v16/7Au_p_0qiz-adZnkOCX2zw.woff2"/>
+    </head>
+</page>

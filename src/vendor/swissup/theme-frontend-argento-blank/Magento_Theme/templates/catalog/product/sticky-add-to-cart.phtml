@@ -1,0 +1,16 @@
+<?php
+    $options = $block->getVar('sticky_add_to_cart', 'Argento_Theme');
+    $isSticky = isset($options['enabled']) ? $options['enabled'] : 0;
+    if (!$isSticky) {
+        return;
+    }
+
+    unset($options['enabled']);
+?>
+<script type="text/x-magento-init">
+{
+    ".product-add-form .box-tocart": {
+        "js/argento-sticky-add-to-cart": <?= $options ? json_encode($options, JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK) : '{}'. "\n"; ?>
+    }
+}
+</script>

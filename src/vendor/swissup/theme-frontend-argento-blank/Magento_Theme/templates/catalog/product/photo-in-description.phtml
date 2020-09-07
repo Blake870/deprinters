@@ -1,0 +1,46 @@
+<?php
+    $options = $block->getVar('photo_in_description', 'Argento_Theme');
+    if (empty($options['target'])) {
+        return;
+    }
+?>
+<script type="text/javascript">
+require([
+    'jquery'
+], function ($) {
+    'use strict';
+
+    var gallery = $('[data-gallery-role=gallery-placeholder]');
+
+    /**
+     * Add photo to tabbed product description
+     */
+    function addPhotoToDescription() {
+        var data,
+            image,
+            target = $('<?= $options["target"] ?>'),
+            imageClass = '<?= isset($options["image_class"]) ? $options["image_class"] : "" ?>',
+            addClasses = '<?= isset($options["add_classes"]) ? $options["add_classes"] : "" ?>';
+
+        if ($('> *', target).hasClass(imageClass)) {
+            return;
+        }
+
+        if (!gallery.data('gallery') || !gallery.data('gallery').fotorama) {
+            return;
+        }
+
+        data = gallery.data('gallery').fotorama ? gallery.data('gallery').fotorama.data : [];
+        // debugger;
+        image = data.slice(-1).pop().img; // get last image in gallery
+        target.prepend('<img class="' +
+            imageClass + ' ' + addClasses +
+            '" src="' + image + '">');
+    }
+
+    // Listen gallery load
+    $(gallery).on('gallery:loaded', addPhotoToDescription);
+    // Listen eaytabs content load via ajax
+    $('<?= $options["target"] ?>').on('easytabs:contentLoaded', addPhotoToDescription);
+});
+</script>

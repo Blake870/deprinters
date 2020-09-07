@@ -1,0 +1,6 @@
+<?php $helper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+<?php if ($helper->hasItems()): ?>
+<div class="minicompare badge" data-badge="<?= $helper->getItemCount() ?>">
+    <a class="compare-icon" href="<?= $helper->getListUrl() ?>" title="<?= __('Compare'); ?>"></a>
+</div>
+<?php endif; ?>

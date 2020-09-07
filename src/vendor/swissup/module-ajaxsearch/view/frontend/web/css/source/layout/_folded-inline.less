@@ -1,0 +1,44 @@
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .block-search.block-swissup-ajaxsearch.inline {
+        .field.search {
+            background-color: @ajaxsearch-folded__background;
+            .input-text {
+                box-shadow: @ajaxsearch-folded-input__box-shadow;
+            }
+        }
+
+        .swissup-ajaxsearch-filter-category-wrapper {
+            flex-shrink: 0;
+            min-width: @ajaxsearch-folded-category__width;
+            width: @ajaxsearch-folded-category__width;
+            .margin-right(-@ajaxsearch-folded-category__width);
+
+            + .origin {
+                .input-text {
+                    .padding-left(@ajaxsearch-folded-category__width + 5);
+                    .lib-css(border-radius, @ajaxsearch-input__border-radius);
+                }
+            }
+        }
+
+        &.shown {
+            .field.search {
+                & when (@ajaxsearch-folded__alignment = 'right') {
+                    .left(auto);
+                    .right(-@ajaxsearch-folded__padding-x);
+                }
+
+                & when (@ajaxsearch-folded__alignment = 'left') {
+                    .left(-@ajaxsearch-folded__padding-x);
+                    .right(auto);
+                }
+            }
+
+            & when (@ajaxsearch-folded__alignment = 'left') {
+                .action.close {
+                    .left(@ajaxsearch-folded__min-width - max(@ajaxsearch-icon__width, 25px));
+                }
+            }
+        }
+    }
+}

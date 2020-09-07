@@ -1,0 +1,189 @@
+//
+//  Argento Pure2 variables
+//  ---------------------------------------------
+@image-dots: url('data:image/gif;base64,R0lGODlhBAABAKIAAAAAAP///+Xl5X9/f////wAAAAAAAAAAACH5BAEAAAQALAAAAAAEAAEAAAMDKBORADs=');
+
+//
+//  Typography
+//  _____________________________________________
+@hero-title__font-size: 25px;
+@hero-title__font-family: 'Noto Sans', sans-serif;
+@hero-title__text-transform: uppercase;
+@hero-title__text-align: center;
+
+@h1__font-family: @hero-title__font-family;
+@h1__font-size: @hero-title__font-size;
+@h1__font-size-desktop: 25px;
+@h1__margin-top: 15px;
+@h1__text-transform: uppercase;
+
+@block-title__font-size: 18px;
+@block-title__font-family: @hero-title__font-family;
+@block-title__font-weight: normal;
+@block-title__text-transform: uppercase;
+
+//
+//  Layout
+//  _____________________________________________
+@layout__width: '';
+@layout__max-width: 1180px;
+@layout-indent__width: 10px;
+
+//
+//  Jumbotrons
+//  _____________________________________________
+@jumbotron-image__background:
+        linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 100%),
+        #bdc1ca
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAACqklEQVRogd2ay5HCQAxE++gwCIVQCIVMCIVQCIU9LF1lv/Jjdq/SxcXYjHHr0y2Z3G63LUl6vF6vW35tS5L7/b4lyePx2JLk9Xod1vu9nu/68/k8fH6/31uSXC6Xw7Hf7/W9L893n57v9b3vHKNHingRKZJ98h7rOXqInipyvZ7Hnu8+/cz1IELosTlGJOuBfBBgDhDpIlOE6REi2Ot6n57nOu9rHtzlzhBbIbzKgV3VOP2eeYxVaoU89+O+c6xPRGSt2pBXGONdJ290P+ZGz9PzzEnyHCNojvHJiKBVCYv1FZPTE9yHHqpn+HuYi3OMsVtEigSrQ2OVyOXjke7DWO66eYoeMgXAHNrx3hAjQkTcYpc508/kpa4bssbo1H48nmixIcaYY+yZFmMVMS1FRg54qkcqBa7TEyf90xAzDWWxbwzOjs34oN+3focKgp5mVZ2XI//tDMnEVuWYI/RM0Juzqpn2oyfm5YgxJuu8IcLphnmWdZ+RQM9bTgX9y07rDTE+GZGgRrJ+wpif15O5LUf5e3jdSR81xGyaQSbfzY++8g4RpWo2zUUPmcdtvzlmzG69OhGxSSCRt5kyPWE5ymra6+f1I6xarNuraUfA0GR+2z/wjE1PqK1Mdc8xVgnGIJnXpuYBs1sHaOeZI+xYV+p4jpEhTY2yngfTenv/Yfyw6ulP1O3XyJhjjL0g1pkjZHybktsbJ1Y/vo+h+mUucn1ejgRIWY/M9ZVqtkniiheYW/x9ZPR5WouIGD+w4zOEyMim2ZgrjPnV+5m5OcJ6TcRYRbjO623abmr4r52g9fbz3upalSI/UIuZGrY+w96nrBCPzL8CZTHHrGpw/mT9BhmaWsg6PJsRmFpmxJz8q2iI8clstkvEqIJZ7xnzvA89Hen5uT+r3Liq9QMEfagk5w2FGAAAAABJRU5ErkJggg==");
+
+//
+//  Buttons
+//  _____________________________________________
+@button__text-transform: uppercase;
+
+@button__background: transparent;
+@button__border: 1px solid rgba(0,0,0,1);
+@button__border-radius: 0;
+
+@button__hover__background: rgba(0,0,0,1);
+@button__hover__border: @button__border;
+@button__hover__color: @color-white;
+
+@button__active__background: @button__hover__background;
+@button__active__color: @button__hover__color;
+@button__active__border: @button__hover__border;
+
+//  Primary button
+@button-primary__background: transparent;
+@button-primary__border: 1px solid #a5205f;
+@button-primary__color: #a5205f;
+
+@button-primary__hover__background: #a5205f;
+@button-primary__hover__border: @button-primary__border;
+@button-primary__hover__color: @color-white;
+
+@button-primary__active__background: @button-primary__hover__background;
+@button-primary__active__border: @button-primary__hover__border;
+@button-primary__active__color: @button-primary__hover__color;
+
+//
+//  Header
+//  _____________________________________________
+@header-panel__background-color: @color-black;
+@header-panel__text-color: @color-white;
+
+@header__box-shadow: 0 0 3px rgba(0,0,0,0.2);
+@header__margin-bottom: 0;
+
+//
+//  Search
+//  _____________________________________________
+@ajaxsearch-input__border-color: transparent;
+@ajaxsearch-category-filter__margin-right: 0;
+@ajaxsearch-dropdown__border-color: #eaeaea;
+@ajaxsearch-folded__alignment: 'left';
+@ajaxsearch-folded-input__box-shadow: 0 0 0 1px #eaeaea;
+@ajaxsearch-fullscreen-form__initial-positioning: 'absolute';
+
+
+@minicart-icons-color: #5c5c5c;
+
+//
+//  Navigation
+//  _____________________________________________
+@navigation__background: @color-white;
+
+@navigation-sticked-section__background: transparent;
+@navigation-sticked-level0__max-width: none;
+@navigation-sticked-level0__background: rgba(0,0,0,0.8);
+@navigation-sticked-level0__box-shadow: 0 0 3px rgba(0,0,0,0.2);
+@navigation-sticked-level0__color: @color-white;
+
+@navigation-desktop__font-size: 15px;
+@navigation-desktop__font-weight: 400;
+
+@navigation-desktop-level0-item__line-height: 31px;
+@navigation-desktop-level0-item__font-family: "Noto Sans", sans-serif;
+@navigation-desktop-level0-item__active__color: @color-gray19;
+@navigation-desktop-level0-item__text-transform: uppercase;
+
+@submenu-desktop__box-shadow: 0 0 2px rgba(0,0,0,0.15);
+@submenu-desktop__border-width: 0;
+@submenu-desktop-item__hover__background: #fcfcfc;
+
+@navpro-slideout-logo__margin-left: 0;
+@navpro-slideout-toggle__margin: 3px 0 8px 8px;
+
+//
+//  Dropdowns variables
+//  _____________________________________________
+@dropdown-list__shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.1);
+@dropdown-list__border: 1px solid #eaeaea;
+@dropdown-list__border-radius: 0;
+@dropdown-list-pointer__border: #eaeaea;
+
+//
+//  Breadcrumbs
+//  _____________________________________________
+@breadcrumbs__container-margin: 15px auto;
+
+
+@toolbar-element-background: transparent;
+
+//
+//  Product Listing
+//  _____________________________________________
+@product-grid-items-per-row-layout-1-screen-l: 4;
+@product-grid-items-per-row-layout-2-screen-l: 3;
+
+@product-grid-item-align: center;
+@product-grid-item-gutter: -1px;
+// @product-grid-item-gutter-bottom: 25px;
+@product-grid-item-padding: 10px;
+
+@argento-listing-squama__height: 380px;
+@argento-listing-squama__border: 1px solid #eee;
+@argento-listing-squama__hover__box-shadow: 0 0 2px rgba(0,0,0,0.2);
+@argento-listing-squama__hover__enlargement: 0;
+@argento-listing-squama__hover__border: 1px solid #e2e2e2;
+
+//
+//  Tabs
+//  _____________________________________________
+@tab-control__font-family: 'Noto Sans', sans-serif;
+@tab-control__font-weight: normal;
+@tab-control__text-transform: uppercase;
+@tab-control__margin-right: 10px;
+@tab-control__border-width: 0;
+@tab-control__background-color: @color-white;
+@tab-control__color: @color-black;
+
+@tab-control__hover__background-color: darken(@tab-control__background-color, 3%);
+
+@tab-control__active__background-color: @color-black;
+@tab-control__active__color: @color-white;
+
+@tab-content__background-color: @color-white;
+
+@tab-vertical-control__border-color: @tab-control__active__background-color;
+@tab-vertical-control__border-top-width: 0;
+@tab-vertical-content__border-width: 0 0 0 1px;
+
+//
+//  Slick Carousel
+//  _____________________________________________
+@block-promo__border-width: 0;
+@block-promo__border-color: transparent;
+@block-promo-title__border-width: 0;
+
+//
+//  Collapsible navigation (customer page)
+//  _____________________________________________
+@collapsible-nav-current-border-color: #a5205f;
+
+//
+//  Sticky Add To Cart
+//  _____________________________________________
+@argento-sticky-tocart__border-bottom: 1px solid #000;
+@argento-sticky-tocart-info-price__font-size: 2rem;

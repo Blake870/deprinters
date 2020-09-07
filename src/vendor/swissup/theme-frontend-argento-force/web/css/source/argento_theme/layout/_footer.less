@@ -1,0 +1,146 @@
+& when (@media-common = true) {
+    .page-footer {
+        background-color: @footer__background-color;
+        font-family: @font-additional;
+        font-weight: 600;
+        color: @footer-links-color;
+
+        .footer-toolbar-top {
+            background: transparent;
+
+            &, a, .alink {
+                color: @footer-links-color;
+            }
+
+            & > .content {
+                padding: 20px 10px 0 10px;
+            }
+        }
+
+        div[data-role="title"] {
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .footer.content {
+            border-top: none;
+            padding: 13px 10px 40px 10px;
+
+            .footer-links {
+                padding-top: 35px;
+                border-top: 1px solid #2B3945;
+            }
+
+            .links {
+                &.footer > li {
+                    border: 1px solid @text__color;
+                    margin: -1px 0 0 0;
+
+                    [data-role="content"] {
+                        .padding-left(20px);
+                    }
+
+                    div[data-role="title"] {
+                        margin: 0;
+                        padding: 15px;
+
+                        span {
+                            display: inline-block;
+                            width: 15px;
+
+                            &.plus:before {
+                                content: '+';
+                            }
+
+                            &.minus:before {
+                                content: '-';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .social-icons {
+            .fa-stack {
+                color: @footer__background-color;
+            }
+            .fa-inverse {
+                color: #797c84;
+            }
+        }
+
+        .block.newsletter {
+            margin: 0;
+            width: auto;
+
+            .action.subscribe {
+                height: @argento-newsletter-input__height;
+                background: @force-color__yellow;
+                border: 0;
+                transition: background-color 0.1s ease-in-out;
+                padding: 10px 12px;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background: darken(@force-color__yellow, 10%);
+                    border: 0;
+                }
+
+                &::before {
+                    .force-icon('arrow-right');
+                }
+
+                span {
+                    .lib-visually-hidden();
+                }
+            }
+
+            .field .control:before {
+                content: '';
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-footer {
+        background-image: @force-icon-arrow-right;
+        background-size: 500px;
+        background-repeat: no-repeat;
+        background-position: 0 35%;
+        background-blend-mode: color-dodge;
+
+        // Magento 2.3.4 fix
+        .block.newsletter {
+            max-width: none;
+        }
+
+        .footer.content {
+            .block {
+                float: none;
+                width: auto;
+            }
+
+            .footer.links > li {
+                padding: 0 6px;
+                border: none;
+
+                [data-role="content"] {
+                    .padding-left(0);
+                }
+
+                div[data-role="title"] {
+                    padding: 0 0 15px 0;
+                }
+            }
+
+            .links {
+                > li {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

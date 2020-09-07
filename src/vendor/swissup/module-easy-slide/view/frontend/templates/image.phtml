@@ -1,0 +1,15 @@
+<?php
+    $src = $block->getImageUrl($slide['image']);
+    $title = $block->escapeHtml($slide['title']);
+    $srcset = isset($attributes['srcset']) ? $attributes['srcset'] : '';
+    $sizes = isset($attributes['sizes']) ? $attributes['sizes'] : '';
+?>
+<?php if ($isLazy && $srcset && $sizes): ?>
+<img data-src="<?= $src ?>" alt="<?= $title ?>" data-srcset="<?= $srcset ?>" sizes="<?= $sizes ?>" class="swiper-lazy" />
+<?php elseif ($srcset && $sizes): ?>
+<img src="<?= $src ?>" alt="<?= $title ?>" srcset="<?= $srcset ?>" sizes="<?= $sizes ?>" />
+<?php elseif ($isLazy): ?>
+<img data-src="<?= $src ?>" alt="<?= $title ?>" class="swiper-lazy" />
+<?php else: ?>
+<img src="<?= $src ?>" alt="<?= $title ?>" />
+<?php endif; ?>

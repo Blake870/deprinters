@@ -1,0 +1,13 @@
+<script type="text/javascript">
+require([
+    'jquery'
+], function ($) {
+    'use strict';
+
+    // Related products block misses titles for product image links.
+    // Add titles with JS.
+    $('.block.related .product-item').each(function () {
+        $('.product.photo', this).attr('title', $('.product.name', this).text());
+    });
+});
+</script>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+        <arguments>
+            <argument name="sectionSourceMap" xsi:type="array">
+                <item name="ajaxpro-reinit" xsi:type="string">Swissup\Ajaxpro\CustomerData\Init</item>
+                <item name="ajaxpro-cart" xsi:type="string">Swissup\Ajaxpro\CustomerData\Cart</item>
+                <item name="ajaxpro-product" xsi:type="string">Swissup\Ajaxpro\CustomerData\Product</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Layout\BuilderFactory">
+        <arguments>
+            <argument name="typeMap" xsi:type="array">
+                <item name="ajaxpro_page" xsi:type="array">
+                    <item name="type" xsi:type="const">Swissup\Ajaxpro\Model\View\Layout\Builder::TYPE_PAGE</item>
+                    <item name="class" xsi:type="string">Swissup\Ajaxpro\Model\View\Layout\Builder</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\App\Action\Action">
+        <plugin name="pluginAfterActionExecute" type="Swissup\Ajaxpro\Plugin\Controller\AfterActionExecutePlugin" sortOrder="1000" />
+    </type>
+
+    <type name="Magento\Customer\CustomerData\JsLayoutDataProviderPoolInterface">
+        <arguments>
+            <argument name="jsLayoutDataProviders" xsi:type="array">
+                <item name="ajaxpro_checkout_totals" xsi:type="object">Swissup\Ajaxpro\CustomerData\CheckoutTotalsJsLayoutDataProvider</item>
+                <item name="ajaxpro_override_minicart" xsi:type="object">Swissup\Ajaxpro\CustomerData\OverrideMinicartJsLayoutDataProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Checkout\Block\Cart\Sidebar">
+        <plugin name="pluginAfterGetJsLayout" type="Swissup\Ajaxpro\Plugin\Block\Cart\SidebarPlugin" sortOrder="10" disabled="false" />
+    </type>
+
+</config>

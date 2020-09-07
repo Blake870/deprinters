@@ -1,0 +1,166 @@
+//
+//  MOBILE
+//
+& when (@media-common = true) {
+    .jumbotron {
+        .argento-page-container(~"> .container");
+        background: @jumbotron__background;
+        padding: @jumbotron__padding;
+        position: relative;
+    }
+    .jumbotron.jumbotron-bright { background: @jumbotron-bright__background; }
+    .jumbotron.jumbotron-pastel { background: @jumbotron-pastel__background; }
+    .jumbotron.jumbotron-pastel-alt { background: @jumbotron-pastel-alt__background; }
+    .jumbotron.jumbotron-dark { background: @jumbotron-dark__background; }
+    .jumbotron.jumbotron-pattern { background: @jumbotron-pattern__background; }
+    .jumbotron.jumbotron-image { background: @jumbotron-image__background; }
+
+    .jumbotron-inverse,
+    .jumbotron-inverse .block-title,
+    .jumbotron-inverse .block .block-title,
+    .jumbotron-inverse .block-title span,
+    .jumbotron-inverse .block .block-title span,
+    .jumbotron-inverse .block .block-title strong,
+    .jumbotron-inverse .subtitle,
+    .jumbotron-inverse a,
+    .jumbotron-inverse .easycatalogimg .parent-category a { color: @jumbotron-inverse__text-color; }
+
+    .jumbotron-inverse {
+        /* ignore jumbotron invert colors for product grid / product list */
+        .product-items {
+            color: @text__color;
+
+            a {
+                color: @link__color;
+            }
+        }
+    }
+
+    .jumbotron.no-padding {
+        padding: 0;
+        &-top {
+            padding-top: 0;
+        }
+        &-bottom {
+            padding-bottom: 0;
+        }
+        .container {
+            padding: 0;
+        }
+    }
+
+    .jumbotron + .jumbotron { border-top: 1px solid darken(@jumbotron__background, 12%); }
+    .jumbotron-bright + .jumbotron,
+    .jumbotron-pastel + .jumbotron,
+    .jumbotron-pastel-alt + .jumbotron,
+    .jumbotron-dark + .jumbotron,
+    .jumbotron-pattern + .jumbotron,
+    .jumbotron-image + .jumbotron,
+    .jumbotron + .jumbotron-bright,
+    .jumbotron + .jumbotron-pastel,
+    .jumbotron + .jumbotron-pastel-alt,
+    .jumbotron + .jumbotron-dark,
+    .jumbotron + .jumbotron-pattern,
+    .jumbotron + .jumbotron-image { border-top: 0; }
+    .jumbotron-bright + .jumbotron-bright,
+    .jumbotron-pastel + .jumbotron-pastel,
+    .jumbotron-pastel-alt + .jumbotron-pastel-alt,
+    .jumbotron-dark + .jumbotron-dark { border-top: 1px solid #fff; }
+
+    .jumbotron .stub,
+    .jumbotron .stub:after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+    .jumbotron .stub {
+        z-index: 1;
+        border-width: 21px 36px 0;
+        top: -1px;
+        .left(50%);
+        .margin-left(-36px);
+        border-top-color: darken(@jumbotron__background, 12%);
+    }
+    .jumbotron .stub:after {
+        content: "";
+        border-width: 20px 35px 0;
+        top: -21px;
+        .margin-left(-35px);
+        content: " ";
+        border-top-color: @jumbotron__background;
+    }
+    .jumbotron + .jumbotron-bright .stub,
+    .jumbotron + .jumbotron-pastel .stub,
+    .jumbotron + .jumbotron-pastel-alt .stub,
+    .jumbotron + .jumbotron-dark .stub,
+    .jumbotron + .jumbotron-pattern .stub,
+    .jumbotron + .jumbotron-image .stub { border-top-color: transparent; top: 0px; }
+    .jumbotron-bright + .jumbotron .stub,
+    .jumbotron-bright + .jumbotron .stub:after { border-top-color: @jumbotron-bright__background; }
+    .jumbotron-pastel + .jumbotron .stub,
+    .jumbotron-pastel + .jumbotron .stub:after { border-top-color: @jumbotron-pastel__background; }
+    .jumbotron-pastel-alt + .jumbotron .stub,
+    .jumbotron-pastel-alt + .jumbotron .stub:after { border-top-color: @jumbotron-pastel-alt__background; }
+    .jumbotron-dark + .jumbotron .stub,
+    .jumbotron-dark + .jumbotron .stub:after { border-top-color: @jumbotron-dark__background; }
+    .jumbotron-bright + .jumbotron-bright .stub,
+    .jumbotron-pastel + .jumbotron-pastel .stub,
+    .jumbotron-pastel-alt + .jumbotron-pastel-alt .stub,
+    .jumbotron-dark + .jumbotron-dark .stub { border-top-color: #fff; }
+
+    /* Covers - similar to stubs, but it cover the current jumbotron at the bottom with transparent triangle */
+    .jumbotron .cover .triangle {
+        float: none !important;
+        border-bottom: 21px solid #229392;
+        width: 50%;
+        box-sizing: border-box;
+        position: absolute;
+        bottom: 0;
+        z-index: @jumbotron-cover-triangle__z-index;
+    }
+    .jumbotron .cover .triangle { border-bottom-color: @jumbotron__background; }
+    .jumbotron .cover-pastel .triangle { border-bottom-color: @jumbotron-pastel__background; }
+    .jumbotron .cover-pastel-alt .triangle { border-bottom-color: @jumbotron-pastel-alt__background; }
+    .jumbotron .cover-bright .triangle { border-bottom-color: @jumbotron-bright__background; }
+    .jumbotron .cover-dark .triangle { border-bottom-color: @jumbotron-dark__background; }
+    .jumbotron .cover .right { .right(0); .border-left(36px solid transparent); }
+    .jumbotron .cover .left { .left(0); .border-right( 36px solid transparent); }
+
+    .stub ~ .container,
+    .stub + .h2 { padding-top: 5px; }
+    .cover ~ .container { padding-bottom: 15px; }
+}
+
+//
+//  DESKTOP
+//
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .jumbotron .stub {
+        border-width: 31px 51px 0;
+        .margin-left(-51px);
+
+        &:after {
+            border-width: 30px 50px 0;
+            top: -31px;
+            .margin-left(-50px);
+        }
+    }
+
+    .jumbotron .cover .triangle {
+        border-bottom-width: 30px;
+    }
+
+    .jumbotron .cover .left {
+        .border-right(49px solid transparent);
+    }
+    .jumbotron .cover .right {
+        .border-left(49px solid transparent);
+    }
+
+    .stub ~ .container,
+    .stub + .h2 { padding-top: 15px; }
+    .cover ~ .container { padding-bottom: 25px; }
+}

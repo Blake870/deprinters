@@ -1,0 +1,97 @@
+& when (@media-common = true) {
+    .catalog-product-view {
+        .column.main {
+            .product-info-main {
+                .page-title-wrapper {
+                    h1 {
+                        margin-top: 0;
+                    }
+                }
+
+                .product-social-links {
+                    margin: 20px 0;
+                }
+
+                .product-info-price {
+                    border: 0;
+                }
+            }
+
+            .product.data.items {
+                > .item.title {
+                    a {
+                        border-radius: 5px 5px 0 0;
+                    }
+
+                    &.active a {
+                        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+                    }
+                }
+
+                > .item.content {
+                    border-top: none;
+                }
+            }
+
+            .product-add-form {
+                background-color: #f6f6f6;
+                border: 1px solid #e4e4e4;
+                padding: 15px;
+
+                .swatch-attribute.size .swatch-option,
+                .swatch-attribute.manufacturer .swatch-option {
+                    color: #636363;
+                }
+
+                .bundle-options-container .block-bundle-summary .box-tocart,
+                .box-tocart {
+                    margin: 0;
+                }
+
+                .swatch-opt {
+                    margin: 0 0 20px 0;
+                }
+            }
+
+            .product-options-bottom {
+                border-top: 1px solid #e4e4e4;
+
+                .bundle-options-container .block-bundle-summary .box-tocart,
+                .box-tocart {
+                    margin-top: 20px;
+                }
+            }
+
+            div.block .block-title strong {
+                color: @color-black;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .catalog-product-view {
+        .column.main {
+            .product.data.items {
+                > .item.content {
+                    border-top: 3px solid #f5980e;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: @screen__m) and (max-width: @screen__l) {
+    .catalog-product-view .column.main .product.data.items {
+        > .item.title {
+            a {
+                border: none;
+                border-radius: 5px 0 0 5px;
+            }
+
+            &.active {
+                width: @tab-vertical-control__width;
+            }
+        }
+    }
+}

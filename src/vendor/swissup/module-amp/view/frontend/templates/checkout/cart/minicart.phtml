@@ -1,0 +1,11 @@
+<?php
+    $helper = $this->helper('Magento\Checkout\Helper\Cart');
+    $cartQty = $helper->getItemsQty();
+?>
+
+<div class="minicart<?= ($cartQty > 0) ? ' badge' : ''?>" data-badge="<?= $cartQty ?>">
+    <a class="cart-icon"
+        href="<?= $block->getShoppingCartUrl() ?>"
+        title="<?= __('Cart'); ?>"
+    ></a>
+</div>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/view.xsd">
+    <media>
+        <images module="Magento_Catalog">
+            <image id="category_page_grid" type="small_image">
+                <width>280</width>
+                <height>420</height>
+            </image>
+            <image id="category_page_grid-1" type="small_image">
+                <width>280</width>
+                <height>420</height>
+            </image>
+            <image id="category_page_list" type="small_image">
+                <width>280</width>
+                <height>420</height>
+            </image>
+            <image id="product_page_image_medium" type="image">
+                <width>700</width>
+                <height>700</height>
+            </image>
+        </images>
+    </media>
+    <vars module="Swissup_ThemeEditor">
+        <var name="add_css_class">
+            <var name="fullscreen_slider">
+                <var name="config">swissup_argento_luxury/homepage/fullscreen_slider</var>
+                <var name="handle">cms_index_index</var>
+                <var name="class">luxury-fullscreen-slider</var>
+            </var>
+        </var>
+    </vars>
+    <vars module="Magento_Catalog">
+        <!-- Gallery and magnifier theme settings. Start -->
+        <var name="gallery">
+            <var name="arrows">false</var> <!-- Turn on/off arrows on the sides preview (true/false) -->
+            <var name="navdir">vertical</var> <!-- Sliding direction of thumbnails (horizontal/vertical) -->
+            <var name="thumbwidth">60</var>
+            <var name="thumbheight">90</var>
+            <var name="transition">
+                <var name="effect">crossfade</var> <!-- Sets transition effect for slides changing (slide/crossfade/dissolve) -->
+                <var name="duration">300</var> <!-- Sets transition duration in ms -->
+            </var>
+            <var name="fullscreen">
+                <var name="navdir">vertical</var> <!--Sliding direction of thumbnails in fullscreen(horizontal/vertical)  -->
+                <var name="transition">
+                    <var name="effect">crossfade</var> <!-- Sets transition effect for slides changing (slide/crossfade/dissolve) -->
+                    <var name="duration">300</var> <!-- Sets transition duration in ms -->
+                </var>
+            </var>
+        </var>
+
+        <var name="breakpoints">
+            <var name="mobile">
+                <var name="conditions">
+                    <var name="max-width">767px</var>
+                </var>
+                <var name="options">
+                    <var name="options">
+                        <var name="nav">dots</var>
+                        <var name="navdir">horizontal</var>
+                        <var name="transition">
+                            <var name="effect">slide</var>
+                            <var name="duration">300</var>
+                        </var>
+                    </var>
+                </var>
+            </var>
+        </var>
+    </vars>
+    <vars module="Swissup_Easytabs">
+        <var name="options">{"active": -1, "collapsible": true, "openedState": "active"}</var>
+    </vars>
+    <vars module="Argento_Theme">
+        <var name="sticky_add_to_cart">
+            <var name="offset_top">38</var>
+        </var>
+    </vars>
+</view>

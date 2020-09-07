@@ -1,0 +1,39 @@
+<?php
+    $isLoggedIn   = $block->isCustomerLoggedIn();
+    $configHelper = $block->getConfigHelper();
+    $urlHelper    = $block->getUrlHelper();
+
+    $isAllowHint         = $configHelper->isAllowedHint();
+    $isShareCustomerName = $configHelper->isAllowedShareCustomerName();
+    $isEnabledGravatar   = $configHelper->isEnabledGravatar();
+
+    $answer = $block->getAnswer();
+?>
+<div class="askit-item-avatar askit-item-answer-avatar">
+    <?= $isEnabledGravatar ? $urlHelper->getGravatar($answer->getEmail(), 100) : '' ?>
+</div>
+<?php if ($isShareCustomerName) :?>
+<p class="askit-item-author">
+    <strong><?= $block->escapeHtml($answer->getCustomerName());?></strong> <?= $block->escapeHtml(__('answers')) ?> <span class="askit-item-timestamp"><?= $block->formatDate($answer->getCreatedTime(), \IntlDateFormatter::MEDIUM);?></span>
+</p>
+<?php endif;?>
+<p class="askit-item-body">
+    <?php if ($answer->isAdminAnswer()) :?>
+        <?= nl2br($block->filterOutputHtml($answer->getText())) ?>
+    <?php else: ?>
+        <?= nl2br($block->escapeHtml($answer->getText())) ?>
+    <?php endif;?>
+</p>
+
+<p class="askit-item-answer-same">
+    <span class="askit-item-vote">
+        <small>
+        <?php if ($isAllowHint && $isLoggedIn && $this->canVoted($answer->getId())) :?>
+                <a href="#" data-post="<?= $block->escapeUrl($block->getPostDataHelper()->getPostData($block->getUrl('askit/vote/inc'), ['id' => $answer->getId()]));?>" class="action"><?= $block->escapeHtml(__('It is helpful')) ?></a>
+                <span class="separator">|</span>
+                <a href="#" data-post="<?php echo $block->escapeUrl($block->getPostDataHelper()->getPostData($block->getUrl('askit/vote/dec'), ['id' => $answer->getId()]));?>" class="action"><?= $block->escapeHtml(__('Not much help')); ?></a>
+        <?php endif;?>
+            <span><?= $answer->getHint() ? $block->escapeHtml(__('%1 people found this answer helpful.', $answer->getHint())) : '' ?></span>
+        </small>
+    </span>
+</p>

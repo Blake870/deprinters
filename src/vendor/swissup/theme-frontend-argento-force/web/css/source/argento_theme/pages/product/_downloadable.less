@@ -1,0 +1,37 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .page-product-downloadable {
+        .product-options-bottom {
+            .field.qty {
+                display: inline-flex;
+            }
+        }
+    }
+
+    .field.downloads {
+        .field.choice {
+            border: none;
+            padding: 0;
+        }
+    }
+}
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-product-downloadable {
+        .product-options-wrapper {
+            float: none;
+            width: 100%;
+        }
+
+        .product-options-bottom {
+            float: none;
+            width: 100%;
+        }
+    }
+}

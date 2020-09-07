@@ -1,0 +1,30 @@
+& when (@media-common = true) {
+    .block-wishlist {
+        .product-items {
+            .product-item {
+                .sidebar & {
+                    .margin(0 0 25px);
+
+                    &:last-child {
+                        .margin(0 0 15px);
+                    }
+
+                    &-info .product-item-photo {
+                        .margin(0 10px 0 0);
+                        .float(left);
+                    }
+                }
+
+                &-photo img {
+                    height: auto !important;
+                }
+            }
+
+            .product-item-actions {
+                .sidebar & {
+                    &:extend(.abs-no-display);
+                }
+            }
+        }
+    }
+}

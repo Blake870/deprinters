@@ -1,0 +1,11 @@
+& when (@media-common = true) {
+    & when (@argento-checkout = true) {
+        .page-layout-checkout {
+            .opc-estimated-wrapper {
+                border-color: @argento-checkout-section__border-color;
+                background: @argento-checkout-estimation__background;
+                .lib-css(margin, -(@argento-checkout-page-header__margin-bottom + 1px) -(@layout__width-xs-indent) @checkout-step-content-mobile__margin-s);
+            }
+        }
+    }
+}

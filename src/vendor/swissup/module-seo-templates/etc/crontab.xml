@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="swissup_seotemplates_init" instance="Swissup\SeoTemplates\Model\Cron" method="init">
+            <config_path>crontab/default/jobs/swissup_seotemplates_init/schedule/cron_expr</config_path>
+        </job>
+        <job name="swissup_seotemplates_generate" instance="Swissup\SeoTemplates\Model\Cron" method="generate">
+            <schedule>* * * * *</schedule>
+        </job>
+    </group>
+</config>

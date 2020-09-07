@@ -1,0 +1,37 @@
+& when (@media-common = true) and (@argento-checkout = true) {
+    .page-layout-checkout {
+        .opc-wrapper .step-title,
+        .opc-block-summary > .title {
+            border: @argento-checkout-section-title__border;
+            margin: @argento-checkout-section-title__margin;
+            padding: @argento-checkout-section-title__padding;
+            font-size: @argento-checkout-section-title__font-size;
+        }
+
+        .opc-wrapper .step-title {
+            border: 0;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when (@argento-checkout = true) {
+        .page-layout-checkout:not(.firecheckout) {
+            .opc-wrapper .opc,
+            .opc-sidebar {
+                background: @argento-checkout-section__background;
+                border: @argento-checkout-section__border;
+                border-radius: @argento-checkout-section__border-radius;
+                box-shadow: @argento-checkout-section__box-shadow;
+                padding: @argento-checkout-section__padding;
+                box-sizing: border-box;
+            }
+        }
+        .page-layout-checkout {
+            .opc-wrapper .step-title,
+            .opc-block-summary > .title {
+                font-weight: @argento-checkout-section-title__font-weight;
+            }
+        }
+    }
+}

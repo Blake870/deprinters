@@ -1,0 +1,20 @@
+//
+//  MOBILE
+//
+& when (@media-common = true) {
+    .page-products {
+        .columns {
+            margin-top: @indent__base;
+        }
+    }
+}
+
+//
+//  DESKTOP
+//
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    //
+}
+
+@import 'category/_layered-navigation.less';
+@import 'category/_no-layered-navigation.less';

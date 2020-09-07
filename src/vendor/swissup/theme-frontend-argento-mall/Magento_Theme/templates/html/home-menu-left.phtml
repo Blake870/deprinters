@@ -1,0 +1,22 @@
+<?php
+/**
+ * Homepage left menu
+ * Based on Magento_Theme::html/topmenu.phtml
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<div class="block block-navigation-left">
+    <div class="block-title">
+        <strong><?php /* @escapeNotVerified */ echo __('Navigation') ?></strong>
+    </div>
+    <div class="block-content">
+        <nav class="nav-homepage-left">
+            <ul class="menu">
+                <?php /* @escapeNotVerified */ echo $_menu; ?>
+            </ul>
+        </nav>
+    </div>
+</div>

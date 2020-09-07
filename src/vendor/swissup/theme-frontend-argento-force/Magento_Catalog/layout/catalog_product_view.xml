@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.sku">
+            <arguments>
+                <argument name="at_label" xsi:type="string">none</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="product.info">
+            <container name="product.info.argento.force.form.bottom" as="form_bottom" htmlTag="div" htmlClass="product-add-form-bottom argento-force" />
+        </referenceBlock>
+        <move element="product.info.stock.sku" destination="product.info.main" before="page.main.title" />
+        <move element="product.info.type" destination="product.info.main" after="page.main.title" />
+        <move element="product.info.social" destination="product.info.stock.sku" />
+        <move element="product.info.overview" destination="product.info.main" after="product.info.price" />
+        <move element="product.info.review" destination="product.info.price" after="product.price.final" />
+        <move element="product.info.addto" destination="product.info.argento.force.form.bottom" after="-" />
+        <move element="catalog.product.related" destination="product.info.extrahint" after="-" />
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Cms\Block\Block" name="modal.size.chart">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">sizing_chart</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="product.info.options.wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="product.info.argento.force.customOptionsWatcher" as="options_container" template="Magento_Theme::catalog/product/custom-options-watcher.phtml" />
+        </referenceBlock>
+        <referenceBlock name="product.info.extrahint">
+            <block class="Magento\Framework\View\Element\Template" name="product.info.argento.force.addTitles" template="Magento_Theme::catalog/product/add-titles-to-links.phtml" />
+        </referenceBlock>
+        <referenceBlock name="soldtogether.product.customer">
+            <arguments>
+                <argument name="hide_checkboxes" xsi:type="boolean">true</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

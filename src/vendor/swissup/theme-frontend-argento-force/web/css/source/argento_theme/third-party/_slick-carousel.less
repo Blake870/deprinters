@@ -1,0 +1,28 @@
+& when (@media-common = true) {
+    .slick-slider {
+        .slick-prev,
+        .slick-next {
+            &, &:hover, &:focus {
+                .force-icon('arrow-left', null, 20px);
+            }
+        }
+
+        .slick-next {
+            &, &:hover, &:focus {
+                transform: translate(0, -50%) scale(-1, 1);
+            }
+        }
+
+        .slick-arrow {
+            opacity: 1;
+
+            &:hover {
+                opacity: 0.5;
+            }
+
+            &::before {
+                content: '';
+            }
+        }
+    }
+}

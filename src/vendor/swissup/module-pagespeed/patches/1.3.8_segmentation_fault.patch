@@ -1,0 +1,16 @@
+diff --git a/etc/frontend/di.xml b/etc/frontend/di.xml
+index 6ba3d1f..1d54c78 100644
+--- a/etc/frontend/di.xml
++++ b/etc/frontend/di.xml
+@@ -24,9 +24,9 @@
+         </arguments>
+     </type>
+ 
+-    <type name="Magento\Framework\App\CacheInterface">
++    <!-- <type name="Magento\Framework\App\CacheInterface">
+         <plugin name="swissup_html_minify_before_block_html_cache_save" type="Swissup\Pagespeed\Plugin\Framework\App\CachePlugin" />
+-    </type>
++    </type> -->
+ 
+     <type name="Magento\Theme\Block\Html\Header\CriticalCss">
+         <plugin name="swissup_pagespeed_critical_css" type="Swissup\Pagespeed\Plugin\Block\Html\Header\CriticalCssPlugin" />

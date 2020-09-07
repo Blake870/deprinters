@@ -1,0 +1,70 @@
+<div style="max-width: <?= $block->getImgWidth() ?>px;" class="gallery-placeholder _block-content-loading" id="<?= $block->getJsId() ?>">
+    <div data-role="loader" class="loading-mask">
+        <div class="loader">
+            <img src="<?= /* @escapeNotVerified */ $block->getViewFileUrl('images/loader-1.gif') ?>"
+                 alt="<?= /* @escapeNotVerified */ __('Loading...') ?>">
+        </div>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "#<?= $block->getJsId() ?>": {
+            "mage/gallery/gallery": {
+                "mixins": ["magnifier/magnify"],
+                "magnifierOpts": {
+                    "fullscreenzoom": "20",
+                    "top": "",
+                    "left": "",
+                    "width": "",
+                    "height": "",
+                    "eventType": "hover",
+                    "enabled": false
+                },
+                "data": <?= $block->getGalleryImagesJson() ?>,
+                "options": {
+                    "nav": "thumbs",
+                    "loop": true,
+                    "arrows": true,
+                    "allowfullscreen": true,
+                    "width": <?= $block->getImgWidth() ?>,
+                    "height": <?= $block->getImgHeight() ?>,
+                    "thumbwidth": <?= $block->getThumbWidth() ?>,
+                    "thumbheight": <?= $block->getThumbHeight() ?>,
+                    "navtype": "slides",
+                    "navdir": "horizontal",
+                    "navarrows": true
+                },
+                "fullscreen": {
+                    "nav": "thumbs",
+                    "navdir": "horizontal",
+                    "navtype": "slides",
+                    "arrows": false
+                },
+                "breakpoints": {
+                    "mobile": {
+                        "conditions": {
+                            "max-width": "767px"
+                        },
+                        "options": {
+                            "options": {
+                                "nav":"dots",
+                                "arrows": false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    require([
+        'jquery'
+    ], function ($) {
+        var el = $('#<?= $block->getJsId() ?>');
+        el.on('gallery:loaded', function () {
+            el.find('[data-gallery-role="fotorama__zoom-in"]').hide();
+            el.find('[data-gallery-role="fotorama__zoom-out"]').hide();
+        });
+    });
+</script>

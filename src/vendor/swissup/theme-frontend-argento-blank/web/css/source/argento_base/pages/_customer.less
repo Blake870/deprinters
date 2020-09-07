@@ -1,0 +1,35 @@
+& when (@media-common = true) {
+    .wishlist-index-index {
+        .box-tocart {
+            .field.qty {
+                input {
+                    .lib-css(padding, @argento-wishlist-qty__padding);
+                    max-width: 45px;
+                }
+
+                label {
+                    width: auto;
+                    .lib-css(min-height, @argento-wishlist-qty-label__min-height);
+                }
+            }
+        }
+        .products-grid.wishlist .product-item {
+            &-actions {
+                .text-align(left);
+                opacity: 1;
+                position: static;
+            }
+            &-comment {
+                padding: 5px 8px;
+            }
+            .price-box {
+                display: block;
+            }
+            .box-tocart {
+                .tocart {
+                    .lib-css(font-size, @argento-wishlist-addto-button__font-size);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<?php $helper = $this->helper(\Swissup\Ajaxpro\Helper\Data::class);?>
+<?php if ($helper->isFloatingCartEnable()):?>
+<div data-block="ajaxpro-floating-cart">
+    <div data-bind="scope: 'ajaxpro_floatingcart_content'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
+    <script type="text/x-magento-init">
+    {
+        "[data-block='ajaxpro-floating-cart']": {
+            "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+        },
+        "*": {
+            "Magento_Ui/js/block-loader": "<?= /* @noEscape */ $block->getViewFileUrl('images/loader-1.gif') ?>"
+        }
+    }
+    </script>
+</div>
+<?php endif; ?>

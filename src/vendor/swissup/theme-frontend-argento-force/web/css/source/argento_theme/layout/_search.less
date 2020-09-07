@@ -1,0 +1,98 @@
+& when (@media-common = true) {
+    .page-header {
+        .block-search {
+            .label {
+                .margin-right(20px);
+
+                &:before {
+                    display: none;
+                }
+
+                .force-icon('search');
+            }
+
+            .control {
+                border: none;
+            }
+
+            .input-text {
+                border-radius: 0;
+                .lib-css(border-width, @ajaxsearch-input__border-width);
+                .lib-css(border-color, @ajaxsearch-input__border-color);
+                .lib-css(background, @ajaxsearch-input__background);
+                .padding(@ajaxsearch-input__padding);
+            }
+        }
+    }
+
+    .block-swissup-ajaxsearch .select2-dropdown,
+    .block-swissup-ajaxsearch-results {
+        &:extend(.argento-force-dropdown-pointer all);
+        &:extend(.argento-force-dropdown-pointer-background all);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .header {
+        .block-search {
+            margin-top: 15px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-header {
+        position: relative;
+
+        .block-search {
+            order: 10;
+            padding: 0;
+            width: 300px;
+            .margin-left(0);
+
+            .action.search {
+                &:before {
+                    display: none;
+                }
+                .force-icon('search');
+                height: 100%;
+            }
+
+            &.inline {
+                .action.close {
+                    .right(5px);
+                    font-size: 34px;
+                }
+                &.shown {
+                    .field.search {
+                        top: -3px;
+                    }
+                }
+            }
+        }
+    }
+    .block-swissup-ajaxsearch .swissup-ajaxsearch-filter-category-wrapper .select2-dropdown {
+        &::before {
+            left: 0;
+            top: 0;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    .page-header {
+        .block-search {
+            &.block-swissup-ajaxsearch.fullscreen {
+                &.shown {
+                    .field.search {
+                        padding-left: 20%;
+                        padding-right: 20%;
+                    }
+                }
+                .action.close {
+                    .right(20%);
+                }
+            }
+        }
+    }
+}

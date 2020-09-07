@@ -1,0 +1,44 @@
+& when (@media-common = true) {
+    .page-scroll-up {
+        position: fixed;
+        bottom: 320px;
+        .right(0);
+        z-index: 21;
+        width: @scroll-up__width;
+        height: @scroll-up__height;
+
+        /* Slow scrolling performance: https://stackoverflow.com/a/15147497; */
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+
+        cursor: pointer;
+        background: @scroll-up__background;
+        transition: background 200ms linear;
+        .lib-css(box-shadow, @scroll-up__box-shadow);
+        .lib-css(border, @scroll-up__border);
+        .border-width(@scroll-up__border-width);
+        .border-radius(@scroll-up__border-radius);
+
+        &:hover {
+            background: @scroll-up__hover__background;
+        }
+
+        svg {
+            fill: @scroll-up__color;
+            width: @scroll-up__width;
+            height: @scroll-up__height;
+        }
+    }
+
+    @media (min-height: 490px) {
+        .page-scroll-up {
+            bottom: 420px;
+        }
+    }
+
+    @media (min-height: 720px) {
+        .page-scroll-up {
+            bottom: 520px;
+        }
+    }
+}

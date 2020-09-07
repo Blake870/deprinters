@@ -1,0 +1,31 @@
+//
+//  Common
+//  _____________________________________________
+& when (@media-common = true) {
+
+    input[type="checkbox"] when (@argento-fancy-checkbox = true) {
+        .argento-checkbox(
+            @_checkbox-border: @argento-fancy-checkbox__border,
+            @_checkbox-border-radius: @argento-fancy-checkbox__border-radius,
+            @_checkbox-width: @argento-fancy-checkbox__width,
+            @_checkbox-height: @argento-fancy-checkbox__height,
+            @_checkbox-checkmark-color: @argento-fancy-checkbox-checkmark__color,
+            @_checkbox-checkmark-width: @argento-fancy-checkbox-checkmark__width
+        );
+        .lib-css(margin, @argento-fancy-checkbox__margin);
+        .lib-css(top, @argento-fancy-checkbox__top);
+    }
+
+    input[type="radio"] when (@argento-fancy-radio = true) {
+        .argento-radio(
+            @_radio-border: @argento-fancy-radio__border,
+            @_radio-width: @argento-fancy-radio__width,
+            @_radio-height: @argento-fancy-radio__height,
+            @_radio-checkmark-color: @argento-fancy-radio-checkmark__color,
+            @_radio-checkmark-width: @argento-fancy-radio-checkmark__width,
+            @_radio-checkmark-height: @argento-fancy-radio-checkmark__height
+        );
+        .lib-css(margin, @argento-fancy-radio__margin);
+        .lib-css(top, @argento-fancy-radio__top);
+    }
+}

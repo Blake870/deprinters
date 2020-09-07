@@ -1,0 +1,67 @@
+<?php
+    $isLoggedIn   = $block->isCustomerLoggedIn();
+    $configHelper = $block->getConfigHelper();
+    $urlHelper    = $block->getUrlHelper();
+    $formHelper   = $block->getFormHelper();
+
+    $isAllowedCustomerAnswer = $configHelper->isAllowedCustomerQuestion();
+    $isAllowedGuestAnswer    = $configHelper->isAllowedGuestAnswer();
+    $isEnabledGravatar       = $configHelper->isEnabledGravatar();
+
+    $question = $block->getQuestion();
+
+    $showNewAnswerForm = ($isAllowedCustomerAnswer && $isLoggedIn) || $isAllowedGuestAnswer;
+    if (!$showNewAnswerForm) : ?>
+    <?php if ($isAllowedCustomerAnswer && !$isLoggedIn) :?>
+    <div class="message info notlogged">
+        <div>
+         <?php /* @escapeNotVerified */ echo __('Only registered users can write comments. Please <a href="%1">Sign in</a> or <a href="%2">Create an account</a>', $block->escapeUrl($block->getLoginLink()), $block->escapeUrl($block->getRegisterUrl())); ?>
+        </div>
+    </div>
+    <?php endif; ?>
+<?php
+    return;
+    endif;
+?>
+<div class="askit-answer-form">
+    <form action="<?php echo $block->escapeUrl($block->getNewAnswerAction()); ?>" method="post" data-mage-init='{"validation":{}}'>
+        <?php if ($isLoggedIn && $isEnabledGravatar) :?>
+        <div class="askit-item-avatar askit-item-answer-hero-avatar">
+            <?php
+                $_email = $formHelper->getUserEmail();
+                /* @escapeNotVerified */ echo $urlHelper->getGravatar($_email, 100);
+            ?>
+        </div>
+        <?php endif;?>
+        <input type="hidden" name="parent_id" value="<?php echo $block->escapeHtmlAttr($question->getId())?>"/>
+        <fieldset class="fieldset">
+            <?php if (!$isLoggedIn) :?>
+            <div class="field name required">
+                <label class="label" for="answer_customer_name"><span><?php echo $block->escapeHtml(__('Name')); ?></span></label>
+                <div class="control">
+                    <input name="customer_name" id="answer_customer_name" title="<?php echo $block->escapeHtmlAttr(__('Name')); ?>" value="<?php echo $block->escapeHtmlAttr($formHelper->getUserName()); ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field email required">
+                <label class="label" for="answer_email"><span><?php echo $block->escapeHtml(__('Email')); ?></span></label>
+                <div class="control">
+                    <input name="email" id="answer_email" title="<?php echo $block->escapeHtmlAttr(__('Email')); ?>" value="<?php echo $block->escapeHtmlAttr($formHelper->getUserEmail()); ?>" class="input-text" type="email" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <?php endif; ?>
+            <div class="field text required">
+                <label class="label" for="answer_text<?= $block->escapeHtmlAttr($question->getId())?>"><span><?php echo $block->escapeHtml(__('Your Answer')); ?></span></label>
+                <div class="control">
+                    <textarea name="text" id="answer_text<?= $block->escapeHtmlAttr($question->getId())?>" data-validate="{required:true}"><?php echo $block->escapeHtml($formHelper->getPostValue('text')); ?></textarea>
+                </div>
+            </div>
+            <?php echo $block->getChildHtml('captcha'); ?>
+      </fieldset>
+
+      <div class="askit-answer-form__actions">
+          <button type="submit" class="action button button--confirm">
+              <span><?php echo $block->escapeHtml(__('Leave a Reply')); ?></span>
+          </button>
+      </div>
+  </form>
+</div>

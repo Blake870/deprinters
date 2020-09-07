@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="product.info.addto" destination="product.info.addtocart" before="-"/>
+        <referenceBlock name="product.info.addtocart.additional">
+            <!-- products with custom options output block 'product.info.addtocart.additional' and do not output 'product.info.addtocart' -->
+            <block class="Magento\Framework\View\Element\Template" name="view.addto.buttons.luxuryAdditional" as="options_container" template="Magento_Theme::catalog/product/custom-options/add-to-buttons.phtml" before="-" />
+        </referenceBlock>
+    </body>
+</page>

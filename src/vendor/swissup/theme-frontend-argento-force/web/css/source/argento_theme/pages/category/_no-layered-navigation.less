@@ -1,0 +1,54 @@
+//
+//  MOBILE
+//  _____________________________________________
+& when (@media-common = true) {
+    // not anchored (no layered navigation)
+    .filter {
+        > div.title {
+            &:extend(.abs-no-display);
+        }
+
+        > .content {
+            &:extend(.filter-options-item);
+            border-width: 2px;
+            margin-bottom: @indent__m;
+
+            .subtitle {
+                &:extend(.filter .block-subtitle);
+                display: block;
+                margin: -2px -2px 0;
+            }
+
+            .options {
+                margin: 0;
+
+                > dt {
+                    &:extend(.filter-options-title);
+                }
+
+                > dd {
+                    &:extend(.filter-options-content all);
+
+                    .count {
+                        &::before {
+                            content: '(';
+                        }
+
+                        &::after {
+                            content: ')';
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+//  DESKTOP
+//
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .sidebar .filter .subtitle {
+        &:extend(.sidebar .filter .block-subtitle);
+    }
+}

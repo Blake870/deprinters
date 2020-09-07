@@ -1,0 +1,107 @@
+& when (@media-common = true) {
+    & when (@argento-dir = rtl) {
+        .product-info-main {
+            .product-reviews-summary {
+                float: right;
+            }
+
+            .product-info-stock-sku {
+                padding-left: 0;
+                padding-right: 10%;
+                text-align: left;
+            }
+
+            .product.attribute.sku .type {
+                margin-left: @indent__xs;
+                margin-right: 0;
+            }
+        }
+
+        .product-addto-links .action {
+            margin-left: 5%;
+            margin-right: 0;
+        }
+
+        .bundle-options-container .block-bundle-summary .product-addto-links > .action:before,
+        .product-social-links .action.tocompare:before,
+        .wishlist.split.button > .action.split:before,
+        .product-social-links .action.mailto.friend:before,
+        .product-social-links .action.towishlist:before,
+        .block-bundle-summary .action.towishlist:before,
+        .product-item .action.towishlist:before
+         {
+            margin: -2px 0 0 5px;
+        }
+
+        .table-comparison .action.towishlist:before {
+            margin: -2px 5px 0 0;
+        }
+
+        .catalog-product-view {
+            .fotorama__nav-wrap--vertical.fotorama__nav-wrap {
+                left: auto;
+            }
+        }
+
+        .magnifier-preview {
+            left: auto;
+            right: 51%;
+        }
+
+        .fotorama__nav-wrap--vertical .fotorama__thumb-border {
+            left: auto;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when (@argento-dir = rtl) {
+        .box-tocart {
+            .action.tocart {
+                margin-left: 1%;
+                margin-right: 0;
+            }
+        }
+
+        .product-social-links {
+            text-align: right;
+        }
+
+        .product-info-main {
+            float: left;
+        }
+
+        .product.media {
+            float: right;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    & when (@argento-dir = rtl) {
+        .sidebar {
+            .product-items {
+                .product-item-details {
+                    margin-left: 0;
+                    margin-right: 85px;
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    & when (@argento-dir = rtl) {
+        .product-info-price {
+            > *:first-child {
+                padding-left: 0;
+                padding-right: @indent__s;
+            }
+
+            > *:last-child {
+                padding-left: @indent__s !important;
+                padding-right: 0;
+            }
+        }
+    }
+}

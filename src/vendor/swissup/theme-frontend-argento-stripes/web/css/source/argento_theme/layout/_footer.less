@@ -1,0 +1,169 @@
+& when (@media-common = true) {
+    .page-footer {
+        background: @footer__background-color;
+        font-size: 14px;
+
+        div[data-role="title"] {
+            color: #fff;
+        }
+        .h4 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .footer-toolbar-top {
+            background: rgba(0,0,0,.3);
+            color: #6e7178;
+            padding: 0 12px;
+            text-align: center;
+
+            .content {
+                padding: 0;
+
+                .fa {
+                    color: #242b36;
+                }
+
+                .fa-inverse {
+                    color: #cad4db;
+                }
+
+                div[data-role="content"] {
+                    font-weight: bold;
+                }
+
+                .block {
+                    .lib-clearfix();
+                    margin-bottom: 25px;
+
+                    .block-icon {
+                        display: none;
+                    }
+                }
+
+                .footer-contacts {
+                    padding-top: 20px;
+
+                    & > div:not(:first-child) {
+                        padding: 15px 0;
+                    }
+                }
+            }
+        }
+
+        .footer.content {
+            color: #fff;
+            border: 0;
+            padding: 40px 10px;
+
+            a {
+                font-weight: bold;
+            }
+
+            .links {
+                &.footer > li {
+                    border: 1px solid rgba(0,0,0,.3);
+                    margin: -1px 0 0 0;
+
+                    ul.links {
+                        .padding-left(20px);
+                    }
+
+                    div[data-role="title"] {
+                        margin: 0;
+                        padding: 15px;
+
+                        span {
+                            display: inline-block;
+                            width: 15px;
+
+                            &.plus:before {
+                                content: '+';
+                            }
+
+                            &.minus:before {
+                                content: '-';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer-toolbar-bottom {
+            text-align: center;
+            background: #fff;
+
+            &, a {
+                color: #232337;
+            }
+
+            .content {
+                padding: 20px 10px;
+            }
+
+            .footer-payments {
+                padding: 20px;
+                border-bottom: 1px solid #f1f3f6;
+            }
+
+            .footer.links {
+                float: none;
+                padding-bottom: 10px;
+
+                li {
+                    .border-right(1px solid #d9dbdf);
+                    margin: 0;
+                    padding: 0 10px;
+
+                    &:last-child {
+                        .border-right(none);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-footer {
+        .footer.content {
+            .links {
+                .text-align(left);
+            }
+            .footer.links > li {
+                border: none;
+
+                ul.links {
+                    .padding-left(0);
+                }
+
+                div[data-role="title"] {
+                    padding: 0 0 15px 0;
+                }
+            }
+        }
+
+        .footer-toolbar-top {
+            .text-align(left);
+
+            .content {
+                img {
+                    display: block;
+                }
+
+                .block {
+                    .block-icon {
+                        .float(left);
+                        display: block;
+                    }
+                    .block-content {
+                        .float(left);
+                        .margin-left(10px);
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "name": "swissup/module-theme-editor-argento-luxury",
+    "description": "Theme styles for Argento Luxury theme",
+    "type": "magento2-module",
+    "version": "1.4.0",
+    "license": "OSL-3.0",
+    "require": {
+        "swissup/module-theme-editor": "^1.6.3"
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Swissup\\ThemeEditorArgentoLuxury\\": ""
+        }
+    }
+}

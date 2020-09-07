@@ -1,0 +1,384 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+
+        <section id="pagespeed" translate="label" type="text" sortOrder="1606" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Pagespeed</label>
+            <tab>swissup</tab>
+            <resource>Swissup_Pagespeed::config</resource>
+            <group id="main" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Main</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="devmode" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable in developer mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="gzip" translate="label" type="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Test GZIP compression</label>
+                    <frontend_model>Swissup\Pagespeed\Block\Adminhtml\System\Config\Form\Field\Gzip</frontend_model>
+                    <comment><![CDATA[<a href="https://www.giftofspeed.com/gzip-test/" target="_blank">Check GZIP compression manually</a>.]]></comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="server_push" translate="label" type="select" sortOrder="40" showInDefault="1">
+                    <label>Server HTTP/2 push enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <!-- <config_path>dev/debug/server_push</config_path> -->
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="http2_test" translate="label" type="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Verify HTTP/2.0 Support</label>
+                    <frontend_model>Swissup\Pagespeed\Block\Adminhtml\System\Config\Form\Field\HTTP2</frontend_model>
+                    <comment><![CDATA[<a href="https://tools.keycdn.com/http2-test" target="_blank">Verify HTTP/2 support manually</a>.]]></comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="content" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Minify HTML Content</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <!-- <field id="type" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Compressing Type</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field> -->
+                <field id="js" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Js Content Minification Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="css" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>CSS Content Minification Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="template" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Minify Templates</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Minification is not applied in developer mode.</comment>
+                    <config_path>dev/template/minify_html</config_path>
+                </field>
+            </group>
+            <group id="js" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>JavaScript Settings</label>
+                <field id="merge_files" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Merge JavaScript Files</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>dev/js/merge_files</config_path>
+                </field>
+                <field id="enable_js_bundling" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable JavaScript Bundling</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>dev/js/enable_js_bundling</config_path>
+                </field>
+                <field id="enable_advanced_js_bundling" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Advanced JavaScript Bundling (RequireJs)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>pagespeed/js/enable_advanced_js_bundling</config_path>
+                    <comment><![CDATA[Experimental option. If the option causes some problems on your site, just turn it off<br/><a href="https://docs.swissuplabs.com/m2/extensions/pagespeed/configuration/#if-you-want-to-enable-advanced-javascript-bundling-you-have-to-do-some-steps-first" target="_blank">See how to turn it on properly.</a><br/><a href="https://devdocs.magento.com/guides/v2.3/performance-best-practices/advanced-js-bundling.html" target="_blank">What is advanced requireJs bundling.</a>]]></comment>
+                    <depends>
+                        <field id="enable_js_bundling">0</field>
+                    </depends>
+                </field>
+                <field id="rjs_build_config" translate="label" type="textarea" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>RequireJS Bundle Generator Build Config</label>
+                    <config_path>pagespeed/js/rjs_build_config</config_path>
+                    <comment><![CDATA[<a href="https://github.com/magento/m2-devtools#setup" target="_blank">Setup M2 Chrome DevTools</a><br/><a href="https://github.com/magento/m2-devtools/blob/master/docs/panels/RequireJS.md#bundle-generator" target="_blank">RequireJS bundle config generating</a>.
+                    ]]></comment>
+                    <depends>
+                        <field id="enable_js_bundling">0</field>
+                        <field id="enable_advanced_js_bundling">1</field>
+                    </depends>
+                </field>
+                <field id="minify_files" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minify JavaScript Files</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Minification is not applied in developer mode.</comment>
+                    <config_path>dev/js/minify_files</config_path>
+                </field>
+                <field id="move_inline_to_bottom" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Move JS code to the bottom of the page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>dev/js/move_inline_to_bottom</config_path>
+                </field>
+
+                <group id="defer" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Deferred javascripts</label>
+                    <comment>Eliminate render-blocking JavaScript in the above-the-fold content.
+                        The loading and execution of scripts that are not necessary for the initial page render may be deferred until after the initial render or other critical parts of the page have finished loading. Doing so can help reduce resource contention and improve performance.</comment>
+
+                    <field id="enable" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>pagespeed/js/defer_enable</config_path>
+                    </field>
+
+                    <field id="unpack" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Add Unpack</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>pagespeed/js/defer_unpack</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                        </depends>
+                    </field>
+                </group>
+            </group>
+            <group id="css" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>CSS Settings</label>
+
+                <field id="merge_css_files" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Merge CSS Files</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>dev/css/merge_css_files</config_path>
+                </field>
+
+                <field id="minify_files" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minify CSS Files</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Minification is not applied in developer mode.</comment>
+                    <config_path>dev/css/minify_files</config_path>
+                </field>
+
+                <group id="defer" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Optimise CSS delivery</label>
+                    <comment>In the case of a large CSS file, you will need to identify and inline the CSS necessary for rendering the above-the-fold content and defer loading the remaining styles until after the above-the-fold content.</comment>
+                    <field id="enable" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>pagespeed/css/defer_enable</config_path>
+                        <comment>If the option causes some problems on your site, just turn it off</comment>
+                    </field>
+
+                    <field id="onload" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable LoadCss</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>pagespeed/css/defer_onload</config_path>
+                        <comment><![CDATA[<a href="https://github.com/filamentgroup/loadCSS#why-loadcss" target="_blank">Why loadCSS</a>.]]></comment>
+                        <depends>
+                            <field id="enable">1</field>
+                        </depends>
+                    </field>
+                </group>
+                <group id="critical" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Critical CSS (Prioritize Visible Content)</label>
+                    <comment><![CDATA[You should minify the critical CSS, then inline it on your page (wrapped in style tags). It should be placed in the header, replacing the full CSS link(s).]]></comment>
+
+                    <field id="use_css_critical_path" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Use CSS critical path</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>dev/css/use_css_critical_path</config_path>
+                        <comment>
+                            <![CDATA[<strong style="color:red">Warning!</strong> Be sure that you have critical.css file for your theme. Other CSS files will be loaded asynchronously. ]]>
+                        </comment>
+                    </field>
+
+                    <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>pagespeed/css/critical_enable</config_path>
+                        <comment>If the option causes some problems on your site, just turn it off</comment>
+                    </field>
+
+                    <field id="default" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Default Critical CSS</label>
+                        <frontend_model>Swissup\Pagespeed\Block\Adminhtml\System\Config\Form\Field\Critical</frontend_model>
+                        <backend_model>Swissup\Pagespeed\Model\Config\Backend\File\LargeText</backend_model>
+                        <config_path>pagespeed/css/critical_default</config_path>
+                        <comment><![CDATA[<a href="http://ci.swissuplabs.com/pagespeed/critical-css/" target="_blank">Critical css generator</a>.
+                        <br />
+                        <a href="https://www.sitelocity.com/critical-path-css-generator" target="_blank">Alternative critical css generator</a>]]></comment>
+                        <depends>
+                            <field id="enable">1</field>
+                        </depends>
+                    </field>
+
+                </group>
+
+            </group>
+            <group id="image" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Image Processing Settings</label>
+                <field id="default_adapter" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Image Adapter</label>
+                    <source_model>Magento\Config\Model\Config\Source\Image\Adapter</source_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image\Adapter</backend_model>
+                    <comment>When the adapter was changed, please flush Catalog Images Cache.</comment>
+                    <config_path>dev/image/default_adapter</config_path>
+                </field>
+
+                <group id="optimize" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Optimize Catalog images</label>
+                    <comment><![CDATA[Before images can be optimized, you will need to install the Optimizers as described in <a href="https://github.com/spatie/image-optimizer#optimization-tools">article</a><br/>
+                    <code>
+                        <pre>
+                        sudo apt install jpegoptim
+                        sudo apt install optipng
+                        sudo apt install pngquant
+                        sudo npm install -g svgo
+                        sudo apt install gifsicle
+                        sudo apt-get install webp
+                        </pre>
+                    </code>
+                    Usage:
+                    <code>php bin/magento catalog:images:resize</code>
+                    ]]></comment>
+
+                    <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>pagespeed/image/optimize_enable</config_path>
+                    </field>
+
+                    <field id="webp_enable" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable WebP Support</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>pagespeed/image/optimize_webp_enable</config_path>
+                        <comment><![CDATA[<a href="https://developers.google.com/speed/webp/">A new image format for the Web</a></br>
+                        Enable only after run
+                        <code>
+                            <pre>
+                            sudo apt-get install webp
+                            bin/magento catalog:images:resize
+                            </pre>
+                        </code>]]></comment>
+                    </field>
+
+                    <field id="webp_picture_add" translate="label comment" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Add picture tag</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>pagespeed/image/optimize_webp_picture_add</config_path>
+                        <comment><![CDATA[<a href="https://www.w3schools.com/tags/tag_picture.asp">HTML picture Tag</a><br/>
+                        When Webp support enabled
+                        ]]></comment>
+                        <depends>
+                            <field id="webp_enable">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="responsive" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Responsive Support</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>pagespeed/image/responsive</config_path>
+                        <comment><![CDATA[<a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">Responsive images</a></br>
+                        Work only after run
+                        <code>
+                            <pre>
+                            bin/magento swissup:pagespeed:images:resize
+                            </pre>
+                        </code>]]></comment>
+                    </field>
+
+                    <field id="default_responsive_sizes" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Default Responsive Images Sizes</label>
+                        <config_path>pagespeed/image/default_responsive_sizes</config_path>
+                        <depends>
+                            <field id="responsive">1</field>
+                        </depends>
+                    </field>
+                </group>
+
+                <group id="lazyload" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Lazy loader for images</label>
+                    <comment><![CDATA[Lazy loading images means loading images on websites asynchronously — that is, after the above-the-fold content is fully loaded, or even conditionally, only when they appear in the browser's viewport. This means that if users don't scroll all the way down, images placed at the bottom of the page won't even be loaded]]></comment>
+                    <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>pagespeed/image/lazyload_enable</config_path>
+                    </field>
+
+                    <field id="ignore" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Ignore</label>
+                        <config_path>pagespeed/image/lazyload_ignore</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="placeholder_enable" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Placeholder</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>pagespeed/image/lazyload_placeholder_enable</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="placeholder" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Placeholder</label>
+                        <config_path>pagespeed/image/lazyload_placeholder</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="placeholder_enable">1</field>
+                        </depends>
+                    </field>
+                    <field id="offset" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Offset</label>
+                        <config_path>pagespeed/image/lazyload_offset</config_path>
+                        <comment><![CDATA[Extension skip first n+1 images]]></comment>
+                        <depends>
+                            <field id="enable">1</field>
+                        </depends>
+                    </field>
+                    <field id="mobile_offset" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Offset for mobile devices</label>
+                        <config_path>pagespeed/image/lazyload_mobile_offset</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                        </depends>
+                    </field>
+                </group>
+                <field id="dimension" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auto Specify image dimensions</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <!-- <config_path>pagespeed/image/lazyload_enable</config_path> -->
+                    <comment><![CDATA[Specifying a width and height for all images allows for faster rendering by eliminating the need for unnecessary reflows and repaints]]></comment>
+                </field>
+            </group>
+            <group id="expire" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Expire Header</label>
+                <field id="enable" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add Expire Header Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="ttl" type="text" translate="label comment" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>TTL for public content</label>
+                    <comment>Public content cache lifetime in seconds. If field is empty default value 31536000 will be saved (+1 year). </comment>
+                    <backend_model>Magento\PageCache\Model\System\Config\Backend\Ttl</backend_model>
+                    <!-- <config_path>system/full_page_cache/ttl</config_path> -->
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="dnsprefetch" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Dns-prefetch</label>
+                <comment><![CDATA[The <a href="https://www.w3.org/TR/resource-hints/#dns-prefetch">dns-prefetch</a> link relation type is used to indicate an origin that will be used to fetch required resources, and that the user agent SHOULD resolve as early as possible.
+                        ]]></comment>
+                <field id="enable" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+
+</config>

@@ -1,0 +1,17 @@
+$hamburger-icon: $fa-icon-hamburger !default;
+$hamburger-icon-size: null !default;
+$hamburger-icon-color: null !default;
+$hamburger-icon-width: 40px !default;
+$hamburger-icon-height: 40px !default;
+$hamburger-icon-weight: null !default;
+
+.hamburger {
+    @include icon-fa(
+        $icon: $hamburger-icon,
+        $size: $hamburger-icon-size,
+        $color: $hamburger-icon-color,
+        $width: $hamburger-icon-width,
+        $height: $hamburger-icon-height,
+        $weight: $hamburger-icon-weight
+    );
+}

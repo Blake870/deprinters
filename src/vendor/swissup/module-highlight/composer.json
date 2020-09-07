@@ -1,0 +1,39 @@
+{
+    "name": "swissup/module-highlight",
+    "description": "Product listing widgets, ajax carousel with flexible filters",
+    "keywords": [
+        "highlight",
+        "product listing",
+        "featured products",
+        "new products",
+        "bestsellers",
+        "popular products",
+        "onsale products",
+        "products carousel"
+    ],
+    "type": "magento2-module",
+    "version": "1.5.5",
+    "license": "OSL-3.0",
+    "require": {
+        "swissup/module-core": "^1.9.0",
+        "swissup/module-rtl": "^1.3.3",
+        "swissup/module-slick-carousel": "^1.3.2"
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Swissup\\Highlight\\": ""
+        }
+    },
+    "extra": {
+        "swissup": {
+            "links": {
+                "marketplace": "https://marketplace.magento.com/swissup-highlight.html",
+                "store"      : "https://swissuplabs.com/magento-extensions/magento-custom-product-list-extension.html",
+                "download"   : "https://swissuplabs.com/subscription/customer/products/",
+                "docs"       : "http://docs.swissuplabs.com/m2/extensions/highlight/",
+                "changelog"  : "http://docs.swissuplabs.com/m2/extensions/highlight/changelog/"
+            }
+        }
+    }
+}

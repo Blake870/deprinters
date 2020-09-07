@@ -1,0 +1,24 @@
+<?php
+    $generated = $block->getGeneratedData();
+?>
+<fieldset class="admin__fieldset">
+<?php if ($storeList = $this->getStoreViewsList()): ?>
+    <div class="admin__field-complex">
+        <div class="admin__field-complex-content">
+            <?= __('There is generated metadata for %1.', $storeList) ?>
+        </div>
+    </div>
+<?php endif ?>
+<?php foreach ($block->getAvailableDataNames() as $id => $name): ?>
+    <div class="admin__field">
+        <label class="admin__field-label">
+            <span data-config-scope="<?= $generated->getId() ? $block->getStoreViewLabel($generated->getStoreId()) : $block->getStoreViewLabel(); ?>"><?= __('Generated') . ' ' . $name; ?></span>
+        </label>
+        <div class="admin__field-control">
+            <div class="admin__control-text" title="<?= __('Value is read only')?>">
+                <?= $generated->getData("metadata/{$block->getDataNameCode($id)}") ?: '&nbsp;'; ?>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
+</fieldset>

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Swissup\Askit\Block\Adminhtml\Question\Edit" name="askit_question_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Swissup\Askit\Block\Adminhtml\Question\Edit\Tabs" name="askit_question_edit_tabs">
+                <block class="Swissup\Askit\Block\Adminhtml\Question\Edit\Tab\Main" name="askit_question_edit_tab_main"/>
+                <!-- <block class="Swissup\Askit\Block\Adminhtml\Question\Edit\Tab\NewAnswer" name="askit_question_edit_tab_new_answer"/> -->
+                <block class="Magento\Backend\Block\Widget\Tab" name="askit_question_edit_tabs.answers">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">Answers</argument>
+                        <argument name="url" xsi:type="url" path="askit/answer/grid">
+                            <param name="_current">1</param>
+                        </argument>
+                        <argument name="class" xsi:type="string">ajax</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Backend\Block\Widget\Tab" name="askit_question_edit_tabs.products">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">Assigned Products</argument>
+                        <argument name="url" xsi:type="url" path="askit/assign/products">
+                            <param name="_current">1</param>
+                        </argument>
+                        <argument name="class" xsi:type="string">ajax</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Backend\Block\Widget\Tab" name="askit_question_edit_tabs.pages">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">Assigned Pages</argument>
+                        <argument name="url" xsi:type="url" path="askit/assign/pages">
+                            <param name="_current">1</param>
+                        </argument>
+                        <argument name="class" xsi:type="string">ajax</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Backend\Block\Widget\Tab" name="askit_question_edit_tabs.categories">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">Assigned Categories</argument>
+                        <argument name="url" xsi:type="url" path="askit/assign/categories">
+                            <param name="_current">1</param>
+                        </argument>
+                        <argument name="class" xsi:type="string">ajax</argument>
+                    </arguments>
+                </block>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">askit_question_edit_tab_main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">answers_section</argument>
+                    <argument name="block" xsi:type="string">askit_question_edit_tabs.answers</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">products_section</argument>
+                    <argument name="block" xsi:type="string">askit_question_edit_tabs.products</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">pages_section</argument>
+                    <argument name="block" xsi:type="string">askit_question_edit_tabs.pages</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">categories_section</argument>
+                    <argument name="block" xsi:type="string">askit_question_edit_tabs.categories</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Store\Model\Store">
+        <arguments>
+            <argument name="url" xsi:type="object" shared="false">Swissup\Hreflang\Model\UrlWithoutScope</argument>
+        </arguments>
+    </type>
+    <type name="Swissup\Hreflang\Model\CurrentUrl">
+        <arguments>
+            <argument name="providerFactory" xsi:type="array">
+                <item name="cms_page_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\CmsPageView</item>
+                <item name="catalog_product_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\CatalogProductView</item>
+                <item name="catalog_category_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\CatalogCategoryView</item>
+                <item name="askit_index_index" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\AskitIndexIndex</item>
+                <!-- Swissup Highlight integration -->
+                <item name="highlight_view_bestsellers" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\HighlightViewIndex</item>
+                <item name="highlight_view_featured" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\HighlightViewIndex</item>
+                <item name="highlight_view_newAction" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\HighlightViewIndex</item>
+                <item name="highlight_view_onsale" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\HighlightViewIndex</item>
+                <item name="highlight_view_popular" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\HighlightViewIndex</item>
+                <item name="easycatalogimg_departments_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\EasycatalogimgDepartmentsView</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Pass filters to Swissup AMP Filter model -->
+    <type name="Swissup\Amp\Model\Html\Filter">
+        <arguments>
+            <argument name="stringFilters" xsi:type="array">
+                <item name="string_hreflang_filter" xsi:type="object">Swissup\Hreflang\Model\Amp\Filter\Str\InsertHreflangFactory</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Store\Block\Switcher">
+        <!-- plugin for PathInfoProcessor - findout store from hreflang -->
+        <plugin name="changeTargetStorePostData"
+                type="Swissup\Hreflang\Plugin\Block\Switcher"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Cms\Controller\Index\Index">
+        <!-- plugin to redirect on homepage when locale in url enabled-->
+        <plugin name="redirectToHomepageWithLocale"
+                type="Swissup\Hreflang\Plugin\RedirectWithLocale"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+</config>

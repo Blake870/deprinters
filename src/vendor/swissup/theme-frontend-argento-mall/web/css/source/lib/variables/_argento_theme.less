@@ -1,0 +1,171 @@
+//
+//  Argento Mall variables
+//  ---------------------------------------------
+@main-color: #00355f;
+@footer-color: #888;
+@page-wrapper__margin: 20px auto 0 auto;
+@page-wrapper__box-shadow: none;
+
+//
+//  Typography
+//  _____________________________________________
+// Don't use this variable because it change color in all blocks,
+// while we give blue background for sidebar blocks only.
+// @block-title__font-color: @color-white;
+
+@h1__margin-top: 20px;
+
+//
+//  Links
+//  ---------------------------------------------
+
+@link__color: #023761;
+@link__visited__color: @link__color;
+@link__hover__color: @link__color;
+@link__active__color: @link__color;
+
+//
+//  Layout
+//  _____________________________________________
+@layout__width: '';
+@layout__max-width: 980px;
+@layout-indent__width: 10px;
+
+//
+//  Header
+//  _____________________________________________
+@header-panel__background-color: @color-white;
+@header-panel__text-color: @color-gray56;
+@header-panel__border-bottom: none;
+
+//
+//  Search
+//  _____________________________________________
+@ajaxsearch-input__border: 0;
+@ajaxsearch-input__border-radius: 6px;
+@ajaxsearch-category-filter__border-right: 1px solid @main-color;
+@ajaxsearch-dropdown__border-color: #fff;
+@ajaxsearch-dropdown__border: 0;
+@ajaxsearch-dropdown__border-radius: 3px;
+@ajaxsearch-dropdown__box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+@ajaxsearch-folded__background: none;
+@ajaxsearch-folded-input__box-shadow: none;
+
+//
+//  Navigation
+//  _____________________________________________
+@navigation__background: @color-white;
+
+@navigation-desktop__font-size: 13px;
+@navigation-desktop__font-weight: bold;
+@navigation-desktop__background: @main-color;
+@navigation-desktop__border: 1px solid rgba(255,255,255,0.2);
+
+@navigation-desktop-level0-item__color: @color-white;
+@navigation-desktop-level0-item__hover__color: #ffac1f;
+@navigation-desktop-level0-item__active__color: #ffac1f;
+
+@submenu-desktop-item__color: @color-gray34;
+@submenu-desktop-item__hover__color: @primary__color;
+@submenu-desktop-item__active__color: @primary__color;
+
+@navpro-slideout-toggle__margin: -14px 0 8px 8px;
+
+//
+//  Buttons
+//  _____________________________________________
+@button__background: #a2a2a2;
+@button__border: none;
+@button__border-radius: 6px;
+@button__color: @color-white;
+@button__text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+@button__shadow: false;
+
+@button__hover__background: @button__background;
+@button__hover__border: @button__border;
+@button__hover__color: @button__color;
+@button__shadow-hover: @button__shadow;
+
+@button__active__background: @button__hover__background;
+@button__active__color: @button__hover__color;
+@button__active__border: @button__hover__border;
+@button__shadow-active: inset 0 3px 2px -2px rgba(0, 0, 0, 0.3);
+
+//  Primary button
+@button-primary__background: linear-gradient(to bottom, #FFAF12 0%,#ED8108 100%);
+@button-primary__border: none;
+@button-primary__color: @color-white;
+@button-primary__text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+@button-primary__padding: 8px 15px;
+
+@button-primary__hover__background: @button-primary__background;
+@button-primary__hover__border: @button-primary__border;
+
+@button-primary__active__background: @button-primary__hover__background;
+@button-primary__active__border: @button-primary__border;
+@button-primary__box-shadow-active: inset 0 3px 2px -2px rgba(0, 0, 0, 0.3);
+
+//  Footer
+@footer__background-color: @color-white;
+
+
+//
+//  Compare
+//  _____________________________________________
+@compare-toolbar__background: #00355f;
+@compare-toolbar__color: #fff;
+@compare-toolbar__border: false;
+@compare-toolbar__border-width: false;
+@compare-toolbar__border-radius: 5px 0 0 5px;
+
+
+//
+//  Product Listing
+//  _____________________________________________
+@product-grid-items-per-row-layout-1-screen-l: 4;
+@product-grid-items-per-row-layout-2-screen-l: 3;
+
+@product-grid-cart-crossell-items-per-row-screen-m: 3;
+@product-grid-cart-crossell-items-per-row-screen-l: 3;
+
+@product-grid-item-gutter: -1px;
+@argento-listing-squama__border: 0;
+@argento-listing-squama__hover__border: 0;
+
+//
+//  Tabs
+//  _____________________________________________
+@tab-control__font-family: 'Noto Sans', sans-serif;
+@tab-control__font-weight: @font-weight__bold;
+@tab-control__margin-right: 5px;
+@tab-control__border-width: 0;
+@tab-control__background-color: @main-color;
+@tab-control__color: @color-white;
+@tab-control__box-shadow: 0 6px 12px -5px rgba(255, 255, 255, 0.3) inset;
+
+@tab-control__hover__background-color: lighten(@tab-control__background-color, 3%);
+
+@tab-control__active__background-color: #F5970C;
+@tab-control__active__color: @color-white;
+
+@tab-content__background-color: @color-white;
+
+//
+//  Collapsible navigation (customer page)
+//  _____________________________________________
+@collapsible-nav-current-border-color: #F5970C;
+
+//
+//  Sticky Add To Cart
+//  _____________________________________________
+@argento-sticky-tocart__background: #f6f6f6;
+@argento-sticky-tocart__border-bottom: 1px solid #e4e4e4;
+@argento-sticky-tocart-fieldset__padding: 0 15px;
+@argento-sticky-tocart-fieldset__width: ~'calc(40% - 30px)';
+@argento-checkout-discount-field__height: 30px;
+
+//
+//  Checkout
+//  _____________________________________________
+@argento-checkout-auth-wrapper__margin-top: -70px;
+@argento-checkout-auth-toggle__color: @color-white;

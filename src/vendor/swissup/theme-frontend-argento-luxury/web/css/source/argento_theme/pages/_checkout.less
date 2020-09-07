@@ -1,0 +1,42 @@
+& when (@media-common = true) {
+    .checkout-index-index {
+        .opc-estimated-wrapper .minicart-wrapper {
+            button.action.showcart {
+                .luxury-icon('cart');
+
+                .counter.qty {
+                    margin: 2px;
+                }
+            }
+        }
+    }
+
+    .firecheckout {
+        .page-title-wrapper {
+            .text-align(left);
+
+            h1.page-title {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .firecheckout {
+        .page-title-wrapper {
+            .text-align(left);
+
+            h1.page-title {
+                .lib-heading(h2);
+                letter-spacing: 1.38px;
+                text-transform: none;
+                width: auto;
+
+                &:after {
+                    margin: 16px 0 0 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,146 @@
+<?php
+    $image = 'related_products_list';
+    $_items = $block->getItems();
+    $i = 0;
+    $taxDisplay = $block->getTaxDisplayConfig();
+    $jsonHelper = $this->helper('Magento\Framework\Json\Helper\Data');
+    $isAmazonStripe = $block->getLayoutStyle() == 'amazon-stripe';
+    $isAmazonDefault = $block->getLayoutStyle() == 'amazon-default';;
+?>
+<?php if ($block->getConfig('enabled') && $_items && $_items->getSize() > 0) : ?>
+<div class="block soldtogether-block <?php echo $block->getLayoutStyle(); ?>" data-mage-init='{"Swissup_SoldTogether/js/sold-together": <?php
+    /* @escapeNotVerified */
+    echo $jsonHelper->jsonEncode(['taxDisplay' => $taxDisplay, 'priceFormat' => $block->getPriceFormat()]);
+?>}'>
+    <div class="block-title title">
+        <strong class="block-order-heading" role="heading" aria-level="2">
+            <?php /* @escapeNotVerified */ echo __('Frequently Bought Together'); ?>
+        </strong>
+    </div>
+    <div class="block-content content" aria-labelledby="block-order-heading">
+        <ul class="amazonstyle-images">
+            <li id="soldtogether-image-<?php echo $block->getProduct()->getId() ?>" class="first item product-item">
+                <span class="product photo product-item-photo">
+                <?php if ($isAmazonStripe): ?>
+                    <input type="checkbox"
+                       class="checkbox main-product"
+                       id="relatedorderstripe-checkbox<?php /* @escapeNotVerified */ echo $block->getProduct()->getId() ?>"
+                       onclick="return false;"
+                       disabled="disabled"
+                       name="bought_related_products[]"
+                       value="<?php echo /* @escapeNotVerified */ $block->getProduct()->getId() ?>" checked="checked"/>
+                <?php endif; ?>
+                    <?php echo $block->getImage($block->getProduct(), $image)->toHtml(); ?>
+                </span>
+                <?php if ($isAmazonStripe): ?>
+                <div class="product details product-item-details">
+                    <strong class="product name product-item-name">
+                        <span class="product-item-link" title="<?php echo $block->escapeHtml($block->getProduct()->getName()) ?>"><?php echo $block->escapeHtml($block->getProduct()->getName()) ?></span>
+                    </strong>
+                    <?php /* @escapeNotVerified */ echo $block->getCurrentProductPrice(); ?>
+                </div>
+                <?php endif; ?>
+            </li>
+            <?php foreach ($_items as $_item): ?>
+                <?php $isSalable = $_item->isSaleable(); ?>
+                <li class="plus"></li>
+                <li id="soldtogether-image-<?php echo $_item->getId() ?>" class="item product-item<?php if (!$isSalable) : ?>item-inactive<?php endif;?>">
+                    <?php /* @escapeNotVerified */ echo '<!-- ' . $image . '-->' ?>
+                    <span class="product-photo-wrapper">
+                        <?php if ($isAmazonStripe): ?>
+                            <input type="checkbox"
+                               class="checkbox relatedorderamazon-checkbox"
+                               <?php if (!$isSalable) : ?>onclick="return false;" disabled="disabled"<?php endif; ?>
+                               id="relatedorderstripe-checkbox<?php /* @escapeNotVerified */ echo $_item->getId() ?>"
+                               name="bought_related_products[]"
+                               value="<?php /* @escapeNotVerified */ echo $_item->getId() ?>"<?php if ($isSalable) : ?> checked="checked"<?php endif; ?> />
+                        <?php endif; ?>
+                        <a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>" class="product photo product-item-photo">
+                            <?php echo $block->getImage($_item, $image)->toHtml(); ?>
+                        </a>
+                    </span>
+                    <?php if ($isAmazonStripe): ?>
+                    <div class="product details product-item-details">
+                        <strong class="product name product-item-name">
+                            <a class="product-item-link" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>">
+                            <?php echo $block->escapeHtml($_item->getName()) ?></a>
+                        </strong>
+                        <?php /* @escapeNotVerified */ echo $block->getProductPrice($_item); ?>
+                    </div>
+                    <?php endif; ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <ul class="amazonstyle-checkboxes">
+            <?php if ($isAmazonDefault): ?>
+                <li class="product-name">
+                    <input type="checkbox"
+                           class="checkbox main-product"
+                           id="relatedorderamazon-checkbox<?php /* @escapeNotVerified */ echo $block->getProduct()->getId() ?>"
+                           onclick="return false;"
+                           disabled="disabled"
+                           name="bought_related_products[]"
+                           value="<?php echo /* @escapeNotVerified */ $block->getProduct()->getId() ?>" checked="checked"/>
+                    <?php /* @escapeNotVerified */ echo __('This Item') ?>:
+                    <strong class="product name product-item-name">
+                        <?php echo $block->escapeHtml($block->getProduct()->getName()) ?></a>
+                    </strong>
+                    <?php /* @escapeNotVerified */ echo $block->getCurrentProductPrice(); ?>
+                </li>
+                <?php foreach ($_items as $_product): ?>
+                    <?php $isSalable = $_product->isSalable(); ?>
+                    <li class="product-name">
+                        <input type="checkbox"
+                               class="checkbox relatedorderamazon-checkbox"
+                               <?php if (!$isSalable) : ?>onclick="return false;" disabled="disabled"<?php endif; ?>
+                               id="relatedorderamazon-checkbox<?php /* @escapeNotVerified */ echo $_product->getId() ?>"
+                               name="bought_related_products[]"
+                               value="<?php /* @escapeNotVerified */ echo $_product->getId() ?>" <?php if ($isSalable) : ?>checked="checked"<?php endif; ?>/>
+                        <strong class="product name product-item-name"><a class="product-item-link" title="<?php echo $block->escapeHtml($_product->getName()) ?>" href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_product) ?>">
+                            <?php echo $block->escapeHtml($_product->getName()) ?></a>
+                        </strong>
+                        <?php /* @escapeNotVerified */ echo $block->getProductPrice($_product); ?>
+                    </li>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            <li class="button-cart">
+                <button type="button" title="Add to Cart" class="action soldtogether-cart-btn primary">
+                    <span><span><?php echo __('Add All to Cart') ?></span></span>
+                </button>
+            </li>
+
+            <li class="totalprice regular-price">
+                <?php if (1 == $taxDisplay || 2 == $taxDisplay) : ?>
+                    <div data-role="priceBox" class="price-box price-final_price">
+                        <span class="price-label"><?php echo __('Total price'); ?></span>
+                        <span class="price-container price-final_price tax weee">
+                            <span class="price-wrapper " data-price-type="finalPrice" >
+                                <span class="price"></span>
+                            </span>
+                        </span>
+                    </div>
+                <?php else : ?>
+                    <div data-role="priceBox" class="price-box price-final_price">
+                        <span class="price-container price-final_price tax weee">
+                            <span class="price-wrapper price-including-tax"
+                                  data-price-type="finalPrice"
+                                  data-label="<?php /* @escapeNotVerified */ echo __('Incl. Tax') ?>"
+                                  id="price-including-tax-product-price-all">
+                                  <span class="price"></span>
+                            </span>
+                            <span
+                                class="price-wrapper price-excluding-tax"
+                                data-price-type="basePrice"
+                                data-label="<?php /* @escapeNotVerified */ echo __('Excl. Tax') ?>"
+                                id="price-excluding-tax-product-price-all">
+                                <span class="price"></span>
+                            </span>
+                        </span>
+                    </div>
+                <?php endif ?>
+            </li>
+        </ul>
+    </div>
+</div>
+<?php endif; ?>

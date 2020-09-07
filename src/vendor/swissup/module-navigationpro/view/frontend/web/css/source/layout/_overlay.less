@@ -1,0 +1,36 @@
+& when (@media-common = true) {
+    .navpro-overlay-element {
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+
+        transition:
+            visibility 0ms linear 200ms,
+            opacity 200ms linear;
+        background-color: @navpro-overlay__background;
+    }
+}
+
+& when (@media-target = 'desktop') {
+    @media @navpro-breakpoint-lg-only {
+        .navpro-overlay-element {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: @navpro-dropdown__z-index - 5;
+
+            .nav-open .navpro-with-slideout &,
+            &.shown {
+                visibility: visible;
+                pointer-events: auto;
+                opacity: 1;
+
+                transition:
+                    visibility 0ms linear,
+                    opacity 200ms linear;
+            }
+        }
+    }
+}

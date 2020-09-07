@@ -1,0 +1,166 @@
+& when (@media-common = true) {
+    .customer-account-login .block .block-title strong {
+        .lib-heading(h2);
+    }
+
+    .form {
+        &.password.reset,
+        &.send.confirmation,
+        &.password.forget,
+        &.create.account {
+            margin: 0 auto;
+        }
+    }
+
+    .abs-title-orders {
+        // Inspired by design/frontend/Magento/luma/web/css/source/_extends.less#L1410
+        .page-main {
+            .page-title-wrapper {
+                .page-title {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .account {
+        .page-main .page-title-wrapper .page-title {
+            display: block;
+            margin-top: 0;
+        }
+    }
+
+    .wishlist-index-index .products-grid.wishlist .product-item {
+        .product-item-actions {
+            .action.tocart {
+                background-image: none;
+                text-transform: none;
+                width: auto;
+                height: auto;
+
+                span {
+                    .lib-visually-hidden-reset();
+                }
+            }
+        }
+    }
+
+    .customer-address-form,
+    .multishipping-checkout-address-newshipping {
+         .form-address-edit  {
+            .field.fullname {
+                .lib-clearfix();
+            }
+        }
+    }
+
+    // Sales Order
+    .order-actions-toolbar {
+        .action.print {
+            display: inline;
+        }
+    }
+
+    .order-links {
+        text-align: center;
+
+        .item {
+            margin-bottom: @list-item__margin-bottom;
+
+            strong {
+                display: inline-block;
+                .lib-css(color, @tab-control__active__color);
+                border: none;
+                border-bottom: 2px solid currentColor;
+                text-transform: uppercase;
+                padding: 0;
+            }
+
+            a {
+                display: inline-block;
+                border: none;
+                text-decoration: none;
+                text-transform: uppercase;
+                padding: 0;
+
+                &:hover,
+                &:focus {
+                    .lib-css(color, @tab-control__active__color);
+                }
+            }
+        }
+    }
+
+    .order-details-items {
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .wishlist-index-index .products-grid.wishlist .product-item {
+        width: 100%;
+        .padding(21px, 10px, 21px, 21px);
+        margin: 0;
+    }
+
+    .account {
+        .sidebar .product-items .product-item-info {
+            .product-item-photo {
+                width: auto;
+            }
+
+            .product-item-details {
+                .margin-left(80px);
+            }
+        }
+    }
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    // Sales Order
+    .abs-title-orders-desktop {
+        // Inspired by design/frontend/Magento/luma/web/css/source/_extends.less#L1447
+        .page-main {
+            .page-title-wrapper {
+                .order-date {
+                    margin-top: ceil(@h1__margin-bottom/1.5);
+                }
+            }
+        }
+    }
+
+    .order-actions-toolbar {
+        text-align: center;
+
+        .action.print {
+            display: inline;
+            float: none;
+        }
+    }
+
+    .order-links {
+        .item {
+            float: none;
+            display: inline-block;
+
+            strong {
+                border-bottom: 2px solid currentColor;
+            }
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+
+    .page-main .block-order-details-view {
+        margin: 0;
+    }
+
+    .order-details-items {
+        padding: 0;
+    }
+}

@@ -1,0 +1,76 @@
+/**
+ * ANIMATION UNDERLINE HOVER style
+ */
+.crosslink-underline-animation {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    cursor: pointer;
+    &::after {
+        content: ' ';
+        position: absolute;
+        top: 100%;
+        left: 25%;
+        width: 50%;
+        height: 1px;
+        border-bottom: 1px solid tomato;
+        transition: 0.4s;
+    }
+    &:hover::after {
+        width: 100%;
+        left: 0;
+    }
+}
+.crosslink-underline-animation:hover{
+    text-decoration: none;
+}
+/**
+ * BACKGROUND HOVER style
+ */
+.crosslink-highlight-background{
+    color:#272727;
+    background: rgba(240, 233, 241, 0.4);
+    text-decoration:none;
+    font-style:italic;
+}
+.crosslink-highlight-background:hover{
+    background: rgb(229, 223, 142);
+    border-radius: 2px;
+    transition: all 0.5s ease-in;
+     /* Firefox */
+    -moz-transition: all 0.5s ease-in;
+    /* WebKit */
+    -webkit-transition: all 0.5s ease-in;
+}
+/**
+ *ANIMATION COLOR and UNDERLINE HOVER style
+ */
+a.crosslink-color-animation{
+    color:#81b3d2;
+    position: relative;
+    text-decoration:none;
+}
+a.crosslink-color-animation:hover{
+    color:tomato;
+}
+a.crosslink-color-animation:before{
+    content: "";
+    transition:all 0.3s ease 0s;
+    -webkit-backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    position:absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left:0;
+    background-color: tomato;
+    visibility: hidden;
+    transform: scaleX(0);
+
+}
+a.crosslink-color-animation:hover:before
+{
+    visibility: visible;
+    -webkit-transform:scaleX(1);
+    transform: scaleX(1);
+}

@@ -1,0 +1,93 @@
+& when (@media-common = true) {
+    .block-highlight {
+        box-shadow: @stripes-home__box-shadow;
+        max-width: @layout__max-width;
+        margin-left: auto;
+        margin-right: auto;
+
+        .block-title {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        &.highlight-carousel {
+            .slick-slider {
+                .slick-arrow {
+                    opacity: 1;
+
+                    &.slick-disabled {
+                        opacity: 0.5;
+                    }
+                }
+
+                .slick-prev {
+                    left: 0; // no need to use rtl mixin; slick carousel handles it
+                }
+
+                .slick-next {
+                    right: 0; // no need to use rtl mixin; slick carousel handles it
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-main .block-highlight {
+        margin-bottom: 30px;
+    }
+
+    .block-highlight {
+        border: @stripes-home__border;
+
+        .block-content {
+            padding: 10px;
+        }
+
+        &.highlight-carousel {
+            .slides-wrapper {
+                margin: -20px 0 -160px;
+                padding: 20px 0 160px;
+            }
+
+            .slides {
+                .slide {
+                    padding: 0 50px;
+                }
+
+                .slick-arrow {
+                    height: 58px;
+                    width: 33px;
+                    border: 1px solid #ADADAD !important;
+                    box-shadow: @stripes-home__box-shadow !important;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = 640px) {
+    .page-main .block-highlight > .block-title > strong,
+    .page-main .block-highlight.hl-magazine > .block-title > strong {
+        font-size: 32px;
+        line-height: normal;
+        text-transform: none;
+    }
+}
+
+// fix magazine layout slick arrows on RTL
+@media only screen and (min-width: @screen__xs) {
+    .block-highlight.hl-magazine {
+        .slick-slider[dir="rtl"] {
+            .slick-next:before,
+            .slick-prev:before {
+                content: '';
+            }
+
+            .slick-prev {
+                right: auto;
+            }
+        }
+    }
+}

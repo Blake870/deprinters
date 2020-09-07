@@ -1,0 +1,15 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Swissup_SoldTogether::css/soldtogether.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Swissup\SoldTogether\Block\Order" name="soldtogether.product.order" template="Swissup_SoldTogether::product/order.phtml" after="-"/>
+            <block class="Swissup\SoldTogether\Block\Customer" name="soldtogether.product.customer" template="Swissup_SoldTogether::product/customer.phtml" after="-">
+                <arguments>
+                    <argument name="type" xsi:type="string">related</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

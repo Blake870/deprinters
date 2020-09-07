@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="swissup_argento_luxury" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Argento Luxury</label>
+            <tab>theme_editor</tab>
+            <resource>Swissup_ThemeEditorArgentoLuxury::config</resource>
+
+            <include path="Swissup_ThemeEditorArgentoLuxury::system/homepage.xml"/>
+            <include path="Swissup_ThemeEditorArgentoLuxury::system/layout.xml"/>
+            <include path="Swissup_ThemeEditorArgentoLuxury::system/header.xml"/>
+            <include path="Swissup_ThemeEditorArgentoLuxury::system/footer.xml"/>
+            <include path="Swissup_ThemeEditorArgentoLuxury::system/tabs.xml"/>
+            <include path="Swissup_ThemeEditorArgentoLuxury::system/buttons.xml"/>
+            <include path="Swissup_ThemeEditorArgentoLuxury::system/fonts.xml"/>
+            <include path="Swissup_ThemeEditor::system/head.xml"/>
+        </section>
+    </system>
+</config>

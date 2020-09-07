@@ -1,0 +1,5 @@
+.idea
+.vagrant
+Vagrantfile
+src/app/design/frontend/Onilab/homegrownv4/web/css/*
+.vscode/*

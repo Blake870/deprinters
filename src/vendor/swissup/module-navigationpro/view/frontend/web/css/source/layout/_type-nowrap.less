@@ -1,0 +1,38 @@
+& when (@media-common = true) {
+    .navpro {
+        &-nowrap {
+            flex-wrap: nowrap !important;
+            &:not(.navpro-nowrap-ready) {
+                overflow: hidden !important;
+            }
+            &-justify-start {
+                justify-content: start !important;
+            }
+            > li {
+                flex-shrink: 0;
+            }
+
+            // overflow-y: hidden;
+            // overflow: auto;
+            // &::-webkit-scrollbar {
+            //     width: 4px;
+            //     height: 4px;
+            // }
+            // &::-webkit-scrollbar-thumb {
+            //     background-color: #eaeaea;
+            // }
+
+            .navpro-item-more {
+                align-self: center;
+                > .nav-a-icon-more {
+                    display: flex !important;
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                        fill: currentColor;
+                    }
+                }
+            }
+        }
+    }
+}

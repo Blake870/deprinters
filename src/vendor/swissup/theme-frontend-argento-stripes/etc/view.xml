@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/view.xsd">
+    <media>
+        <images module="Magento_Catalog">
+            <image id="category_page_grid" type="small_image">
+                <width>170</width>
+                <height>170</height>
+            </image>
+            <image id="category_page_grid-1" type="small_image">
+                <width>170</width>
+                <height>170</height>
+            </image>
+            <image id="category_page_list" type="small_image">
+                <width>250</width>
+                <height>325</height>
+            </image>
+            <image id="recently_compared_products_grid_content_widget" type="small_image">
+                <width>170</width>
+                <height>170</height>
+            </image>
+            <image id="recently_compared_products_list_content_widget" type="small_image">
+                <width>250</width>
+                <height>325</height>
+            </image>
+            <image id="recently_viewed_products_grid_content_widget" type="small_image">
+                <width>170</width>
+                <height>170</height>
+            </image>
+            <image id="recently_viewed_products_list_content_widget" type="small_image">
+                <width>250</width>
+                <height>325</height>
+            </image>
+            <image id="related_products_list" type="small_image">
+                <width>170</width>
+                <height>170</height>
+            </image>
+        </images>
+    </media>
+    <vars module="Swissup_ThemeEditor">
+        <var name="add_css_class">
+            <var name="sticky_menu">
+                <var name="config">swissup_argento_stripes/header/sticky_menu</var>
+                <var name="class">stripes-sticky-menu</var>
+            </var>
+        </var>
+    </vars>
+</view>

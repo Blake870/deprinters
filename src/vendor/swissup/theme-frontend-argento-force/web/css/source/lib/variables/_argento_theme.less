@@ -1,0 +1,607 @@
+//
+// Force variables
+//
+@font-main: 'Mukta', sans-serif;
+@font-additional: 'Barlow Semi Condensed', sans-serif;
+@force-product-photo__filter: contrast(94%);
+@force-color__yellow: #ede734;
+@force-color__lightgray: #eff0f1;
+@force-color__nightblue: #202633;
+@force-color__orange: #F76801;
+@force-color__smokeygrey: #B3BAC2;
+
+//
+//  Layout
+//  _____________________________________________
+@layout__width: '';
+@layout__max-width: 1260px;
+@layout-indent__width: 10px;
+@indent__s: 10px;
+@layout__width-xs-indent: @layout-indent__width;
+@layout-column__sidebar-width: 6;
+
+//
+//  Typography variables
+//  _____________________________________________
+@font-family__base: @font-main;
+@font-size-ratio__base: 1.6;
+@text__color: #2b3945;
+@text__color_light: #8f98a1;
+
+//
+// Color nesting
+//  _____________________________________________
+@border-color__base: @force-color__lightgray;
+@minicart-icons-color: @text__color_light;
+
+//
+//  Messages
+//  _____________________________________________
+@argento-message__box-shadow: 0 4px 7px 0 rgba(0,0,0,0.09);
+@argento-message__text-align: center;
+@argento-message__text-transform: uppercase;
+@argento-message-link__text-decoration: underline;
+@message__font-family: @font-additional;
+@message__font-weight: bold;
+@message__font-size: 1.4rem;
+@message__border-radius: 5px;
+
+@message-success__color: #0d924a;
+@message-success__background: #a9eec9;
+@message-success-icon: 'S';
+@message-success-link__color: darken(@message-success__color, 10%);
+@message-success-icon__color-inner: transparent;
+@message-success-icon__background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDI4IDI4Ij48ZyBmaWxsPSJub25lIj48ZyBzdHlsZT0ic3Ryb2tlLXdpZHRoOjI7c3Ryb2tlOiMwZDkyNGEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIgMikiPjxwb2x5bGluZSBwb2ludHM9IjYuNjUgMTEuMzkgMTEuMjkgMTYuMDMgMTguMjIgOC45MiIgc3Ryb2tlLWxpbmVqb2luPSJiZXZlbCIvPjxwYXRoIGQ9Ik0yMC40OSAzLjUyQzI1LjE3IDguMiAyNS4xNyAxNS44IDIwLjQ5IDIwLjQ5IDE1LjggMjUuMTcgOC4yIDI1LjE3IDMuNTIgMjAuNDkgLTEuMTcgMTUuOC0xLjE3IDguMiAzLjUyIDMuNTIgOC4yLTEuMTcgMTUuOC0xLjE3IDIwLjQ5IDMuNTIiLz48L2c+PC9nPjwvZz48L3N2Zz4=) no-repeat center/24px;
+
+@message-error__color: #d74c4c;
+@message-error__background: #fdc8c8;
+@message-error-icon: 'E';
+@message-error-link__color: darken(@message-error__color, 10%);
+@message-error-icon__color-inner: transparent;
+@message-error-icon__background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDI4IDI4Ij48ZyBmaWxsPSJub25lIj48ZyBzdHlsZT0ic3Ryb2tlLXdpZHRoOjI7c3Ryb2tlOiNkNzRjNGMiPjxwYXRoIGQ9Ik04Ljk1IDkuMjVMMTkuMDUgMTkuMjgiLz48cGF0aCBkPSJNOC45OSAxOS4zMkwxOS4wMSA5LjIyIi8+PHBhdGggZD0iTTIyLjQ5IDUuNTJDMjcuMTcgMTAuMiAyNy4xNyAxNy44IDIyLjQ5IDIyLjQ5IDE3LjggMjcuMTcgMTAuMiAyNy4xNyA1LjUyIDIyLjQ5IDAuODMgMTcuOCAwLjgzIDEwLjIgNS41MiA1LjUyIDEwLjIgMC44MyAxNy44IDAuODMgMjIuNDkgNS41MiIvPjwvZz48L2c+PC9zdmc+Cg==) no-repeat center/24px;
+
+@message-warning__color: #b38301;
+@message-warning__background: #fcf0ba;
+@message-warning-icon: 'W';
+@message-warning-link__color: darken(@message-warning__color, 10%);
+@message-warning-icon__color-inner: transparent;
+@message-warning-icon__background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDI4IDI4Ij48ZyBmaWxsPSJub25lIj48ZyBzdHlsZT0ic3Ryb2tlLXdpZHRoOjI7c3Ryb2tlOiNiMzgzMDEiPjxwYXRoIGQ9Ik0yMi40OSA1LjUyQzI3LjE3IDEwLjIgMjcuMTcgMTcuOCAyMi40OSAyMi40OCAxNy44IDI3LjE3IDEwLjIgMjcuMTcgNS41MiAyMi40OCAwLjgzIDE3LjggMC44MyAxMC4yIDUuNTIgNS41MiAxMC4yIDAuODMgMTcuOCAwLjgzIDIyLjQ5IDUuNTJaIi8+PHBhdGggZD0iTTE0IDguMTlMMTQgMTYuNzEiIGZpbGw9IiNGRkYiLz48cGF0aCBkPSJNMTQgMTguMjZMMTQgMTkuODEiLz48L2c+PC9nPjwvc3ZnPgo=) no-repeat center/24px;
+
+@message-info__color: #0074D9;
+@message-info__background: hsla(208, 100%, 85%, 1.0);
+@message-info-icon: 'I';
+@message-info-link__color: darken(@message-info__color, 10%);
+@message-info-icon__color-inner: transparent;
+@message-info-icon__background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDI4IDI4Ij48ZyBmaWxsPSJub25lIj48ZyBzdHlsZT0ic3Ryb2tlLXdpZHRoOjI7c3Ryb2tlOiMwMDc0RDkiPjxwYXRoIGQ9Ik0yMi40OSA1LjUyQzI3LjE3IDEwLjIgMjcuMTcgMTcuOCAyMi40OSAyMi40OCAxNy44IDI3LjE3IDEwLjIgMjcuMTcgNS41MiAyMi40OCAwLjgzIDE3LjggMC44MyAxMC4yIDUuNTIgNS41MiAxMC4yIDAuODMgMTcuOCAwLjgzIDIyLjQ5IDUuNTJaIi8+PHBhdGggZD0iTTE0IDguMTlMMTQgMTYuNzEiIGZpbGw9IiNGRkYiLz48cGF0aCBkPSJNMTQgMTguMjZMMTQgMTkuODEiLz48L2c+PC9nPjwvc3ZnPgo=) no-repeat center/24px;
+
+@message-notice-icon: 'N';
+@message-notice-icon__background: @message-info-icon__background;
+
+//
+//  Headings
+//  _____________________________________________
+@heading__font-family__base: @font-additional;
+@heading__font-weight__base: 600;
+
+@h1__font-size: 4.4rem;
+@h1__line-height: 5.4rem;
+@h1__text-transform: uppercase;
+@h1__margin-top: 20;
+@h1__margin-bottom: 20;
+@h1__font-size-desktop: 4.8rem;
+@h1__margin-bottom__desktop: 2rem;
+
+@h2__font-size: 4.2rem;
+@h2__line-height: 4.8rem;
+@h2__margin-bottom: 20;
+@h2__margin-bottom: 16;
+@h2__text-transform: uppercase;
+
+@h3__font-size: 3rem;
+@h3__line-height: 3.4rem;
+@h3__text-transform: uppercase;
+
+@h4__font-size: 1.8rem;
+@h4__text-transform: uppercase;
+@h5__font-size: @font-size__base;
+@h5__text-transform: uppercase;
+@h6__font-size: @font-size__base;
+
+@block-title__font-family: @font-additional;
+@block-title__font-size: 16px;
+@block-title__font-color: @text__color;
+@block-title__font-weight: bold;
+@block-title__text-transform: false;
+@block-title__text-align: false;
+
+@hero-title__font-family: @font-additional;
+
+//
+// Forms
+//  _____________________________________________
+@form-element-input__border-color: #e1e1e1;
+@form-element-input__border: 2px solid @form-element-input__border-color;
+@form-element-input__border-radius: false;
+@form-element-input__height: 52px;
+@form-element-input__padding-x: 15px;
+@form-element-input__padding-y: 12px;
+@form-element-input__padding: @form-element-input__padding-y @form-element-input__padding-x;
+@form-element-input__line-height: 24px;
+@form-element-input__font-size: 18px;
+
+@select__background: @form-element-input__background @force-icon-arrow-down no-repeat right 10px center;
+
+@argento-fancy-checkbox: true;
+@argento-fancy-checkbox__border: @form-element-input__border;
+@argento-fancy-checkbox__border-radius: false;
+@argento-fancy-checkbox__width: 18px;
+@argento-fancy-checkbox__height: 18px;
+@argento-fancy-checkbox__top: 4px;
+@argento-fancy-checkbox-checkmark__color: @force-color__nightblue;
+@argento-fancy-checkbox-checkmark__width: 2px;
+
+@argento-fancy-radio: true;
+@argento-fancy-radio__border: @form-element-input__border;
+@argento-fancy-radio__width: 18px;
+@argento-fancy-radio__height: 18px;
+@argento-fancy-radio-checkmark__color: @force-color__nightblue;
+@argento-fancy-radio-checkmark__width: 8px;
+@argento-fancy-radio-checkmark__height: 8px;
+
+//
+//  Buttons
+//  _____________________________________________
+@button__font-family: @font-additional;
+@button__font-size: 20px;
+@button__padding: 10px 15px;
+@button__text-transform: uppercase;
+@button__background: transparent;
+@button__border: 2px solid @force-color__nightblue;
+@button__border-radius: false;
+
+@button__hover__color: #fff;
+@button__hover__border: @button__border;
+@button__hover__background: @force-color__nightblue;
+
+@button__active__color: @button__hover__color;
+@button__active__border: @button__hover__border;
+@button__active__background: @button__hover__background;
+
+@button-primary__background: @force-color__orange;
+@button-primary__border: 2px solid @force-color__orange;
+@button-primary__hover__background: @force-color__nightblue;
+@button-primary__hover__color: #fff;
+@button-primary__hover__border: 2px solid @button-primary__hover__background;
+@button-primary__active__background: @button-primary__hover__background;
+@button-primary__active__border: @button-primary__hover__border;
+
+@button-tocart__background: #202633;
+@button-tocart__border: 2px solid @button-tocart__background;
+@button-tocart__color: @button-primary__color;
+@button-tocart__hover__background: @force-color__yellow;
+@button-tocart__hover__color: #202633;
+@button-tocart__hover__border: 2px solid @button-tocart__hover__background;
+@button-tocart__active__background: darken(@force-color__yellow, 15%);
+@button-tocart__active__color: #202633;
+@button-tocart__active__border: 2px solid @button-tocart__active__background;
+
+//
+//  Order status label at account page
+//  _____________________________________________
+@argento-abs-status__desktop__margin-top: 12px;
+
+//
+//  Scrollbar
+//  _____________________________________________
+@argento-scrollbar__background: #e9e9e9;
+@argento-scrollbar__color: @text__color;
+
+//
+//  Dropdowns
+//  _____________________________________________
+@dropdown-list__shadow: 0 3px 12px -5px rgba(0, 0, 0, 0.15);
+@dropdown-list__border-radius: 0;
+
+//
+//  Blocks
+//  _____________________________________________
+@block-title__text-transform: uppercase;
+
+//
+//  Header
+//  _____________________________________________
+@secondary__color: #4c515a;
+@header__margin-bottom: 0;
+@header-panel__background-color: false;
+@header-panel__text-color: @text__color;
+
+//
+//  Search
+//  _____________________________________________
+@argento-search-input__height: 40px;
+
+@ajaxsearch-icon__width: @icons-size;
+@ajaxsearch-scrollbar__background: @argento-scrollbar__background;
+@ajaxsearch-scrollbar__color: @argento-scrollbar__color;
+@ajaxsearch-input__background: lighten(@force-color__yellow, 25%);
+@ajaxsearch-input__border-color: @text__color;
+@ajaxsearch-input__border-width: 2px;
+@ajaxsearch-input__padding: 7px 30px 5px 8px;
+@ajaxsearch-input-placeholder__color: @form-element-input__color;
+@ajaxsearch-dropdown__use-shevron: false;
+@ajaxsearch-dropdown__padding: 10px;
+@ajaxsearch-dropdown__margin: 21px 0 0;
+@ajaxsearch-dropdown__border: 0;
+@ajaxsearch-dropdown__box-shadow: @dropdown-list__shadow;
+@ajaxsearch-dropdown__secondary-color: @text__color_light;
+@ajaxsearch-results__font-size: 1.5rem;
+@ajaxsearch-folded__padding-y: 0;
+@ajaxsearch-folded__padding-x: 0;
+@ajaxsearch-folded__background: transparent;
+@ajaxsearch-folded-input__box-shadow: 0 0 10px 15px rgba(255, 255, 255, 1);
+@ajaxsearch-fullscreen-icon-close__font-size: 60px;
+@ajaxsearch-fullscreen-form__top: 30px;
+@ajaxsearch-fullscreen-category__border-right: 4px solid #333;
+@ajaxsearch-fullscreen-results__border-top: 4px solid #333;
+
+//
+//  Minicart
+//  _____________________________________________
+@minicart__padding-vertical: 15px;
+@minicart__padding-horizontal: 20px;
+@minicart__border-color: @force-color__lightgray;
+@minicart-subtitle__font-family: @font-additional;
+@minicart-subtitle__color: @text__color_light;
+@minicart-item-name__color: @text__color;
+@minicart-item-name__font-family: @font-main;
+@minicart-item-name__font-weight: bold;
+@minicart-item-image__filter: @force-product-photo__filter;
+@minicart-item-price__color: @text__color_light;
+@minicart-item-price__font-size: 1.4rem;
+@minicart-item-qty__margin-top: 3px;
+@minicart-item-qty__border-color: transparent;
+@minicart-item-qty__hover__border-color: lighten(@minicart__border-color, 3%);
+@minicart-item-qty__width: 40px;
+@minicart-item-qty__height: auto;
+@minicart-item-qty-button__padding: 4px 12px;
+@minicart-subtotal__font-size: .95em;
+
+//
+//  Navigation
+//  _____________________________________________
+@navigation__background: transparent;
+
+@argento-navigation-mobile__background: #fff;
+@argento-navigation-mobile-item-title__background: @text__color;
+@argento-navigation-mobile-item-title__border: solid @text__color;
+@argento-navigation-mobile-item-title__border-width: 0 0 2px;
+@argento-navigation-mobile-item-title__color: #e8e571;
+@argento-navigation-mobile-item-title__font-family: @font-additional;
+@argento-navigation-mobile-item-title__font-weight: bold;
+@argento-navigation-mobile-item-title__height: 58px;
+@argento-navigation-mobile-item-title__padding: 18px 0 0;
+@argento-navigation-mobile-item-title__text-transform: uppercase;
+@argento-navigation-mobile-active-item-title__background: #e8e571;
+@argento-navigation-mobile-active-item-title__border: solid @text__color;
+@argento-navigation-mobile-active-item-title__border-width: 0 0 2px;
+@argento-navigation-mobile-active-item-title__color: @text__color;
+@argento-navigation-mobile-item-content__padding: 0;
+@argento-navigation-mobile-overlay__background: fade(@force-color__nightblue, 85%);
+
+@argento-navigation-mobile-menu-level0__border: solid @force-color__lightgray;
+@argento-navigation-mobile-menu-level0__border-width: 0 0 2px;
+@argento-navigation-mobile-menu-level0__font-family: @font-additional;
+
+@argento-navigation-mobile-account__margin: 20px 0 0;
+
+@argento-navigation-mobile-account-li-a__background: #e8e571;
+@argento-navigation-mobile-account-li-a__font-family: @font-additional;
+@argento-navigation-mobile-account-li-a__margin: 10px 20px 20px;
+@argento-navigation-mobile-account-li-a__text-align: center;
+@argento-navigation-mobile-account-li-a__text-transform: uppercase;
+
+@argento-navigation-mobile-settings-switcher__margin: 20px 0;
+@argento-navigation-mobile-settings-switcher-label__font-weight: bold;
+@argento-navigation-mobile-settings-switcher-label__text-transform: uppercase;
+@argento-navigation-mobile-settings-switcher-link__color: @text__color_light;
+
+@navigation-desktop__font-size: 16px;
+@navigation-desktop__font-weight: 600;
+@navigation-desktop__background: false;
+@submenu-desktop__border-color: #eaeaea;
+@submenu-desktop__box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.1);
+
+@navigation-desktop-level0-item__font-family: @font-additional;
+@navigation-desktop-level0-item__color: @text__color;
+@navigation-desktop-level0-item__text-transform: uppercase;
+@navigation-level0-item__font-size: 18px;
+@navigation-level0-item__font-weight: bold;
+@navigation-level0-item__padding: 16px;
+@navigation-level0-item__text-transform: uppercase;
+@navigation-level0-item__color: @text__color;
+
+@submenu-desktop-item__color: @force-color__nightblue;
+@submenu-desktop__font-size: 16px;
+
+// Navpro
+@navpro-link__color: @text__color;
+@navpro-link-level0__padding: 16px;
+@navpro-link-level0__padding-right: 16px;
+@navpro-link-level0-caret__padding: 16px; // caret is hidden in _navigation.less
+@navpro-parent-item-level0__caret: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMSIgaGVpZ2h0PSI2IiB2aWV3Qm94PSIwIDAgMTEgNiI+PGcgZmlsbD0ibm9uZSI+PGcgZmlsbD0iIzIwMjYzMyI+PHBvbHlnb24gdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzNTIgLTE3KXRyYW5zbGF0ZSgwIDgpdHJhbnNsYXRlKDEyNzAgMyl0cmFuc2xhdGUoODcuNSA5KXJvdGF0ZSgtMjcwKXRyYW5zbGF0ZSgtODcuNSAtOSkiIHBvaW50cz0iOTAgOSA4NyAxNCA4NSAxNCA4OCA5IDg1IDQgODcgNCIvPjwvZz48L2c+PC9zdmc+';
+
+@navpro-dropdown__use-shevron: false;
+@navpro-dropdown__use-animation: false;
+
+@navpro-link-parent-expanded__font-family: @font-additional;
+@navpro-link-parent-expanded__font-size: 18px;
+@navpro-link-parent-expanded__text-transform: uppercase;
+
+@navpro-link-expanded__padding-top: 4px;
+
+@navpro-category-thumbnail__filter: @force-product-photo__filter;
+
+@navpro-shop-all__font-size: .95em;
+@navpro-shop-all__text-decoration: none;
+@navpro-shop-all__border-bottom: 2px solid @force-color__yellow;
+@navpro-shop-all__hover__border-bottom: 2px solid shade(@force-color__yellow, 10%);
+
+@navpro-slideout-logo__margin-left: 15px;
+@navpro-slideout-toggle__position: static;
+@navpro-slideout-toggle__margin: 21px 0 22px 8px;
+@navpro-theme__dark-bar__background: #1d262d;
+
+//
+//  Breadcrumbs
+//  _____________________________________________
+@breadcrumbs__container-margin: 24px 0 16px;
+@breadcrumbs__font-size: 12px;
+
+@breadcrumbs-icon__use: false;
+
+@breadcrumbs-link__color: #8f98a1;
+
+@argento-breadcrumbs__text-transform: uppercase;
+@argento-breadcrumbs-link__font-weight: bold;
+
+
+//  Footer
+@footer__background-color: @force-color__nightblue;
+@footer-links-color: @link__color;
+@footer-links-color-hover: @link__color;
+@footer-links-color-current: @link__color;
+
+//
+//  Newsletter
+//  _____________________________________________
+@argento-newsletter-input__height: 40px;
+@argento-newsletter-input__padding: 12px 15px;
+@argento-newsletter-input__border: 0;
+@argento-newsletter-input__font-size: 16px;
+
+//
+//  Links
+//  ---------------------------------------------
+
+@link__color: #8F98A1;
+@link__text-decoration: none;
+
+@link__visited__color: @link__color;
+@link__visited__text-decoration: none;
+
+@link__hover__color: @link__color;
+@link__hover__text-decoration: underline;
+
+@link__active__color: @link__color;
+@link__active__text-decoration: underline;
+
+//
+//  Layered Navigation
+//  _____________________________________________
+@argento-layered-block-title__border: 2px solid @border-color__base;
+@argento-layered-block-title__border-radius: 0;
+@argento-layered-block-title__box-shadow: none;
+@argento-layered-block-title__line-height: 20px;
+@argento-layered-block-title__padding: 8px 12px;
+
+@argento-layered-block-subtitle__background: #e8e571;
+@argento-layered-block-subtitle__border: 2px solid currentColor;
+@argento-layered-block-subtitle__font-size: 18px;
+@argento-layered-block-subtitle__margin: 0 0 -2px;
+@argento-layered-block-subtitle__padding: 16px;
+@argento-layered-block-subtitle__desktop__padding-left: false;
+@argento-layered-block-subtitle__desktop__padding-right: false;
+
+//
+//  Listing
+//  _____________________________________________
+@argento-listing-squama__border: 1px solid transparent;
+@argento-listing-squama__height: 300px;
+@argento-listing-squama__hover__border: 1px solid #E1E1E1;
+@argento-listing-squama__hover__box-shadow: 0 6px 20px 0 rgba(0,0,0,0.13);
+
+@argento-listing-tocart__font-size: 1.6rem;
+@argento-listing-tocart__line-height: false;
+@argento-listing-tocart__padding-top: false;
+@argento-listing-tocart__padding-bottom: false;
+@argento-listing-tocart-icon__content: false;
+
+@toolbar-element-background: #fff;
+
+@pager__font-size: 18px;
+@pager__font-weight: bold;
+@pager__line-height: 36px;
+@pager__hover__color: @force-color__nightblue;
+@pager-current__background: @force-color__lightgray;
+@pager-action__border: 2px solid @border-color__base;
+@pager-icon__use: false;
+@pager-action__background: @force-icon-arrow-left no-repeat center / 10px 17px;
+@pager-action__hover__background: false;
+
+//
+//  CATEGORY PAGE
+//  _____________________________________________
+@icon-list: ''; // Magneto_Catalog/source/module/__toolbar.less doesn't use .lib-css
+@icon-grid: false;
+@hovergallery_hover-image__backgound-color: false;
+@filter-link: @text__color;
+@filter-link-hover: false;
+
+//
+//  PRODUCT PAGE
+//  _____________________________________________
+@fblike-custom-button__background: false;
+@fblike-custom-button__color: #d6dbe0;
+@fblike-custom-button__content: '\f230';
+@fblike-custom-button__font-family: 'FontAwesome';
+@fblike-custom-button__font-size: 24px;
+@fblike-custom-button__hover__color: @color-facebook;
+@fblike-custom-button__margin: 0 12px 0 0;
+@fblike-custom-button__height: false;
+@fblike-custom-button__width: false;
+@product-info-price: #6e7178;
+@product-info-price-final__color: @force-color__orange; // Argento Force variable
+@product-info-option-label__width: 100px; // Argento Force variable
+@product-info-option-select__border: 2px solid @force-color__nightblue; // Argento Force variable
+@product-info-option-value__font-size: 18px; // Argento Force variable
+@swatch-option__height: @form-element-input__height; // Argento Force variable
+@swatch-option__width: @form-element-input__height; // Argento Force variable
+@qty_dropdown__icon_down: ' ';
+@qty_dropdown__icon_up: ' ';
+@qty_dropdown_input__padding: @select__padding;
+@qty_dropdown_input__min_width: 84px;
+@qty_dropdown_trigger__margin: 0 0 0 -30px;
+@force__product-bundle__label__width: 180px;
+// Fix for tocart button near qty input. So they both match same hieght.
+// Value @force__product-box-tocart-button__padding is adjusted from @button__padding__l.
+@force__product-box-tocart-button__padding: 12px 17px;
+
+//
+//  Tabs
+//  _____________________________________________
+@accordion-control__color: @link__color;
+@accordion-control__font-size: false;
+@accordion-control__font-family: @font-additional;
+@accordion-control__text-transform: uppercase;
+@accordion-control__text-weight: bold;
+@accordion-control__text-shadow: false;
+
+@accordion-control__active__color: @text__color;
+@accordion-control__hover__color: @text__color;
+
+@accordion-content__padding: 10px 15px;
+
+@tab-control__background-color: #fafafa;
+@tab-control__border-color: @tab-control__active__color;
+@tab-control__color: false; // inherited from accordion
+@tab-control__font-family: false; // inherited from accordion
+@tab-control__font-size: false;
+@tab-control__font-weight: false; // inherited from accordion
+@tab-control__height: 63px;
+@tab-control__line-height: 63px;
+@tab-content__margin-top: 66px;
+@tab-control__text-transform: false; // inherited from accordion
+@tab-control__padding-left: 0;
+@tab-control__padding-right: 0;
+@tab-control__hover__background-color: false;
+@tab-control__hover__color: false; // inherited from accordion
+@tab-control__active__background-color: false;
+
+@tab-content__background-color: #fafafa;
+@tab-content__border: false;
+@tab-content__padding-left: 48px;
+@tab-content__padding-right: 48px;
+@tab-content__padding-top: 48px;
+@tab-content__padding-bottom: 0;
+@tab-control__force-photo__filter: contrast(90%); // Argento Force variable
+
+@argento-tab-control-on-screen-m-l__padding-left: false;
+@argento-tab-control-on-screen-m-l__padding-right: false;
+
+@tab-vertical-on-screen__l: false;
+
+@easytabs-expanded__border-top: 2px solid @force-color__lightgray;
+
+@easytabs-expanded-title-h2__font-size: 2rem;
+@easytabs-expanded-title-h2__line-height: normal;
+@easytabs-expanded-title-h2__margin: 10px 15px;
+@easytabs-expanded-desktop-title__padding-top: 22px;
+@easytabs-expanded-desktop-title__padding-right: 10px;
+@easytabs-expanded-desktop-title__padding-bottom: 0;
+@easytabs-expanded-desktop-title__padding-left: 10px;
+@easytabs-expanded-desktop-title-h2__font-size: 3rem;
+
+@easytabs-expanded-desktop-content__padding-top: 32px;
+@easytabs-expanded-desktop-content__padding-right: 10px;
+@easytabs-expanded-desktop-content__padding-bottom: 0;
+@easytabs-expanded-desktop-content__padding-left: 10px;
+
+//
+//  Ratings
+//  _____________________________________________
+@rating-icon__content: ''; // Argento uses background image when no icon content
+@rating-icon__active__color: false;
+@rating-icon__color: false;
+@rating-icon__font: false;
+@rating-icon__font-size: 13px; // variable used in summary width calculation
+@rating-icon__letter-spacing: 0; // variable used in summary width calculation
+
+//
+//  Review
+//  _____________________________________________
+@review-container__desktop__width: ~"calc(50% + @{tab-content__padding-right})";
+@review-add__desktop__width: 45%;
+
+@argento-review-control-vote__font-size: false;
+@argento-review-control-vote__line-height: false;
+@argento-review-control-vote__height: 24px;
+@argento-review-control-vote__letter-spacing: false;
+
+@argento-review-action-add__white-space: false;
+
+@review-ratings-left: 150px;
+
+//
+//  Ask It
+//  _____________________________________________
+@askit__border: false;
+@askit-question__box-shadow: false;
+
+//
+//  Social login
+//  _____________________________________________
+@swissup-social-login-block__account-login__justify-content: center;
+@swissup-social-login-block__account-create__justify-content: center;
+@swissup-social-login-block__account-create__margin-left: auto;
+@swissup-social-login-block__account-create__margin-right: auto;
+
+//
+//  Sticky Add To Cart
+//  _____________________________________________
+@argento-sticky-tocart__show-tocart-only: false;
+@argento-sticky-tocart-inner__border-bottom: 2px solid @force-color__lightgray;
+@argento-sticky-tocart-info__max-width: ~'calc(97% - 400px)';
+@argento-sticky-tocart-info-price__font-size: 3rem;
+@argento-sticky-tocart-fieldset__min-width: 400px;
+
+//
+//  Shopping Cart Page
+//  _____________________________________________
+@argento-cart-summary-block-title__font-size: 1.6rem;
+@argento-cart-summary-block-title__font-weight: normal;
+@argento-cart-summary-total-title__font-size: 1.8rem;
+
+//
+//  Checkout
+//  _____________________________________________
+@checkout-shipping-item__active__border-color: @force-color__yellow;
+@argento-checkout-auth-wrapper__margin-top: -64px;
+@argento-checkout-auth-wrapper__desktop__margin-top: -56px;
+@argento-checkout-discount-field__height: 42px;
+
+//
+//  Customer Account
+//  _____________________________________________
+@argento-wishlist-qty__padding: 7px 10px;
+@argento-wishlist-qty-label__min-height: 25px;
+@argento-wishlist-addto-button__font-size: 1.6rem;

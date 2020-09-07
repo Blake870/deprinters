@@ -1,0 +1,215 @@
+.swatch-option-tooltip .corner,
+.swatch-option-tooltip-layered .corner {
+    bottom: 2px !important;
+
+    &::after {
+        .left(-16px) !important;
+    }
+}
+.swatch-option-tooltip .title {
+    font-size: 15px;
+}
+
+// advanced search page css fixes
+.form.search.advanced {
+    .fields.range .field.with-addon .control {
+        .padding-right(55px);
+    }
+
+    .group.price .addon .addafter {
+        padding-top: 18px;
+    }
+
+    .fields.range .field:first-child .control:after {
+        padding-top: 10px;
+    }
+
+    .fieldset > .field .addon input {
+        width: 100%;
+    }
+}
+
+& when (@media-common = true) {
+    // styles for large buttons
+    .abs-button-l {
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+        font-weight: bold;
+    }
+
+    // modal popup - new close button
+    .modal-custom,
+    .modal-popup,
+    .modal-slide {
+        .action-close {
+            box-sizing: content-box;
+            width: 28px;
+            height: 28px;
+
+            &::before,
+            &::after {
+                content: '';
+                display: inline-block;
+
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                height: 1px;
+                width: 28px;
+                margin-left: -14px;
+                margin-top: -1px;
+
+                background: currentColor;
+            }
+            &::before {
+                transform: rotate(45deg);
+            }
+            &::after {
+                transform: rotate(-45deg);
+                color: @minicart-icons-color; // @see Magento/luma/web/css/source/components/_modals_extend.less
+            }
+
+            &:hover {
+                &::after {
+                    color: @modal-action-close__hover__color;
+                }
+            }
+        }
+    }
+
+    .page-main {
+        padding-top: 20px;
+    }
+
+    .page-before-footer {
+        border-top: 1px solid @color-gray-light5;
+        padding-top: @indent__l;
+    }
+
+    .link.compare .counter {
+        color: #7d7d7d;
+        white-space: nowrap;
+
+        &:before {
+            content: '(';
+        }
+
+        &:after {
+            content: ')';
+        }
+    }
+
+    .top-container {
+        max-width: none;
+        z-index: 2;
+
+        .easybanner-placeholder-wrapper {
+            background-color: #fff;
+            box-shadow: 0 8px 10px -10px rgba(0, 0, 0, 0.2);
+        }
+
+        .argento-page-container(~".easybanner-banner");
+        .banner-argento-stripes-benefits {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            font-size: 14px;
+
+            .separator {
+                .border-left(1px solid #D4D8DA);
+            }
+
+            .icon {
+                display: none;
+                .float(left);
+            }
+
+            .content {
+                .float(left);
+                .margin-left(10px);
+
+                .title {
+                    text-transform: uppercase;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .minicart-items {
+        .item-qty {
+            height: 36px;
+            padding: 0;
+        }
+    }
+
+    .product-item-name,
+    .product.name a {
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+
+    /* Final price color */
+    :not(.old-price) > .price-container {
+        .price-wrapper .price {
+            color: @stripes-orange__color;
+        }
+    }
+
+    .old-price {
+        text-decoration: line-through;
+
+        .price-label {
+            display: none;
+        }
+    }
+
+    /* shadow for primary action button */
+    .action.primary {
+        &.soldtogether-cart-btn
+        {
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .top-container {
+        max-width: none;
+        padding: 0;
+    }
+
+    .page-main {
+        padding-top: 60px;
+    }
+
+    .breadcrumbs {
+        max-width: none;
+        padding: 10px;
+        background-color: #fafafa;
+        border-bottom: @stripes-home__border;
+
+        .items {
+            max-width: @layout__max-width;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+
+        a,
+        a:visited {
+            color: @stripes-gray43__color;
+        }
+        strong {
+            color: #000c12;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .top-container {
+        .banner-argento-stripes-benefits {
+            .icon {
+                display: block;
+            }
+        }
+    }
+}

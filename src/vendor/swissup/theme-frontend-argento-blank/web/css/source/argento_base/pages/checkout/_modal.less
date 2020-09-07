@@ -1,0 +1,37 @@
+& when (@media-common = true) {
+    .page-layout-checkout {
+        .modal-popup {
+            pointer-events: auto;
+        }
+    }
+}
+
+& when (@media-common = true) and (@argento-checkout = true) {
+    .page-layout-checkout {
+        .modal-inner-wrap,
+        .modal-popup.modal-slide .modal-inner-wrap[class] {
+            background: @argento-checkout-section__background;
+        }
+        .modal-popup {
+            .form-shipping-address {
+                max-width: none;
+            }
+        }
+        .modal-content {
+            &:extend(.argento-scrollbar all);
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when (@argento-checkout = true) {
+        .page-layout-checkout {
+            .modal-popup {
+                .modal-title,
+                .modal-footer {
+                    border-color: #eaeaea;
+                }
+            }
+        }
+    }
+}

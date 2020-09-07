@@ -1,0 +1,108 @@
+//
+//  MOBILE
+//  _____________________________________________
+& when (@media-common = true) {
+    .sidebar {
+        .product-items {
+            .product-item {
+                .margin(0, 0, @product-grid-item-gutter-bottom, @product-grid-item-gutter);
+
+                &-info {
+                    .lib-clearer();
+
+                    .product-item-photo {
+                        margin: 0;
+                        display: inline-block;
+                        max-width: 100%;
+                        position: static; // reset wierd styles of left: 9px on hover in Magento.
+                        vertical-align: top;
+                    }
+
+                    .product-item-details {
+                        margin: 0;
+                    }
+                }
+
+                .product-reviews-summary .reviews-actions {
+                    display: inline;
+                }
+            }
+        }
+    }
+}
+
+//
+//  DESKTOP
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .sidebar {
+        .product-items {
+            .product-item-info {
+                padding: 0;
+
+                .prolabels-wrapper > div {
+                    &:extend(.abs-no-display-desktop);
+                }
+
+                .product-item-photo {
+                    position: static; // reset wierd styles of left: 9px on hover in Magento.
+                    max-width: 75px;
+                    .clear(left);
+                }
+
+                .product-item-details {
+                    .text-align(left);
+                }
+
+                .product-item-actions {
+                    &:extend(.abs-no-display-desktop);
+                }
+            }
+        }
+    }
+
+}
+//
+//  Reset Luma sidebar listing styles
+//
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    .sidebar {
+        .product-items {
+            .product-item {
+                &-info {
+                    .product-item-photo {
+                        .float(left);
+                        .left(auto);
+                        .margin(0, 10px, 0, 0);
+                        position: static;
+                        top: auto;
+                    }
+                }
+
+                &-details {
+                    .margin-left(0);
+                }
+            }
+        }
+    }
+}
+
+& when (@media-target = 'desktop') {
+    @media (max-width: 900px) {
+        .sidebar {
+            .product-items {
+                .product-item {
+                    &-info {
+                        .product-item-photo {
+                            width: 35px;
+                            .margin-right(5px);
+                        }
+                    }
+                    &-details {
+                        .margin-left(35px + 5px);
+                    }
+                }
+            }
+        }
+    }
+}

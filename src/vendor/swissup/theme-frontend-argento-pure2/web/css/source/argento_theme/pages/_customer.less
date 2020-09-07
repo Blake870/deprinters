@@ -1,0 +1,68 @@
+& when (@media-common = true) {
+
+    // Sales Order
+    .order-links {
+        margin-bottom: 25px;
+
+        .item {
+             strong, a {
+                border: none;
+                color: @tab-control__active__color;
+                .lib-css(font-size, @accordion-control__font-size);
+                .lib-css(font-weight, @accordion-control__font-weight);
+                .lib-css(margin-bottom, @accordion-control__margin-bottom);
+            }
+
+            a {
+                .lib-css(background, @accordion-control__background-color);
+                .lib-css(color, @accordion-control__color);
+
+                &:hover {
+                    .lib-css(background, @accordion-control__background-color);
+                }
+            }
+        }
+    }
+
+    .order-details-items {
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    // Sales Order
+    .abs-status-desktop {
+        margin-top: ~'calc(3.5rem - 2px)';
+    }
+
+    .order-links {
+        margin-bottom: 0;
+
+        .item {
+             strong, a {
+                text-transform: uppercase;
+                .lib-css(font-family, @tab-control__font-family);
+                .lib-css(font-size, @tab-control__font-size);
+                .lib-css(font-weight, @tab-control__font-weight);
+            }
+
+            a {
+                margin: 0;
+                .lib-css(background, @tab-control__background-color);
+                .lib-css(box-shadow, @tab-control__box-shadow);
+                .lib-css(color, @tab-control__color);
+
+                &:hover {
+                    .lib-css(background, @tab-control__hover__background-color);
+                }
+            }
+        }
+    }
+
+    .order-details-items {
+        border-top: 1px solid @tab-control__active__background-color;
+        margin-top: 0;
+    }
+}

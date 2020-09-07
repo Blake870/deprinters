@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Cms\Block\Block" name="additional-tabs" before="footer">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">product_page_additional_tabs</argument>
+                </arguments>
+            </block>
+            <container name="before-footer-container" as="before_footer" after="additional-tabs" label="Page Before Footer Container" htmlTag="div" htmlClass="page-before-footer xml-container">
+                <container name="before-footer-content" as="before_footer_content" label="Page Before Footer Content" htmlTag="div" htmlClass="content">
+                </container>
+            </container>
+        </referenceContainer>
+
+        <move element="soldtogether.product.order" destination="before-footer-content"/>
+        <move element="soldtogether.product.customer" destination="before-footer-content"/>
+        <move element="catalog.product.related" destination="before-footer-content"/>
+<!--         <move element="content" destination="before-footer-content" after="additional-tabs"/>
+        <move element="formkey" destination="main" before="before-footer-container"/>
+        <move element="product.info.main" destination="main" before="before-footer-container"/>
+        <move element="product.info.media" destination="main" before="before-footer-container"/> -->
+
+        <move element="product.info.review" destination="product.info.type" before="-"/>
+        <move element="product.info.sku" destination="product.info.main" after="page.main.title"/>
+        <move element="product.info.overview" destination="product.info.main" after="product.info.sku"/>
+        <move element="product.facebook.like" destination="product.info.social" before="-"/>
+        <move element="product.info.tabs" destination="product.info.extrahint" before="-"/>
+
+        <move element="addtocart.shortcut.buttons" destination="product.info.form.content" after="-"/>
+        <move element="addtocart.shortcut.buttons.additional" destination="product.info.options.wrapper.bottom" after="-"/>
+    </body>
+</page>

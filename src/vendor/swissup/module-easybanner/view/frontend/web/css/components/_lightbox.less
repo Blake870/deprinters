@@ -1,0 +1,29 @@
+.easybanner {
+    &-lightbox {
+        &-el {
+            border-radius: 2px;
+            box-sizing: border-box;
+            padding: @easybanner-lightbox__padding;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            background: @easybanner-lightbox__background;
+            box-shadow: @easybanner-lightbox__shadow;
+            max-width: 750px;
+            text-align: left;
+        }
+        &-content {
+            .easybanner-tiny-scrollbar();
+        }
+    }
+    &-overlay-el {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: @easybanner-lightbox-overlay__background;
+    }
+}

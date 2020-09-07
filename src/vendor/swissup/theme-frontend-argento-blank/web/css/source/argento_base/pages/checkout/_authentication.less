@@ -1,0 +1,36 @@
+& when (@media-common = true) {
+    .page-layout-checkout {
+        .authentication-wrapper {
+            .action-auth-toggle,
+            .action-auth-toggle:active,
+            .action-auth-toggle:focus {
+                .lib-css(color, @argento-checkout-auth-toggle__color);
+            }
+        }
+    }
+    & when (@argento-checkout = true) {
+        .page-layout-checkout {
+            .authentication-wrapper {
+                .lib-css(margin-top, @argento-checkout-auth-wrapper__margin-top);
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when (@argento-checkout = true) {
+        .page-layout-checkout {
+            .authentication-wrapper {
+                .lib-css(margin-top, @argento-checkout-auth-wrapper__desktop__margin-top);
+            }
+            .authentication-dropdown {
+                top: ~"calc(100% + 3px)";
+                .lib-css(border-color, @argento-checkout-section__border-color);
+                .lib-css(border-radius, @argento-checkout-section__border-radius);
+                .modal-inner-wrap {
+                    .lib-css(border-radius, @argento-checkout-section__border-radius);
+                }
+            }
+        }
+    }
+}

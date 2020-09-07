@@ -1,0 +1,189 @@
+& when (@media-common = true) {
+    .navpro {
+        &-dropdown {
+            .navpro-dropdown();
+
+            font-weight: normal;
+            position: absolute;
+            z-index: @navpro-dropdown__z-index;
+
+            // prevent scrollbars on narrow screen
+            left: -99999px;
+            top: -99999px;
+            .rtl &, .navpro-rtl & {
+                left: auto;
+                right: -99999px;
+            }
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            &.shown {
+                right: auto;
+                opacity: 1;
+                visibility: visible;
+                pointer-events: all;
+                z-index: @navpro-dropdown__z-index + 1;
+            }
+
+            &-inner {
+                box-sizing: border-box;
+                padding: @navpro-dropdown__padding;
+            }
+            &-expanded {
+                > .navpro-dropdown-inner {
+                    padding-top: 0;
+                }
+            }
+            .navpro-dropdown-expanded {
+                > .navpro-dropdown-inner {
+                    padding-left: 0;
+                    padding-right: 0;
+
+                    > .navpro-row > .navpro-col > .children > .parent-expanded {
+                        > .navpro-dropdown-expanded {
+                            > .navpro-dropdown-inner {
+                                padding: @navpro-dropdown__padding;
+                                padding-top: 0;
+                                padding-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.orientation-horizontal {
+            li {
+                &.size-boxed,
+                &.size-fullwidth,
+                &.size-fullscreen {
+                    position: static;
+                }
+            }
+        }
+    }
+
+    .dropdown-left {
+        .ui-menu-item {
+            text-align: right;
+
+            .rtl &, .navpro-rtl & {
+                text-align: left;
+            }
+        }
+    }
+
+    // This class is used in navpro.js to transform dropdowns into accordion
+    .navpro-mobile {
+        width: @navpro__sm__max-width;
+        height: 0;
+        overflow: hidden;
+        display: none;
+    }
+}
+
+& when (@media-target = 'desktop') {
+    .navpro {
+        &-dropdown {
+            & when (@navpro-dropdown__use-animation = true) {
+                @media (min-width: 1025px) {
+                    will-change: transform, opacity;
+                    transform: rotateX(20deg);
+                    transform-origin: 0 0;
+                    transition-property: transform, opacity, visibility;
+                    transition-duration: .5s, .5s, 0.5s;
+                    transition-timing-function:
+                        cubic-bezier(.2,1,.2,1),
+                        cubic-bezier(.2,1,.2,1),
+                        cubic-bezier(.2,1,.2,1);
+
+                    &.shown {
+                        transform: none !important;
+                    }
+
+                    .navpro.navpro-effect-none & {
+                        transition: none;
+                        transform: none;
+                        transition-duration: 0;
+                    }
+                    .navpro.navpro-effect-fade & {
+                        transform: none;
+                        transition-property: opacity, visibility;
+                    }
+                    .orientation-vertical & {
+                        transform: rotateY(20deg);
+                    }
+                    .navpro.navpro-effect-slidein.orientation-vertical &,
+                    .navpro.navpro-effect-slideout.orientation-vertical.dropdown-left & {
+                        .modrtl(transform, translateX(20px), translateX(-20px));
+                    }
+                    .navpro.navpro-effect-slideout.orientation-vertical &,
+                    .navpro.navpro-effect-slidein.orientation-vertical.dropdown-left & {
+                        .modrtl(transform, translateX(-20px), translateX(20px));
+                    }
+                    .navpro.navpro-effect-slidein &,
+                    .navpro.navpro-effect-slidein.navpro-accordion.orientation-vertical &,
+                    .navpro.navpro-effect-slideout.dropdown-left & {
+                        transform: translateY(20px);
+                    }
+                    .navpro.navpro-effect-slideout &,
+                    .navpro-accordion.orientation-vertical &,
+                    .navpro.navpro-effect-slideout.navpro-accordion.orientation-vertical &,
+                    .navpro.navpro-effect-slidein.dropdown-left & {
+                        transform: translateY(-20px);
+                    }
+                }
+            }
+
+            @media @navpro-breakpoint-md {
+                &.size {
+                    &-small {
+                        width: 230px;
+                    }
+                    &-medium {
+                        width: 400px;
+                    }
+                    &-large {
+                        width: 650px;
+                    }
+                    &-boxed > .navpro-dropdown-inner,
+                    &-fullwidth > .navpro-dropdown-inner,
+                    &-fullscreen,
+                    &-xlarge {
+                        width: 850px;
+                    }
+                }
+            }
+        }
+
+        &.orientation-horizontal {
+            .navpro-dropdown-level1 {
+                @media @navpro-breakpoint-md {
+                    &.size {
+                        &-boxed {
+                            .navpro-dropdown-reset();
+                            > .navpro-dropdown-inner {
+                                .navpro-container();
+                                .navpro-dropdown();
+                            }
+                        }
+                        &-boxed,
+                        &-fullwidth,
+                        &-fullscreen {
+                            max-width: none;
+                            width: 100%;
+                            left: 0 !important;
+                        }
+                        &-fullwidth {
+                            > .navpro-dropdown-inner {
+                                .navpro-container();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

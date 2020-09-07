@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root" label="Root">
+        <block class="Swissup\Attributepages\Block\Adminhtml\Page\Edit\Tab\Options" name="attributepages_page_edit_tab_options"/>
+        <block class="Magento\Backend\Block\Widget\Grid\Serializer" name="options_grid_serializer">
+            <arguments>
+                <argument name="grid_block" xsi:type="string">attributepages_page_edit_tab_options</argument>
+                <argument name="callback" xsi:type="string">getExcludedOptions</argument>
+                <argument name="input_element_name" xsi:type="string">attributepage[excluded_option_ids]</argument>
+                <argument name="reload_param_name" xsi:type="string">options_excluded</argument>
+            </arguments>
+        </block>
+    </container>
+</layout>

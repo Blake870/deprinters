@@ -1,0 +1,14 @@
+@navpro-basscss-border-width: 1px;
+@navpro-basscss-border-radius: 3px;
+
+& when (@media-common = true) {
+    .border {
+        border-style: solid;
+        border-width: @navpro-basscss-border-width;
+    }
+
+    .border-none { border: 0 }
+
+    .rounded { border-radius: @navpro-basscss-border-radius }
+    .circle  { border-radius: 50% }
+}

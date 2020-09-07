@@ -1,0 +1,19 @@
+& when (@media-target = 'desktop') {
+    @media @navpro-breakpoint-md {
+        .navpro {
+            &.orientation-horizontal {
+                > ul {
+                    // use flex to allow to align items to the center, left, right edges
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: stretch;
+
+                    > li {
+                        display: flex;
+                        align-items: flex-end;
+                    }
+                }
+            }
+        }
+    }
+}

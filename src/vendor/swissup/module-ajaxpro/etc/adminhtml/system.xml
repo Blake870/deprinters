@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="ajaxpro" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Ajaxpro</label>
+            <tab>swissup</tab>
+            <resource>Swissup_Ajaxpro::config</resource>
+            <group id="main" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Main</label>
+                <field id="cart" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show popup after product was added</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cartHandle" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add to cart dialog window type</label>
+                    <source_model>Swissup\Ajaxpro\Model\Item\Source\Handle</source_model>
+                    <depends>
+                        <field id="cart">1</field>
+                    </depends>
+                </field>
+                <field id="overrideMinicart" translate="label" type="select" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Override Minicart Sidebar</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="cartHandle">ajaxpro_popup_minicart</field>
+                    </depends>
+                </field>
+                <field id="cartType" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>The type of cart dialog window</label>
+                    <source_model>Swissup\Ajaxpro\Model\Item\Source\Type</source_model>
+                    <depends>
+                        <field id="cart">1</field>
+                    </depends>
+                </field>
+                <field id="floatingCart" translate="label" type="select" sortOrder="27" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show floating cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="product" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show product popup for product with any options</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>No - redirect to product page</comment>
+                </field>
+
+                <field id="validation" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Forced validation for ajax request in catalog</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <!-- <comment>No - redirect to product page</comment> -->
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

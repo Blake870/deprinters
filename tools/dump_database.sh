@@ -1,0 +1,1 @@
+mysqldump --set-gtid-purged=off --opt --skip-lock-tables --single-transaction --routines --triggers --max_allowed_packet=2G -h hg-prod-m-rds-cache-db.c78woqs7egzu.us-east-2.rds.amazonaws.com -u magento -pLBzccy0RgppxfZST homegrown_production | gzip > homegrown-production-$(date +%Y-%m-%d_%H-%M-%S).sql.gz

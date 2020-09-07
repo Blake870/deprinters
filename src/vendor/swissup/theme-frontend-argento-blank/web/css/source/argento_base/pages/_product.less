@@ -1,0 +1,23 @@
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    // reset responsive table styles for grouped product table
+
+    .table.grouped {
+        margin-top: @indent__base;
+
+        .col {
+            &.item,
+            &.qty {
+                display: table-cell !important;
+                padding: 5px @layout__width-xs-indent !important;
+            }
+
+            &.qty {
+                min-width: 60px;
+            }
+        }
+    }
+}

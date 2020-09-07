@@ -1,0 +1,54 @@
+<?php
+    $_options = $block->getOptions();
+    if (!count($_options)) {
+        return;
+    }
+    $_imageHelper = $block->getImageHelper();
+?>
+
+<?php foreach ($_options as $_optionsArr): ?>
+    <ul class="list-attributepages <?php echo $block->getCssClass() ?>"<?php echo $block->getCssStyle() ? ' style="' . $block->getCssStyle() . '"' : '' ?>>
+    <?php $counter = 1;
+    $number = count($_optionsArr);
+    foreach ($_optionsArr as $_option):
+        $_optionTitle = $block->escapeHtml($_option->getTitle());
+        $_image      = null;
+        $_aClassName = 'attributepages-option-title';
+        $_aInnerHtml = $_optionTitle;
+        if ($block->getUseImage($_option)) {
+            $_imageHelper = $_imageHelper->init($_option, $block->getImageType());
+            $_image       = $_imageHelper->resize($block->getWidth(), $block->getHeight());
+            $_image2x     = $_imageHelper->resize($block->getWidth() * 2, $block->getHeight() * 2);
+            if ($_image) {
+                $_aClassName = 'attributepages-option-image';
+                $_aInnerHtml = '<img src="' . $_image . '" srcset="' . $_image . ' 1x, ' . $_image2x . ' 2x" alt="' . $_optionTitle . '" title="' . $_optionTitle . '"/>';
+            }
+        }?>
+        <li class="attributepages-<?php echo $_option->getParentPage()->getIdentifier() . '-' . $_option->getIdentifier() ?>">
+            <?php if ($counter == 1): ?>
+                <span class="attributepages-parent-title">
+                    <?php echo $block->escapeHtml($_option->getParentPage()->getTitle()); ?>:
+                </span>
+            <?php endif; ?>
+            <?php if ($block->getUseLink($_option)) : ?>
+                <a href="<?php echo $_option->getUrl() ?>"
+                    title="<?php echo __("View other %1 products", $_optionTitle) ?>"
+                    class="<?php echo $_aClassName ?>"
+                ><?php echo $_aInnerHtml ?></a>
+            <?php else : ?>
+                <span class="<?php echo $_aClassName ?>"><?php echo $_aInnerHtml ?></span>
+            <?php endif; ?>
+
+            <?php if ($_linkTitle = $block->getParentPageLinkTitle($_option)) : ?>
+                <?php if ($counter == $number): ?>
+                    <a class="attributepages-parent-link"
+                        href="<?php echo $_option->getParentPage()->getUrl() ?>"
+                        title="<?php echo __($_linkTitle) ?>"
+                    ><?php echo __($_linkTitle) ?></a>
+                <?php endif; ?>
+            <?php endif; ?>
+        </li>
+        <?php $counter++;?>
+    <?php endforeach; ?>
+    </ul>
+<?php endforeach; ?>

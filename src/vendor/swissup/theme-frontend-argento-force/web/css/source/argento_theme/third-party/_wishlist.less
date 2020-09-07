@@ -1,0 +1,20 @@
+& when (@media-common = true) {
+    .product-addto-links,
+    .block-bundle-summary,
+    .product-item,
+    .table-comparison {
+        .action.towishlist {
+            &::before {
+                .force-icon(@_icon: 'heart');
+                filter: contrast(.5);
+            }
+
+            &:hover,
+            &:focus {
+                &::before {
+                    filter: none;
+                }
+            }
+        }
+    }
+}

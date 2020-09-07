@@ -1,0 +1,82 @@
+//
+//  MOBILE
+//
+& when (@media-common = true) {
+    .catalog-product-view {
+        .page-title-wrapper {
+            .text-align(left);
+            margin: 0 0 5px;
+            .page-title {
+                &:extend(.abs-argento-force-title-reset all);
+            }
+        }
+        .column.main > .block {
+            .block-title {
+                text-align: center;
+                [role="heading"] {
+                    &:extend(.abs-argento-force-title-centered all);
+                }
+            }
+        }
+        .product-add-form .product-addto-links {
+            display: block;
+            margin-bottom: 7px;
+        }
+    }
+
+    .block.soldtogether-customer-slick {
+        .slick-slide {
+            padding: 0;
+            margin: 0 @indent__xs;
+        }
+    }
+}
+
+//
+//  DESKTOP
+//
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .catalog-product-view {
+        .page-title-wrapper {
+            .page-title {
+                &:extend(.abs-argento-force-title-reset all);
+                margin: 0;
+            }
+        }
+
+        .product-info-main {
+            min-width: 400px;
+        }
+
+        .product.media {
+            max-width: ~'calc(97% - 400px)';
+        }
+
+        .column.main > .block {
+            .block-title {
+                [role="heading"] {
+                    &:extend(.abs-argento-force-title-centered all);
+                }
+            }
+        }
+    }
+
+    .is_stuck .product-info-sticky {
+        .photo img {
+            .lib-css(filter, @force-product-photo__filter);
+        }
+
+        .price-box .price-container {
+            > .price-label,
+            [data-price-type="oldPrice"] {
+                display: none !important; // Because swatches use inline style to show label
+            }
+        }
+    }
+}
+
+@import 'product/_info-main.less';
+@import 'product/_media.less';
+@import 'product/_tabs.less';
+@import 'product/_bundle.less';
+@import 'product/_downloadable.less';

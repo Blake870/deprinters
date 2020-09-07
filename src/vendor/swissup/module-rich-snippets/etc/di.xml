@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Swissup\RichSnippets\Model\Product\StructuredData">
+        <arguments>
+            <argument name="dataSnippetFactory" xsi:type="array">
+                <item name="image" xsi:type="object">Swissup\RichSnippets\Model\Product\StructuredData\ImageFactory</item>
+                <item name="description" xsi:type="object">Swissup\RichSnippets\Model\Product\StructuredData\DescriptionFactory</item>
+                <item name="brand" xsi:type="object">Swissup\RichSnippets\Model\Product\StructuredData\BrandFactory</item>
+                <item name="offers" xsi:type="object">Swissup\RichSnippets\Model\Product\StructuredData\OffersFactory</item>
+                <item name="aggregateRating" xsi:type="object">Swissup\RichSnippets\Model\Product\StructuredData\AggregateRatingFactory</item>
+                <item name="review" xsi:type="object">Swissup\RichSnippets\Model\Product\StructuredData\ReviewFactory</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Swissup\RichSnippets\Model\Product\StructuredData\Offers">
+        <arguments>
+            <argument name="lowestPriceProvider" xsi:type="object">Magento\ConfigurableProduct\Pricing\Price\LowestPriceOptionsProviderInterface\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Theme\Block\Html\Breadcrumbs">
+        <plugin
+            name="swissup_richsnippets_breadcrumbs"
+            type="Swissup\RichSnippets\Plugin\Breadcrumbs"
+            sortOrder="100"
+            disabled="false" />
+    </type>
+    <type name="Magento\Catalog\Pricing\Render\FinalPriceBox">
+        <plugin
+            name="swissup_richsnippets_finalpricebox"
+            type="Swissup\RichSnippets\Plugin\FinalPriceBox"
+            sortOrder="10"
+            disabled="false" />
+    </type>
+    <type name="Magento\Review\Block\Product\ReviewRenderer">
+        <plugin
+            name="swissup_richsnippets_reviewrenderer"
+            type="Swissup\RichSnippets\Plugin\Review\ReviewRenderer"
+            sortOrder="10"
+            disabled="false" />
+    </type>
+    <type name="Magento\Review\Block\Product\View\ListView">
+        <plugin
+            name="swissup_richsnippets_listview"
+            type="Swissup\RichSnippets\Plugin\Review\ListView"
+            sortOrder="10"
+            disabled="false" />
+    </type>
+</config>

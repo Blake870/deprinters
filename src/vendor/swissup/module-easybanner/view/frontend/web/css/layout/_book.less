@@ -1,0 +1,34 @@
+.easybanner-layout-book {
+    display: flex;
+    align-items: flex-start;
+
+    &.vertical {
+        flex-direction: vertical;
+    }
+
+    > .content {
+        padding: 2em 3em;
+
+        &.center {
+            text-align: center;
+        }
+
+        .easybanner-title {
+            margin-top: 0;
+            &:after {
+                display: none;
+            }
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.5em;
+        }
+    }
+
+    @media (max-width: 767px) {
+        > img {
+            display: none;
+        }
+    }
+}

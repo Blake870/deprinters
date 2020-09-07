@@ -1,0 +1,50 @@
+.sidebar,
+.login-container {
+    .block {
+        .block-title {
+            border: 1px solid #073C66;
+            border-bottom: none;
+            background: @main-color;
+            color: @color-white;
+            padding: 0;
+            margin: 0;
+
+            strong {
+                display: block;
+                padding: 8px 11px;
+                margin: 0;
+                background: linear-gradient(to bottom, rgba(255,255,255,0.17) 0%,rgba(255,255,255,0) 100%);
+            }
+        }
+
+        .block-content,
+        > .empty {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        &.block-compare,
+        &.block-wishlist {
+            .block-title strong {
+                padding-bottom: 15px;
+            }
+
+            .counter {
+                color: @color-white;
+                float: left;
+                margin-left: 11px;
+                margin-top: -20px;
+            }
+        }
+    }
+}
+
+aside div.block .block-title strong,
+.account .column.main div.block .block-title strong,
+.catalog-category-view .column.main div.block .block-title strong {
+    color: #000;
+}
+
+.breadcrumbs + .page-main .page-title-wrapper .page-title {
+    margin-top: 10px;
+}

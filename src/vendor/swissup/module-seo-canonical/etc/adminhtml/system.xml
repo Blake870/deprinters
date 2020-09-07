@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="swissup_seocanonical" translate="label" type="text" sortOrder="305" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Canonical URLs</label>
+            <tab>swissup_seocore</tab>
+            <resource>Swissup_SeoCanonical::seocanonical_config</resource>
+            <group id="category" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Categories</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable canonical URL for category</label>
+                    <comment><![CDATA[If you have enabled SEO enhancements for pagination then it may affect this config option. Check <a href="http://docs.swissuplabs.com/m2/extensions/seo-pager/">SEO Pagination module page</a> to find out more.]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="product" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Products</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable canonical URL for product</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="use_parent" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use parent product for canonical</label>
+                    <comment>When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="parent_types" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allowed parent types</label>
+                    <source_model>Swissup\SeoCanonical\Model\System\Config\Source\Producttypes</source_model>
+                    <depends>
+                        <field id="use_parent">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="cms_page" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>CMS Pages</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable canonical URL for CMS pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

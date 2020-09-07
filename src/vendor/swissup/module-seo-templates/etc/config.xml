@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <swissup_seotemplates>
+            <general>
+                <force>0</force>
+            </general>
+            <optimize>
+                <meta_title_length>70</meta_title_length>
+                <meta_title_etc />
+                <meta_description_length>170</meta_description_length>
+                <meta_description_etc>…</meta_description_etc>
+            </optimize>
+            <cron>
+                <page_size>150</page_size>
+            </cron>
+        </swissup_seotemplates>
+    </default>
+</config>

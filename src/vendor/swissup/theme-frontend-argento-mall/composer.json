@@ -1,0 +1,34 @@
+{
+    "name": "swissup/theme-frontend-argento-mall",
+    "description": "Most advanced responsive theme for Magento",
+    "keywords": [
+        "argento",
+        "mall",
+        "responsive theme",
+        "responsive template",
+        "theme",
+        "template"
+    ],
+    "type": "magento2-theme",
+    "version": "1.15.1",
+    "license": "OSL-3.0",
+    "require": {
+        "swissup/theme-frontend-argento-blank": "*"
+    },
+    "autoload": {
+        "files": [ "registration.php" ]
+    },
+    "extra": {
+        "swissup": {
+            "purchase_code": "TM_ArgentoArgento",
+            "links": {
+                "marketplace"   : "https://marketplace.magento.com/swissup-argento-m2.html",
+                "store"         : "http://argentotheme.com/",
+                "download"      : "https://argentotheme.com/downloadable/customer/products/",
+                "identity_key"  : "https://argentotheme.com/license/customer/activation/",
+                "docs"          : "http://docs.swissuplabs.com/m2/argento/",
+                "changelog"     : "http://docs.swissuplabs.com/m2/argento/changelog/"
+            }
+        }
+    }
+}

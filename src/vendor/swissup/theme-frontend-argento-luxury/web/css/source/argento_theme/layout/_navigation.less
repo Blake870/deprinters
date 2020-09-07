@@ -1,0 +1,28 @@
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .navigation > ul {
+        text-align: center;
+        justify-content: center;
+        max-width: @layout__max-width;
+        margin: 0 auto;
+
+        li {
+            .text-align(left);
+        }
+
+        li.level-top {
+            letter-spacing: @navigation-desktop-level0-item__letter-spacing;
+        }
+
+    }
+
+    .nav-sections {
+        background: @navigation-section__background;
+        border-bottom: 1px solid @navigation-section__border-color;
+
+        &.is_stuck {
+            border-bottom-color: @navigation-sticked-section__border-color;
+            transition: background-color 300ms linear,
+                        border-color 300ms linear;
+        }
+    }
+}

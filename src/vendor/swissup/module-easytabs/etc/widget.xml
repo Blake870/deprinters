@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="swissup_easytabs" class="Swissup\Easytabs\Block\WidgetTabs" is_email_compatible="false"
+        placeholder_image="Swissup_Easytabs::images/widget.gif" ttl="86400">
+        <label translate="true">Easytabs</label>
+        <description><![CDATA[List of tabs from "Swissup" &rarr; "Easytabs" with option 'Hidden on Product'.]]></description>
+        <parameters>
+            <parameter name="filter_tabs" xsi:type="multiselect" source_model="Swissup\Easytabs\Model\Config\Source\WidgetTabs" visible="true">
+                <label translate="true">Tabs to show</label>
+                <description></description>
+            </parameter>
+            <parameter name="tabs_layout" xsi:type="select" source_model="Swissup\Easytabs\Model\Config\Source\Layout" visible="true">
+                <label translate="true">Layout</label>
+                <description></description>
+            </parameter>
+            <parameter name="template" xsi:type="text" visible="false">
+                <label translate="true">Template</label>
+                <value>Swissup_Easytabs::tabs.phtml</value>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

@@ -1,0 +1,64 @@
+$rating-star-size: 25px 25px;
+$rating-star-color: lighten($mango-tango, 10%);
+$rating-star-width: 25px;
+$rating-star-height: 25px;
+
+$rating-star-icon         : $fa-icon-star;
+$rating-star-half-icon    : $fa-icon-star-half;
+$rating-star-outline-icon : $fa-icon-star-outline;
+
+.icon-star {
+    @include icon-fa(
+        $icon: $rating-star-icon,
+        $size: $rating-star-size,
+        $color: $rating-star-color,
+        $width: $rating-star-width,
+        $height: $rating-star-height
+    );
+}
+.icon-star-half {
+    @include icon-fa(
+        $icon: $rating-star-half-icon,
+        $size: $rating-star-size,
+        $color: $rating-star-color,
+        $width: $rating-star-width,
+        $height: $rating-star-height
+    );
+}
+.icon-star-outline {
+    @include icon-fa(
+        $icon: $rating-star-outline-icon,
+        $size: $rating-star-size,
+        $color: $mid-grey,
+        $width: $rating-star-width,
+        $height: $rating-star-height,
+        $weight: normal
+    );
+}
+
+.rating-summary {
+    display: inline-block;
+    vertical-align: middle;
+
+    .label,
+    .rating-result span {
+        display: none;
+    }
+    a {
+        text-decoration: none;
+        @include on-event {
+            text-decoration: none;
+        }
+        i {
+            cursor: pointer;
+        }
+    }
+    i {
+        cursor: default;
+        font-style: normal;
+        @include margin-left(-6px);
+        &:first-child {
+            margin: 0;
+        }
+    }
+}

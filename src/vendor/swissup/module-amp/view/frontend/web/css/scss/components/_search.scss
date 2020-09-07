@@ -1,0 +1,61 @@
+$search-form-background: transparent !default;
+$search-form-padding: 5px 0 !default;
+$search-form-border-radius: 3px !default;
+
+$search-field-border: 1px solid lighten($mid-grey, 10%) !default;
+$search-field-background-color: #fff !default;
+$search-field-padding: 6px !default;
+
+$search-button-width: 40px !default;
+$search-button-height: 40px !default;
+$search-button-icon: $fa-icon-search !default;
+$search-button-size: null !default;
+$search-button-color: null !default;
+$search-button-weight: null !default;
+
+$search-lightbox-background-color: #fff !default;
+
+.search-icon {
+    @include icon-fa(
+        $icon: $search-button-icon,
+        $size: $search-button-size,
+        $color: $search-button-color,
+        $width: $search-button-width,
+        $height: $search-button-height,
+        $weight: $search-button-weight
+    );
+}
+
+.block-search .minisearch {
+    background: $search-form-background;
+    padding: $search-form-padding;
+    border-radius: $search-form-border-radius;
+
+    .actions,
+    .field.search {
+        display: inline-block;
+    }
+
+    .field.search {
+        width: calc(100% - #{$search-button-width} - 5px);
+    }
+
+    .actions {
+        width: $search-button-width;
+    }
+
+    label,
+    .action span {
+        display: none;
+    }
+    input {
+        box-sizing: border-box;
+        padding: $search-field-padding;
+        max-width: none;
+        border: $search-field-border;
+        background-color: $search-field-background-color;
+    }
+    button {
+        @extend .search-icon;
+    }
+}

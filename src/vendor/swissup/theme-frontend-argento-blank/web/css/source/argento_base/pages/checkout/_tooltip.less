@@ -1,0 +1,44 @@
+& when (@media-common = true) {
+    .field-tooltip .field-tooltip-content {
+        -webkit-filter: drop-shadow(@checkout-tooltip-content__drop-shadow);
+        filter: drop-shadow(@checkout-tooltip-content__drop-shadow);
+
+        span {
+            > :first-child {
+                margin-top: 0;
+            }
+        }
+    }
+
+    & when (@argento-checkout = true) {
+        .field-tooltip {
+            top: @argento-checkout-field__height / 2  - 16px;
+        }
+    }
+}
+
+& when (@media-target = 'desktop') {
+    // Magento bugfix. @see https://github.com/magento/magento2/pull/22258
+    @media (max-width: @screen__m) {
+        .field-tooltip .field-tooltip-content::before {
+            border-bottom-color: @checkout-tooltip-content__border-color;
+        }
+        .field-tooltip .field-tooltip-content::after {
+            border-bottom-color: @checkout-tooltip-content__background-color;
+        }
+
+        & when (@argento-checkout = true) {
+            .field-tooltip .field-tooltip-content {
+                width: 200px;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    & when (@argento-checkout = true) {
+        .field-tooltip .field-tooltip-content {
+            width: 140px;
+        }
+    }
+}

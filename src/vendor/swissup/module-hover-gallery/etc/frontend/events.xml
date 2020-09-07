@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="catalog_block_product_list_collection">
+        <observer name="swissup_hovergallery_append_media_gallery_before_html"
+            instance="Swissup\HoverGallery\Observer\AppendMediaGalleryBeforeHtml" />
+    </event>
+</config>

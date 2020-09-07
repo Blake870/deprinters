@@ -1,0 +1,123 @@
+& when (@media-common = true) {
+    & when (@argento-dir = rtl) {
+        .logo {
+            float: right;
+            margin: 0 @indent__xl @indent__s 0;
+        }
+
+        .minicart-wrapper {
+            float: left;
+
+            .block-minicart {
+                left: 0;
+                right: auto;
+
+                &:before {
+                    left: 26px;
+                    right: auto;
+                }
+
+                &:after {
+                    left: 25px;
+                    right: auto;
+                }
+            }
+        }
+
+        .minicart-items {
+            .product {
+                > .product-item-photo,
+                > .product-image-container {
+                    float: right;
+                }
+
+                .toggle {
+                    &:after {
+                        left: @indent__base;
+                        right: auto;
+                        margin: 0 @indent__xs 0 0;
+                    }
+                }
+            }
+
+            .product-item-details {
+                padding-left: 0;
+                padding-right: 88px;
+
+                .values {
+                    margin-right: 0;
+                }
+            }
+
+            .item-qty {
+                margin-left: @indent__s;
+                margin-right: 0;
+            }
+        }
+
+        .block-search {
+            .label {
+                float: left;
+
+                &:before {
+                    margin: 0 0 0 @indent__s;
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when (@argento-dir = rtl) {
+        .header {
+            &.panel {
+                > .header.links {
+                    float: left;
+                    margin-left: 0;
+                    margin-right: auto;
+
+                    > li {
+                        margin: 0 15px 0 0;
+                    }
+
+                    > .authorization-link:after {
+                        margin: 0 @indent__xs 0 -@indent__xs;
+                    }
+                }
+            }
+        }
+
+        .page-header {
+            .switcher {
+                float: left;
+                margin-left: -6px;
+                margin-right: 15px;
+            }
+        }
+
+        .minicart-wrapper {
+            margin-left: 0;
+            margin-right: 13px;
+
+            .block-minicart {
+                left: -15px;
+                right: auto;
+            }
+        }
+
+        .block-search {
+            float: left;
+            padding-left: 0;
+            padding-right: 15px;
+
+            input {
+                padding: 0 9px 0 35px;
+            }
+
+            .action.search {
+                left: @indent__s;
+                right: auto;
+            }
+        }
+    }
+}

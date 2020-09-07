@@ -1,0 +1,11 @@
+<?php if ($block->canUsePrevNext()): ?>
+    <?php if (!$block->isFirstPage()): ?>
+<link rel="prev" href="<?= /* @escapeNotVerified */ $block->getPreviousPageUrl() ?>" />
+    <?php endif; ?>
+    <?php if (!$block->isLastPage()): ?>
+<link rel="next" href="<?= /* @escapeNotVerified */ $block->getNextPageUrl() ?>" />
+    <?php endif; ?>
+<?php endif; ?>
+<?php if ($block->canUseCanonical()): ?>
+<link rel="canonical" href="<?= /* @escapeNotVerified */ $block->getViewAllPageUrl() ?>" />
+<?php endif; ?>

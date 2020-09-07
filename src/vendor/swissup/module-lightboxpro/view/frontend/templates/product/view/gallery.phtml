@@ -1,0 +1,69 @@
+<?php
+/* @var $block \Magento\Catalog\Block\Product\View\Gallery */
+$helper = $this->helper('Swissup\Lightboxpro\Helper\Config')->init($block);
+$mainImageWidth = $helper->getMainImageWidth();
+$mainImageHeight = $helper->getMainImageHeight();
+$thumbnailWidth = $helper->getThumbnailWidth();
+$thumbnailHeight = $helper->getThumbnailHeight();
+$images = $block->getGalleryImagesJson();
+$mainImage = $helper->getMainImage($images);
+$mainImageLabel = $helper->getMainImageLabel($images);
+?>
+<div class="gallery-placeholder _block-content-loading" data-gallery-role="gallery-placeholder">
+    <div class="loader">
+        <div class="fotorama-item fotorama" data-gallery-role="gallery">
+            <div class="fotorama__wrap fotorama__wrap--css3 fotorama__wrap--slide fotorama__wrap--toggle-arrows" style="min-width: 0px; max-width: 100%;">
+                <div class="fotorama__stage" data-fotorama-stage="fotorama__stage">
+                    <div class="fotorama__stage__shaft fotorama__grab" tabindex="0" data-gallery-role="stage-shaft">
+                        <div class="fotorama__stage__frame fotorama_vertical_ratio fotorama__loaded fotorama__loaded--img" aria-hidden="false" data-active="true" style="left: 0px;">
+                            <img src="<?= $mainImage ?>" alt="<?= $mainImageLabel ?>" class="fotorama__img" aria-hidden="false">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+require(['jquery'], function($) {
+    'use strict';
+    var width = $('.fotorama-item').width(),
+        ratio = <?= $mainImageWidth / $mainImageHeight ?>,
+        height = Math.round(width / ratio);
+
+    $('.loader .fotorama__stage').css({'width': width, 'height': height});
+});
+</script>
+<script type="text/x-magento-init">
+    {
+        "[data-gallery-role=gallery-placeholder]": {
+            "mage/gallery/gallery": {
+                "mixins":["magnifier/magnify"],
+                "magnifierOpts": <?= $helper->getMagnifierJson() ?>,
+                "data": <?= $images ?>,
+                "options": <?= $helper->getOptions() ?>,
+                "fullscreen": <?= $helper->getFullscreenOptions() ?>,
+                "breakpoints": <?= $helper->getBreakpoints() ?>
+            }
+        }
+    }
+</script>
+
+<!--Fix for broken fullscreen on mobile with "navdir": "vertical"-->
+<?php if ($helper->isAdvancedPopup()): ?>
+<script type="text/javascript">
+    require([
+        'jquery'
+    ], function ($) {
+        'use strict';
+        var element = $('[data-gallery-role=gallery-placeholder]');
+
+        element.on('gallery:loaded', function () {
+            element.find('[data-gallery-role="gallery"]')
+                .on('fotorama:fullscreenenter', function() {
+                    setTimeout($(this).data('fotorama').resize, 0);
+            });
+        });
+    });
+</script>
+<?php endif; ?>

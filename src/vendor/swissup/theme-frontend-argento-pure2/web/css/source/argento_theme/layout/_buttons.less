@@ -1,0 +1,22 @@
+& when (@media-common = true) {
+    // Checkout button
+    .cart-summary {
+        .checkout-methods-items {
+            .action.primary.checkout {
+                .argento-button-primary-invert-state();
+            }
+        }
+    }
+
+    // Add to cart and checkout buttons
+    .box-tocart,
+    .block-minicart {
+        .actions {
+            .action {
+                &.primary {
+                    .argento-button-primary-invert-state();
+                }
+            }
+        }
+    }
+}

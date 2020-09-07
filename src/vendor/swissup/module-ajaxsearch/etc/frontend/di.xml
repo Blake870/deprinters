@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Swissup\Ajaxsearch\Model\Adapter\Mysql\ScoreBuilderFactory" type="Magento\Framework\Search\Adapter\Mysql\ScoreBuilderFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">Swissup\Ajaxsearch\Model\Adapter\Mysql\ScoreBuilder</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\Search\Adapter\Mysql\Query\Builder\Match">
+        <arguments>
+            <argument name="fulltextHelper" xsi:type="object">Swissup\Ajaxsearch\Helper\Mysql\Like</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Search\Adapter\Mysql\Mapper">
+        <arguments>
+            <argument name="scoreBuilderFactory" xsi:type="object">Swissup\Ajaxsearch\Model\Adapter\Mysql\ScoreBuilderFactory</argument>
+        </arguments>
+    </type>
+</config>

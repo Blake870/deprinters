@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Magento\Framework\Image\Adapter\Gd2" type="Swissup\Pagespeed\Image\Adapter\Gd2"/>
+    <preference for="Magento\Framework\Image\Adapter\ImageMagick" type="Swissup\Pagespeed\Image\Adapter\ImageMagick"/>
+
+    <preference for="Magento\Framework\View\Asset\Minification" type="Swissup\Pagespeed\Model\View\Asset\Minification"/>
+
+    <!-- <type name="Magento\Framework\View\Asset\Config">
+        <plugin name="swissup_pagespeed_mobile" type="Swissup\Pagespeed\Plugin\View\Asset\Config" />
+    </type> -->
+
+    <type name="Magento\Framework\View\Url\CssResolver">
+        <plugin name="swissup_pagespeed_css_merge_content" type="Swissup\Pagespeed\Plugin\View\Url\CssResolver" />
+    </type>
+
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="swissup_pagespeed_images_resize" xsi:type="object">Swissup\Pagespeed\Console\Command\ImagesResizeCommand</item>
+                <!-- <item name="swissup_pagespeed_js_bundling" xsi:type="object">Swissup\Pagespeed\Console\Command\AdvancedJsBundlingCommand</item> -->
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- <virtualType name="Swissup\Pagespeed\Model\View\Asset\ImageFactory" type="Magento\Catalog\Model\View\Asset\ImageFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="object">Swissup\Pagespeed\Model\View\Asset\Image</argument>
+        </arguments>
+    </virtualType> -->
+
+    <virtualType name="defaultFastImageSize" type="FastImageSize\FastImageSize" shared="true" />
+    <type name="Swissup\Pagespeed\Service\ImageSize\Adapter\FastImageSizeAdapter">
+       <arguments>
+           <argument name="parser" xsi:type="object">defaultFastImageSize</argument>
+       </arguments>
+    </type>
+    <preference for="Swissup\Pagespeed\Service\ImageSize\Adapter\ImageSizeInterface" type="Swissup\Pagespeed\Service\ImageSize\Adapter\FastImageSizeAdapter" />
+</config>

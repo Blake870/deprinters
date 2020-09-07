@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Swissup\SeoPager\Block\Head" name="seo.pager.head.links" template="head/links.phtml" ifconfig="swissup_seopager/general/enabled" />
+        </referenceBlock>
+        <referenceBlock name="product_list_toolbar_pager">
+            <arguments>
+                <argument translate="true" name="anchor_text_for_view_all" xsi:type="string">All products</argument>
+            </arguments>
+            <action method="setTemplate" ifconfig="swissup_seopager/general/enabled">
+                <argument name="template" xsi:type="string">Swissup_SeoPager::html/pager.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

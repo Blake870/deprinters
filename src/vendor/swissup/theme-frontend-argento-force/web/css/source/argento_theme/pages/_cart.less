@@ -1,0 +1,67 @@
+& when (@media-common = true) {
+    .checkout-cart-index {
+        .cart-empty {
+            text-align: center;
+        }
+
+        .cart.table-wrapper {
+            .col.qty .input-text {
+                width: 60px;
+                padding: 5px 15px;
+            }
+        }
+
+        .item-info {
+            img {
+                &.photo,
+                &.product-image-photo {
+                    .lib-css(filter, @force-product-photo__filter);
+                }
+            }
+
+            .item-options {
+                font-size: 1.4rem;
+            }
+
+            .product-item-name a {
+                font-weight: 600;
+            }
+        }
+
+        .cart-summary {
+            .block {
+                > .title {
+                    &::after {
+                        &:extend(.argento-force-toggle-trigger);
+                        content: '';
+                        top: 2px;
+                    }
+                }
+
+                &.active > .title::after {
+                    transform: scale(1, -1);;
+                }
+
+                .item-options {
+                    .field {
+                        .radio {
+                            margin-top: -2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .checkout-cart-index {
+        .cart.main.actions {
+            .action.continue {
+                &::before {
+                    .force-icon('arrow', 'left', 12px);
+                }
+            }
+        }
+    }
+}

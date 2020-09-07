@@ -1,0 +1,62 @@
+& when (@media-common = true) and (@argento-checkout = true) {
+    .page-layout-checkout {
+        .page-header {
+            border-bottom: @argento-checkout-section__border;
+            box-shadow: @argento-checkout-page-header__box-shadow;
+        }
+        .opc-wrapper {
+            margin: 0;
+        }
+    }
+}
+
+& when (@media-target = 'desktop') and (@argento-checkout = true) {
+    @media (width: @screen__m) {
+        .page-layout-checkout {
+            .opc-wrapper {
+                .padding-right(15px);
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    & when (@argento-checkout = true) {
+        .page-layout-checkout:not(.firecheckout) {
+            .page-header {
+                margin-bottom: @argento-checkout-page-header__margin-bottom;
+            }
+            .page-main {
+                padding-top: 0;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when (@argento-checkout = true) {
+        .page-layout-checkout:not(.firecheckout) {
+            .header.content,
+            .page-main {
+                max-width: @argento-checkout-layout__max-width;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when (@argento-checkout = true) {
+        .page-layout-checkout {
+            .page-header .header.content {
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+            .logo {
+                margin: 0;
+            }
+            .page-main {
+                padding-top: 15px;
+            }
+        }
+    }
+}

@@ -1,0 +1,106 @@
+& when (@media-common = true) {
+    div.swiper-container { // override original swiper styles
+        text-align: center;
+
+        &-horizontal > .swiper-pagination-bullets {
+            bottom: 0.4em;
+        }
+
+        .swiper-slide {
+            height: auto;
+        }
+    }
+
+    .swiper-slide {
+        img {
+            vertical-align: top; /* http://stackoverflow.com/questions/17505418/link-wrapped-around-image-makes-div-slightly-taller */
+        }
+    }
+
+    .easyslide-description {
+        position: absolute;
+        overflow: hidden;
+        padding: 15px 20px;
+        text-align: left;
+        font: 12px Arial, Helvetica, sans-serif !important;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+
+        &-top {
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        &-bottom {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        &-right {
+            right: 0;
+            top: 0;
+            width: 200px;
+            min-height: 1000px;
+        }
+
+        &-left {
+            left: 0;
+            top: 0;
+            width: 200px;
+            min-height: 1000px;
+        }
+
+        &-center {
+            left: 50%;
+            top: 0;
+            width: 200px;
+            margin-left: -100px;
+            min-height: 1000px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #5a5a5a;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        p {
+            line-height: 20px;
+            text-align: center;
+        }
+    }
+
+    .easyslide-background {
+        &-light {
+            background: rgba(255, 255, 255, .65);
+            color: #000;
+        }
+
+        &-dark {
+            background: rgba(0, 0, 0, .65);
+            color: #fff;
+        }
+
+        &-transparent {
+            color: #000;
+        }
+    }
+
+    .easyslide-link {
+        display: block;
+    }
+
+    .columns .column.main {
+        min-width: 0; // fix calculate slider width with flexbox elements - commit f6f4ce7
+    }
+
+    .swiper-lazy-preloader ~ * {
+        visibility: hidden;
+    }
+
+}

@@ -1,0 +1,73 @@
+& when (@media-common = true) and (@argento-checkout = true) {
+    .page-layout-checkout {
+        select,
+        textarea,
+        input[type="text"],
+        input[type="password"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="search"],
+        input[type="number"],
+        input[type="datetime"],
+        input[type="email"] {
+            height: @argento-checkout-field__height;
+            border: @argento-checkout-field__border;
+            padding: @argento-checkout-field__padding;
+            border-radius: @argento-checkout-field__border-radius;
+            &:focus {
+                border-color: @argento-checkout-field__focus__border-color;
+            }
+        }
+        select {
+            .padding-right(30px);
+        }
+        textarea {
+            height: auto;
+        }
+        .field .control._with-tooltip input {
+            margin-right: 0;
+            width: ~"calc(100% - 25px)";
+        }
+        .field.choice {
+            .field-note {
+                .margin(2px 0 0 22px);
+                font-size: .85em;
+                opacity: .7;
+            }
+        }
+        .opc-wrapper .form-login {
+            margin: @argento-checkout-field__margin;
+            border-color: @argento-checkout-section__border-color;
+            padding: 0;
+        }
+        .fieldset.address {
+            > div.field {
+                width: @argento-checkout-field__width;
+                margin: @argento-checkout-field__margin;
+                display: inline-block;
+                vertical-align: top;
+                &.choice {
+                    width: 100%;
+                }
+            }
+            > fieldset {
+                margin: @argento-checkout-field__margin;
+            }
+        }
+
+        .opc-wrapper {
+            .form-login {
+                margin-top: 5px;
+            }
+            .form-login,
+            .form-shipping-address {
+                max-width: none;
+            }
+        }
+
+        .fieldset > .field .fields.group .field,
+        .fieldset > .fields > .field .fields.group .field {
+            .float(left);
+        }
+    }
+}

@@ -1,0 +1,415 @@
+@import 'argento_theme/base/_fonts.less';
+
+& when (@media-common = true) {
+    .page-header {
+        border: none;
+    }
+
+    .page-footer {
+        &:extend(.jumbotron);
+        &:extend(.jumbotron.jumbotron-dark);
+        &:extend(.jumbotron-inverse);
+    }
+
+    .footer-toolbar-top {
+        &:extend(.jumbotron.jumbotron-dark);
+        &:extend(.jumbotron-inverse);
+    }
+}
+
+@media (max-width: (@screen__m - 1)) {
+    .page-main {
+        // breadcrumbs are hidden, so we need to make an air below header shadow
+        padding-top: 10px;
+    }
+}
+
+//
+//  Header
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-main .page-title-wrapper .page-title {
+        margin-top: 3.5rem;
+    }
+    .breadcrumbs + .page-main .page-title-wrapper .page-title {
+        margin-top: 1.5rem;
+    }
+    .page-header {
+        .panel.wrapper {
+            border: none;
+        }
+        .block-search {
+            order: 10;
+            margin-top: 1px;
+        }
+        .nav-sections {
+            flex-grow: 1;
+        }
+    }
+    .header.content {
+        padding: 7px 15px 10px;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    .logo {
+        margin-top: 0;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+    .compare.wrapper {
+        .float(left);
+        margin: 0 15px;
+    }
+    .minicart-wrapper {
+        order: 20;
+    }
+    // Magento 2.3.4 fix
+    .block.newsletter {
+        max-width: none;
+    }
+}
+
+//
+//  Navigation
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-header {
+        .nav-sections {
+            .float(right);
+            margin-bottom: 5px;
+        }
+        .navpro-menu {
+            justify-content: flex-end;
+        }
+    }
+}
+
+//
+//  Toolbar
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .modes-mode {
+
+        &:hover {
+            &:before {
+                color: darken(@text__color__muted, 20%);
+            }
+        }
+
+        &.active {
+            &:before {
+                color: darken(@text__color__muted, 30%);
+            }
+        }
+    }
+}
+
+//
+//  Product Listing
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .page-products,
+    .block.widget {
+        .products-grid .product-items:not(.slick-slider) .product-item {
+            .argento-listing-squama();
+
+            .cms-index-index & {
+                border: none;
+                box-shadow: none;
+
+                &:hover {
+                    .product-item-info {
+                        border: none;
+                    }
+                }
+            }
+
+            .product-item-actions {
+                margin-bottom: 0;
+            }
+            .actions-primary {
+                .text-align(left);
+            }
+            .actions-secondary {
+                .text-align(right);
+            }
+        }
+    }
+
+    .product-item-info {
+        width: auto;
+    }
+}
+
+//
+//  Product Page
+//  _____________________________________________
+.catalog-product-view {
+    .column.main {
+        .block {
+            padding-top: 30px;
+            border-top: 1px solid #e2e2e2;
+            .block-title {
+                text-align: center;
+                strong {
+                    .lib-heading(h1);
+                }
+            }
+
+        }
+        .product-info-main {
+            .page-title-wrapper {
+                h1 {
+                    margin-top: 0;
+                }
+            }
+        }
+        .product.info.detailed {
+            .block {
+                padding-top: 0;
+                border-top: none;
+            }
+        }
+    }
+}
+
+//
+//  Footer
+//  _____________________________________________
+.page-footer {
+    @_page-footer__color: desaturate(darken(@jumbotron-dark__text-color, 10%), 15%);
+
+    color: @_page-footer__color;
+    padding: 0;
+
+    .footer.content {
+        border: none;
+    }
+
+    .block {
+        &-title,
+        .title {
+            margin: 2rem 0;
+        }
+    }
+
+    .h4,
+    .block .block-title strong,
+    .block .title strong, {
+        text-transform: uppercase;
+        font-size: 1.6rem;
+        color: @_page-footer__color;
+    }
+
+    .block.newsletter {
+        width: 90%;
+        float: none;
+        .title {
+            margin-top: 0;
+            display: block;
+        }
+        .field .control::before {
+            color: @_page-footer__color;
+        }
+    }
+
+    button,
+    .action.primary {
+        background-color: transparent;
+        border-color: @_page-footer__color;
+        color: @_page-footer__color;
+
+        &:hover {
+            background-color: @_page-footer__color;
+            border-color: @_page-footer__color;
+            color: #000;
+        }
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="search"],
+    input[type="number"],
+    input[type="datetime"],
+    input[type="email"] {
+        border-color: @_page-footer__color;
+        background-color: rgba(255,255,255,0.05);
+        color: @_page-footer__color;
+        .argento-input-placeholder(@_color: @_page-footer__color);
+    }
+
+    .social-icons {
+        a:hover {
+            color: lighten(@jumbotron-dark__text-color, 20%)
+        }
+    }
+}
+.footer.content {
+    a,
+    .links a,
+    .alink {
+        color: @jumbotron-dark__text-color;
+        &:hover,
+        &:visited {
+            color: @jumbotron-dark__text-color;
+        }
+    }
+}
+.footer-toolbar-bottom {
+    color: @jumbotron-dark__text-color;
+    a,
+    .alink {
+        color: @jumbotron-dark__text-color;
+        &:hover,
+        &:visited {
+            color: @jumbotron-dark__text-color;
+        }
+    }
+}
+.footer-toolbar-bottom {
+    background-color: darken(@jumbotron-dark__background, 3%);
+
+    .copyright,
+    a,
+    a:visited,
+    a:hover {
+        color: desaturate(darken(@jumbotron-dark__text-color, 15%), 10%);
+    }
+
+    a,
+    a:visited,
+    a:hover {
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+//
+//  Secondary Blocks
+//  _____________________________________________
+.blocks-secondary {
+    .block {
+        border: none;
+        background: #fafafa;
+        padding: 10px 10px 0;
+    }
+}
+
+//
+//  Swiper
+//  _____________________________________________
+.swiper-container {
+    .swiper-button-prev,
+    .swiper-button-next {
+        opacity: .5;
+        width: 35px;
+        height: 35px;
+        margin-top: -35px;
+        border-radius: 50%;
+        background-size: 20px 20px;
+        background-position: 7px 50%;
+    }
+    .swiper-button-next {
+        background-position: 50% 50%;
+    }
+    .swiper-button-white {
+        background-color: #000;
+    }
+}
+
+//
+//  SlickCarousel
+//  _____________________________________________
+.block-carousel {
+    .block-content {
+        padding: 0 40px;
+
+        .slick-prev,
+        .slick-next {
+            width: 30px;
+            height: 30px;
+        }
+        .slick-prev:before,
+        .slick-next:before {
+            font-size: 30px;
+        }
+        .slick-prev {
+            left: -35px;
+        }
+        .slick-next {
+            right: -35px;
+        }
+    }
+}
+
+//
+//  Homepage
+//  _____________________________________________
+.cms-index-index {
+    .nav-sections {
+        margin-bottom: 0;
+    }
+    .page-main {
+        .argento-page-container(~"> .page.messages", 0);
+        max-width: none;
+        padding: 0;
+    }
+    .column.main .easycatalogimg {
+        .parent-category {
+            text-transform: uppercase;
+        }
+        .list-subcategories {
+            li {
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .columns .column.main {
+        padding-bottom: 0;
+    }
+
+    .page-footer {
+        margin: 0;
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .cms-index-index {
+        .page-header {
+            // Use for homepage only to cover main content
+            // Do not use globally to prevent elements overlapping (checkout page Log In link)
+            z-index: 499; // 499 - is a navigationpro overlay fix
+        }
+    }
+}
+
+//
+//  Homepage blocks
+//  _____________________________________________
+.block-benefits { text-align: center; }
+.block-benefits .fa-stack { margin: 0 auto; }
+.block-benefits .fa-stack .fa-stack-1x { font-size: 0.6em; line-height: 3.6em; }
+.block-benefits .fa-stack .fa-circle { color: #219291; }
+.block-benefits h3 {
+    text-transform: uppercase;
+    color: @color-gray-darken3;
+    margin: 18px 0 12px;
+}
+
+/* About us */
+.jumbotron .block-about {
+    font-size: 16px;
+}
+
+//
+//  Checkout page
+//  _____________________________________________
+.page-layout-checkout {
+    .page-main {
+        padding-top: 15px;
+    }
+}

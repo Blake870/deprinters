@@ -1,0 +1,19 @@
+.argento-tabs {
+    .actions-toolbar {
+        text-align: center;
+        margin-top: 20px;
+        .action {
+            .lib-button();
+            .lib-button-l();
+            .lib-link-as-button();
+            .argento-button-invert-state();
+            .lib-css(padding-left, @indent__xl);
+            .lib-css(padding-right, @indent__xl);
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .product.data.items > .item.content {
+        border-top: 1px solid @tab-control__active__background-color;
+    }
+}

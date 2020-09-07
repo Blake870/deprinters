@@ -1,0 +1,140 @@
+& when (@media-common = true) {
+    .account {
+        .page-title-wrapper {
+            .text-align(left);
+            .page-title {
+                &:extend(.abs-argento-force-title-reset all);
+                margin-top: 0;
+            }
+        }
+    }
+
+    .customer-account-logoutsuccess {
+        .column.main p {
+            text-align: center;
+        }
+    }
+
+    .form.create.account,
+    .form.password.forget,
+    .form.send.confirmation,
+    .login-container .block.block-new-customer,
+    .login-container .block.block-customer-login {
+        &:extend(.argento-force-section all);
+    }
+
+    // Forgot password form
+    .actions-toolbar {
+        > .secondary .action.remind {
+            &:extend(.argento-force-link-yellow all);
+            border-bottom-width: 4px;
+            text-transform: none;
+            font-weight: 600;
+            &, &:visited {
+                color: @text__color;
+            }
+        }
+    }
+
+    .wishlist-index-index {
+        .products-grid.wishlist .product-item {
+            &:nth-child(n) {
+                padding: 22px 0;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .customer-account {
+        &-login,
+        &-create,
+        &-confirmation,
+        &-forgotpassword {
+            .actions-toolbar {
+                > .primary,
+                > .secondary {
+                    display: block;
+                    width: 100%;
+                    float: none;
+                }
+
+                .action {
+                    float: none;
+                    margin: 0;
+                }
+
+                > .primary .action {
+                    width: 100%;
+                    font-size: 2.4rem;
+                    padding-top: 14px;
+                    padding-bottom: 14px;
+                }
+
+                > .secondary .action {
+                    margin-top: 14px;
+                    margin-bottom: 14px;
+                }
+            }
+        }
+    }
+
+    .account {
+        .page-title-wrapper {
+            .page-title {
+                &:extend(.abs-argento-force-title-reset all);
+            }
+        }
+    }
+
+    .login-container {
+        .fieldset > .field > .control {
+            width: 100%;
+        }
+    }
+
+    // tabs at account page
+    .order-links .item {
+        strong, a {
+            padding: 1px 25px 2px 25px;
+            margin: 0;
+            border-bottom: 0;
+        }
+        strong {
+            background: #fff;
+        }
+    }
+}
+
+// Tabs at account page for Magento 2.3.2
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .order-links .item {
+        strong, a {
+            padding: 1px 25px 2px 25px;
+            margin: 0;
+            border-bottom: 0;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .account {
+        .sidebar .product-items .product-item-info {
+            .product-item-photo {
+                width: auto;
+            }
+
+            .product-item-details {
+                .margin-left(80px);
+            }
+        }
+    }
+
+    .wishlist-index-index .products-grid.wishlist .product-item {
+        width: 100%;
+
+        &, &:first-child {
+            border-color: #ccc;
+        }
+    }
+}

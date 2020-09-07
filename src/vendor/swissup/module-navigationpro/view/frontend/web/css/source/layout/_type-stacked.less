@@ -1,0 +1,64 @@
+& when (@media-target = 'desktop') {
+    .navpro-stacked {
+        ul {
+            li.ui-menu-item {
+                position: static;
+                > .navpro-dropdown {
+                    top: -1px !important;
+                    left: 100% !important;
+
+                    .rtl &, .navpro-rtl & {
+                        left: auto !important;
+                        right: 100% !important;
+                    }
+                }
+            }
+
+            .navpro-dropdown {
+                & when (@navpro-dropdown__use-animation = true) {
+                    transition-delay: .3s;
+                }
+                &.shown {
+                    transition-delay: 0s;
+                }
+            }
+        }
+
+        .dropdown-left & {
+            ul {
+                li.ui-menu-item {
+                    > .navpro-dropdown {
+                        left: auto !important;
+                        right: 100% !important;
+                    }
+                }
+            }
+        }
+
+        // @todo: try to implement something like this (onion layers):
+        // https://tympanus.net/Development/MultiLevelPushMenu/index3.html
+        .navpro-slideout.orientation-vertical & {
+            .navpro-dropdown {
+                transition-delay: 0s;
+                top: -1px !important;
+                bottom: -1px !important;
+
+                left: 100% !important;
+                .rtl & {
+                    left: auto !important;
+                    right: 100% !important;
+                }
+            }
+        }
+        .dropdown-left.orientation-vertical & {
+            .navpro-dropdown {
+                left: auto !important;
+                right: 100% !important;
+                .rtl & {
+                    right: auto !important;
+                    left: 100% !important;
+                }
+            }
+        }
+    }
+}

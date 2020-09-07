@@ -1,0 +1,32 @@
+{
+    "name": "swissup/module-ajaxpro",
+    "description": "Ajax functionality for Add to Cart, Add to Compare, and Add to Wishlist actions",
+    "type": "magento2-module",
+    "version": "1.4.16",
+    "license": "OSL-3.0",
+    "require": {
+        "swissup/module-core": "^1.10.0",
+        "swissup/module-suggestpage": "^1.2.4",
+        "magento/framework": "^100.1|^101.0|^102.0",
+        "magento/module-catalog": "^101.1|^102.0|^103.0",
+        "magento/module-customer": "^100.1|^101.0|^102.0",
+        "magento/module-checkout": "^100.1",
+        "magento/module-store": "^100.1|^101.0",
+        "magento/module-tax": "^100.1",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Swissup\\Ajaxpro\\": ""
+        }
+    },
+    "extra": {
+        "swissup": {
+            "links": {
+                "docs"     : "http://docs.swissuplabs.com/m2/extensions/ajaxpro/",
+                "changelog": "http://docs.swissuplabs.com/m2/extensions/ajaxpro/changelog/"
+            }
+        }
+    }
+}

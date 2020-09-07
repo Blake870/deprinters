@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <lightboxpro>
+            <general>
+                <enable_zoom>0</enable_zoom>
+                <enable_popup>1</enable_popup>
+                <thumbnails>theme</thumbnails>
+                <show_caption>0</show_caption>
+            </general>
+            <size>
+                <image_width></image_width>
+                <image_height></image_height>
+                <thumbnail_width></thumbnail_width>
+                <thumbnail_height></thumbnail_height>
+            </size>
+            <popup>
+                <type>default</type>
+            </popup>
+        </lightboxpro>
+    </default>
+</config>

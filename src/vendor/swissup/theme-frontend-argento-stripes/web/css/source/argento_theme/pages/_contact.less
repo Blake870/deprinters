@@ -1,0 +1,109 @@
+& when (@media-common = true) {
+    .contact.form {
+        .contact-index-index .column.main & {
+            width: 100%; // force form to take all space in left column
+        }
+
+        .legend,
+        .note {
+            display: none;
+        }
+
+        .action.submit {
+            &:extend(.abs-button-l);
+            .lib-button-revert-secondary-color(
+                @_button-color: false,
+                @_button-background: @stripes-red__color,
+                @_button-border: @stripes-red__color,
+                @_button-background-hover: @stripes-red__color__darker,
+                @_button-border-hover: @stripes-red__color__darker,
+                @_button-background-active: @stripes-red__color__darker,
+                @_button-border-active: @stripes-red__color__darker
+            );
+            .lib-icon-font(
+                @_icon-font-content: @icon-up,
+                @_icon-font-size: 22px,
+                @_icon-font-color: false,
+                @_icon-font-position: after
+            );
+
+            &:after {
+                transform: rotate(90deg);
+                font-weight: bold;
+            }
+
+            > span {
+                .margin-right(8px);
+            }
+        }
+    }
+
+    .social-icons.red-on-gray {
+        .fa-stack {
+            color: #f1f3f6;
+        }
+
+        .fa-inverse {
+            color: @stripes-red__color;
+        }
+
+        .icon:hover {
+            .fa-inverse {
+                color: #fff;
+            }
+        }
+    }
+
+    .contact-map-placeholder {
+        background-size: cover;
+        background-position: center;
+        height: 240px;
+    }
+
+}
+
+//
+//  Desktop
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    .contact-index-index .page-main {
+        padding-bottom: 60px;
+    }
+
+    .contact.form {
+        .actions-toolbar {
+            > .primary {
+                width: ~"calc(50% - @{form-field__vertical-indent} / 2)";
+
+                .action.submit {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .contact-map-placeholder {
+        height: 320px;
+    }
+}
+
+@media (min-width: (@screen__l + 1)) {
+    .contact.form {
+        .field {
+            &.email {
+                width: ~"calc(50% - @{form-field__vertical-indent} / 2)";
+                .float(left);
+            }
+
+            &.telephone {
+                width: ~"calc(50% - @{form-field__vertical-indent} / 2)";
+                .float(right);
+            }
+
+            &.comment {
+                clear: both;
+            }
+        }
+    }
+}

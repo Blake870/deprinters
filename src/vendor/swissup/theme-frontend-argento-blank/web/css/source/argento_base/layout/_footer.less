@@ -1,0 +1,102 @@
+& when (@media-common = true) {
+    .page-before-footer,
+    .page-footer {
+        .argento-page-container();
+    }
+
+    .page-before-footer {
+        .content {
+            > :last-child {
+                margin-bottom: @indent__base;
+
+                > :last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-footer {
+        padding-bottom: 0;
+    }
+}
+
+
+.footer.content .links {
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    .text-align(left);
+    > li {
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        margin: 0 0 8px;
+        padding: 0;
+    }
+}
+.footer-toolbar {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .footer.links {
+        > li {
+            .margin(0, 0, 3px, 15px);
+            display: inline-block;
+            &:first-child {
+                .margin-left(0);
+            }
+        }
+    }
+}
+.footer-toolbar-top {
+    background: @color-gray-light01;
+    color: @text__color;
+    a,
+    .alink {
+        color: @text__color;
+    }
+}
+.footer-toolbar-bottom {
+    background: @color-gray-middle3;
+    color: @color-white;
+    a,
+    .alink {
+        color: @color-white;
+    }
+    .footer.links {
+        .float(right);
+    }
+    > .content {
+        padding: 10px @layout-indent__width;
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-footer .footer.content .switcher-store {
+        margin: 0 -10px;
+        .switcher-options {
+            .switcher-trigger,
+            .switcher-option {
+                border: 0;
+            }
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .footer-toolbar-bottom,
+    .footer-toolbar-top {
+        .text-align(center);
+    }
+}
+.copyright {
+    .lib-css(background-color, transparent);
+    .lib-css(color, inherit);
+    display: inline;
+    padding: 0;
+    text-align: inherit;
+}

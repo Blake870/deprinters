@@ -1,0 +1,10 @@
+<?php
+    $dataHelper = $this->helper('Swissup\QuantitySwitcher\Helper\Data');
+?>
+<script type="text/x-magento-init">
+{
+    ".input-text.qty": {
+        "Swissup_QuantitySwitcher/js/product": <?php /* @escapeNotVerified */ echo json_encode($dataHelper->getStockConfig(), JSON_HEX_APOS) ?>
+    }
+}
+</script>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="product.info" destination="product.info.main" after="alert.urls" />
+        <move element="product.info.addto" destination="product.info.addtocart.additional" before="-"/>
+        <move element="product.info.social" destination="product.info.extrahint" before="-" />
+        <move element="product.info.downloadable.options" destination="product.info.options.wrapper" before="-" />
+        <move element="product.info.price" destination="product.info.options.wrapper.bottom" before="-"/>
+        <move element="product.info.downloadable" destination="product.info.main" after="product.info.sku"/>
+
+        <referenceBlock name="product.price.final.copy" remove="true" />
+
+    </body>
+</page>

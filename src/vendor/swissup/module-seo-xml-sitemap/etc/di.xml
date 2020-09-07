@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Sitemap\Model\Sitemap" type="Swissup\SeoXmlSitemap\Model\Sitemap" />
+    <type name="Magento\Sitemap\Model\Sitemap">
+        <arguments>
+            <argument name="sitemapData" xsi:type="object">Swissup\SeoXmlSitemap\Helper\Data</argument>
+            <argument name="data" xsi:type="array">
+                <item name="otherFactory" xsi:type="object">Swissup\SeoHtmlSitemap\Model\LinkFactory</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Sitemap\Model\ResourceModel\Catalog\Product">
+        <arguments>
+            <argument name="catalogImageHelper" xsi:type="object">Swissup\SeoXmlSitemap\Helper\Catalog\Image</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Sitemap\Model\ResourceModel\Catalog\Category">
+        <!-- plugin to add category images -->
+        <plugin name="collectImagesForCategory"
+                type="Swissup\SeoXmlSitemap\Plugin\Sitemap\ResourceModel\Catalog\Category"
+                sortOrder="20"
+                disabled="false"/>
+    </type>
+</config>

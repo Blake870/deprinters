@@ -1,0 +1,52 @@
+$easyslide-description-gap: 20px !default;
+$easyslide-description-font-size: null !default;
+$easyslide-description-padding: 7px 10px !default;
+$easyslide-description-light-background: rgba(255,255,255,0.9) !default;
+$easyslide-description-dark-background: rgba(0,0,0,0.7) !default;
+$easyslide-description-dark-color: #fff !default;
+
+// Must be LTR for RTL & LTR languages
+.easyslide {
+    direction: ltr;
+}
+
+
+.swiper-slide {
+    position: relative;
+    a.easyslide-link {
+        display: block;
+    }
+    .easyslide-description {
+        box-sizing: border-box;
+        font-size: $easyslide-description-font-size;
+        padding: $easyslide-description-padding;
+        position: absolute;
+        bottom: 0;
+        @include left(0);
+        margin: $easyslide-description-gap;
+
+        background: $easyslide-description-light-background;
+
+        &-top {
+            top: 0;
+            bottom: auto;
+        }
+        &-right {
+            @include left(auto);
+            top: 0;
+            @include right(0);
+        }
+        &-left {
+            @include left(0);
+            top: 0;
+            bottom: auto;
+        }
+        &.easyslide-background-dark {
+            background: $easyslide-description-dark-background;
+            color: $easyslide-description-dark-color;
+        }
+        &.easyslide-background-transparent {
+            background: transparent;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <block class="Swissup\ThemeEditor\Block\Html\Header\LogoAlt" name="logo-alt">
+                <arguments>
+                    <argument name="logo_src_fallback_folder" xsi:type="string">swissup/argento/luxury/images</argument>
+                    <argument name="logo_src_fallback_config" xsi:type="string">swissup_argento_luxury/homepage/logo</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,61 @@
+& when (@media-common = true) {
+    body {
+        .direction();
+        .lib-css(background, @body__background);
+    }
+    .page-wrapper {
+        .lib-css(background-color, @page-wrapper__background-color);
+    }
+
+    .page-header,
+    .page-footer {
+        .switcher {
+            .options {
+                .lib-dropdown(
+                    @_icon-font-size: 14px,
+                    @_icon-font-line-height: 20px,
+                    @_dropdown-list-item-padding: 0
+                );
+            }
+        }
+    }
+
+    .page-container {
+        .argento-page-container();
+    }
+
+    .pages {
+        .action {
+            .lib-css(box-shadow, none);
+            padding: 0 12px;
+        }
+    }
+
+    /* Fix for https://github.com/magento/magento2/commit/d0ad63cca0b8e29b86b29c72608d034658d244a5 */
+    img {
+        height: auto;
+        max-height: none;
+    }
+
+    /*IE 11 Height fix*/
+    .ie10 .page-wrapper, .ie11 .page-wrapper {
+        height: auto;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-wrapper {
+        .lib-css(max-width, @page-wrapper__max-width);
+        .lib-css(margin, @page-wrapper__margin);
+        .lib-css(box-shadow, @page-wrapper__box-shadow);
+    }
+
+    .page-layout-1column {
+        .filter {
+            .swatch-attribute-options {
+                margin: 0;
+                padding: @indent__xs @indent__s;
+            }
+        }
+    }
+}

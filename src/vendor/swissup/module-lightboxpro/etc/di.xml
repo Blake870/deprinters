@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Block\Product\View\Gallery">
+        <plugin name="swissup-set-gallery-image-size" type="Swissup\Lightboxpro\Plugin\SetGalleryImageSize"/>
+    </type>
+    <type name="Magento\ConfigurableProduct\Helper\Data">
+        <plugin name="swissup-set-configurable-image-size" type="Swissup\Lightboxpro\Plugin\SetConfigurableImageSize"/>
+    </type>
+</config>

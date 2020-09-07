@@ -1,0 +1,124 @@
+& when (@media-common = true) {
+    .navpro {
+        .li-item {
+            &.opened {
+                z-index: @navpro-dropdown__z-index - 1;
+            }
+            &.navpro-shop-all {
+                font-weight: bold;
+            }
+        }
+        .navpro-a-with-thumbnail {
+            .lib-css(margin-bottom, @navpro-category-thumbnail__margin-bottom);
+            .lib-css(max-height, @navpro-category-thumbnail__max-height);
+            overflow: hidden;
+            img {
+                .lib-css(margin-top, @navpro-category-thumbnail-image__margin-top);
+                .lib-css(filter, @navpro-category-thumbnail__filter);
+            }
+        }
+        .level0 {
+            .children > li > a,
+            .children .parent > a,
+            .level-top {
+                text-decoration: none;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        &-dropdown {
+            .children {
+                > li > a,
+                .parent > a {
+                    display: block;
+                    line-height: inherit;
+                    color: @navpro-link__color;
+                    padding: @navpro-link__padding;
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+                .parent > a {
+                    padding-right: @navpro-link-caret__padding;
+
+                    .rtl &, .navpro-rtl & {
+                        padding: @navpro-link__padding;
+                        padding-left: @navpro-link-caret__padding;
+                    }
+                }
+            }
+
+            > .navpro-dropdown-inner > .navpro-row > .navpro-col > .children > .parent-expanded {
+                > a {
+                    .lib-css(font-family, @navpro-link-parent-expanded__font-family);
+                    .lib-css(font-size, @navpro-link-parent-expanded__font-size);
+                    .lib-css(font-weight, @navpro-link-parent-expanded__font-weight);
+                    .lib-css(color, @navpro-link-parent-expanded__color);
+                    .lib-css(padding-bottom, @navpro-link-parent-expanded__padding-bottom);
+                    .lib-css(text-transform, @navpro-link-parent-expanded__text-transform);
+                }
+            }
+            &-expanded > .navpro-dropdown-inner > .navpro-row > .navpro-col > .children > li {
+                > a {
+                    padding-top: @navpro-link-expanded__padding-top;
+                    padding-bottom: @navpro-link-expanded__padding-bottom;
+                }
+                &.navpro-shop-all > a {
+                    padding-top: @navpro-shop-all__padding-top;
+                    padding-bottom: @navpro-shop-all__padding-bottom;
+                    .lib-css(font-size, @navpro-shop-all__font-size);
+                    .lib-css(text-decoration, @navpro-shop-all__text-decoration);
+                    span {
+                        line-height: normal;
+                        .lib-css(border-bottom, @navpro-shop-all__border-bottom);
+                    }
+                    &:hover {
+                        .lib-css(text-decoration, @navpro-shop-all__hover__text-decoration);
+                        span {
+                            .lib-css(border-bottom, @navpro-shop-all__hover__border-bottom);
+                        }
+                    }
+                }
+            }
+
+            .multicolumn {
+                display: flex;
+                align-content: flex-start;
+                flex-wrap: wrap;
+                flex-direction: row;
+
+                > li {
+                    width: 100%;
+                }
+            }
+            .vertical.multicolumn {
+                flex-direction: column;
+
+                // The code below works bad on Chrome when user wants many columns
+                // display: block;
+
+                // @media @navpro-breakpoint-md {
+                //     .navpro-columns-vertical(8);
+                // }
+                // > li {
+                //     display: inline-block;
+                //     width: 100%;
+                // }
+            }
+        }
+    }
+}
+
+& when (@media-target = 'desktop') {
+    @media @navpro-breakpoint-md {
+        .navpro {
+            &-dropdown {
+                .multicolumn {
+                    .navpro-columns(8);
+                }
+            }
+        }
+    }
+}

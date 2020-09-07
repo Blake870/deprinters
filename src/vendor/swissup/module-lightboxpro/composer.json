@@ -1,0 +1,29 @@
+{
+    "name": "swissup/module-lightboxpro",
+    "description": "Lightbox Pro module for Magento 2",
+    "keywords": [
+        "product image",
+        "lightbox",
+        "zoom"
+    ],
+    "type": "magento2-module",
+    "version": "1.2.7",
+    "license": "OSL-3.0",
+    "require": {
+        "swissup/module-core": "^1.10.0"
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Swissup\\Lightboxpro\\": ""
+        }
+    },
+    "extra": {
+        "swissup": {
+            "links": {
+                "docs"     : "http://docs.swissuplabs.com/m2/extensions/lightboxpro/",
+                "changelog": "http://docs.swissuplabs.com/m2/extensions/lightboxpro/changelog/"
+            }
+        }
+    }
+}

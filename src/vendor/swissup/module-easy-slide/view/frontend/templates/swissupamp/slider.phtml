@@ -1,0 +1,44 @@
+<?php
+    if (!$slider = $block->getSlider()) return;
+    $slides = $slider->getSlides();
+    if (count($slides) < 1) return;
+
+    // detect slider width and height by first slide size
+    $ampImageHelper = $this->helper('Swissup\Amp\Helper\Image');
+    $firstSlideImage = $block->getImageRenderer()->getImageUrl($slides[0]['image']);
+    $width  = $ampImageHelper->getWidth($firstSlideImage);
+    $height = $ampImageHelper->getHeight($firstSlideImage);
+
+    $autoplay = $slider->getData('autoplay');
+?>
+<amp-carousel class="easyslide"
+    width="<?= $width ?>"
+    height="<?= $height ?>"
+    type="slides" loop
+    <?php if ($autoplay) : ?>
+        autoplay delay="<?= $autoplay ?>"
+    <?php endif ?>
+    layout="responsive">
+    <?php foreach ($slides as $slide): ?>
+        <div class="swiper-slide">
+            <?php if ($slide['url']) : ?>
+                <a href="<?= $slide['url'] ?>" class="easyslide-link">
+            <?php endif ?>
+                    <?= $block->getImageRenderer()->render($slide, $slider->getSizes(), false); ?>
+            <?php if ($slide['url']) : ?>
+                </a>
+            <?php endif ?>
+
+            <?php if (!empty($slide['description'])) : ?>
+                <?php $className = implode(' ', [
+                    'easyslide-description',
+                    "easyslide-description-{$slide['desc_position']}",
+                    "easyslide-background-{$slide['desc_background']}"
+                ]) ?>
+                <div class="<?php echo $className ?>">
+                    <?= $block->getSlideDescription($slide['description']) ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</amp-carousel>

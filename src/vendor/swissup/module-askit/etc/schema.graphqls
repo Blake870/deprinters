@@ -1,0 +1,60 @@
+# Usage example
+# {
+#   askitQuestions(store: 1) {
+#     size
+#     questions {
+#         id
+#       text
+#       email
+#       parent_id
+#       store_id
+#       customer_id
+#       customer_name
+#       email
+#       hint
+#       status
+#       is_private
+#       answers {
+#         id
+#         text
+#         email
+#         parent_id
+#         store_id
+#         customer_id
+#         customer_name
+#         email
+#         hint
+#         status
+#         is_private
+#       }
+#     }
+#   }
+# }
+
+type Query {
+
+    askitQuestions (
+        store: [Int] @doc(description: "Identifiers of the AskIt messages")
+    ): AskitMessages @resolver(class: "Swissup\\Askit\\Model\\Resolver\\Messages") @doc(description: "The AskIt message query returns information about AskIt messages")
+}
+
+type AskitMessages @doc(description: "AskIt messages information") {
+    size: Int
+    questions: [AskitMessage] @doc(description: "An array of AskIt messages")
+}
+
+type AskitMessage @doc(description: "AskIt message defines all AskIt message information") {
+    id: Int @doc(description: "AskIt message identifier")
+    parent_id: Int @doc(description: "AskIt parent_id")
+    store_id: Int
+    customer_id: Int
+    customer_name: String @doc(description: "AskIt message customer name")
+    email: String @doc(description: "AskIt message email")
+    text: String @doc(description: "AskIt message text")
+    hint: Int
+    status: Int
+    is_private: Int
+    created_time: String
+    update_time: String
+    answers: [AskitMessage]
+}

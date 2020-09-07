@@ -1,0 +1,50 @@
+//
+//  MOBILE
+//
+& when (@media-common = true) {
+    .product.media {
+        margin-bottom: @indent__m;
+    }
+
+    .fotorama {
+        &__nav-wrap .fotorama__img {
+            .lib-css(filter, @force-product-photo__filter);
+        }
+
+        & &__thumb-border {
+            border-left: 0;
+            border-right: 0;
+            border-top: 0;
+            .lib-css(border-color, @force-color__yellow);
+        }
+
+        & when not (@force-icon-arrow-left = '') and not (@force-icon-arrow-left = false) {
+            & &__arr--prev &__arr__arr,
+            & &__arr--next &__arr__arr {
+                background-image: @force-icon-arrow-left;
+                background-position: center;
+                background-size: 16px;
+            }
+
+            & &__arr--next &__arr__arr {
+                transform: translate3d(-50%, -50%, 0) // transform inheritaed from fotorama
+                            scale(-1, 1); // transform to rotate arrow
+            }
+        }
+    }
+}
+
+//
+//  DESKTOP
+//
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .product.media {
+        margin-bottom: @indent__l;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .product.media {
+        margin-bottom: @indent__xl;
+    }
+}

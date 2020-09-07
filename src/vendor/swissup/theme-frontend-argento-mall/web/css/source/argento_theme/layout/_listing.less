@@ -1,0 +1,105 @@
+& when (@media-common = true) {
+    .sidebar,
+    .product-item {
+        .action.tocart {
+            border-radius: 6px;
+        }
+    }
+}
+
+//
+//  Toolbar
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .toolbar-products {
+        padding: 5px 10px 5px 0;
+        background: #eee;
+
+        &-amount {
+            padding: 8px 0;
+        }
+
+        select {
+            background-color: @color-white;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .pages {
+            padding-left: 10px;
+
+            a {
+                &.page,
+                &.action {
+                    background: @color-white;
+                    border: 0;
+
+                    &:hover {
+                        background: #ee8308;
+
+                        span,
+                        &:before {
+                            color: @color-white;
+                        }
+                    }
+                }
+            }
+
+            .current .page {
+                background: #ee8308;
+
+                span {
+                    color: @color-white;
+                }
+            }
+        }
+    }
+
+    .modes-mode,
+    .modes-mode.active,
+    .modes-mode:last-child {
+        background: transparent;
+        box-shadow: none;
+        border: 0;
+        border-radius: 0;
+        border-right: 1px solid #fff;
+        padding: 0 10px;
+        line-height: 2.4;
+        margin-top: -5px;
+        margin-bottom: -5px;
+    }
+
+    .modes-mode:before {
+        font-size: 18px;
+    }
+
+    .modes-mode.active:before {
+        color: #274782;
+    }
+}
+
+//
+//  Product Listing
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .page-products,
+    .block.widget {
+        .products-grid .product-items:not(.slick-slider) .product-item {
+            .argento-listing-squama();
+
+            .actions-primary {
+                text-align: left;
+            }
+            .actions-secondary {
+                text-align: right;
+            }
+        }
+    }
+
+    .page-products.page-layout-1column,
+    .page-layout-1column .block.widget {
+        .products-grid .product-items:not(.slick-slider) .product-item {
+            height: 370px;
+        }
+    }
+}

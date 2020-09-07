@@ -1,0 +1,86 @@
+& when (@media-common = true) {
+    & when (@argento-dir = rtl) {
+        .nav-toggle {
+            left: auto;
+            right: 15px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when (@argento-dir = rtl) {
+        .navigation .parent > a:after {
+            content:'\f104';
+            margin: 0 3px 0 0;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    & when (@argento-dir = rtl) {
+        .nav-sections {
+            .switcher {
+                padding: .8rem 2rem .8rem 3.5rem;
+            }
+
+            .switcher-trigger strong:after {
+                left: -25px;
+                right: auto;
+            }
+        }
+
+        .navigation {
+            .parent .level-top:after{
+                left: 10px;
+                right: auto;
+            }
+
+            .level0 {
+                > .level-top {
+                    padding: 8px 15px 8px 40px;
+                }
+
+                &.active .all-category .ui-state-focus {
+                    border-width: 0 8px 0 0;
+                }
+
+                &.active > a:not(.ui-state-active),
+                &.has-active > a:not(.ui-state-active) {
+                    border-width: 0 8px 0 0;
+
+                    span:not(.ui-menu-icon) {
+                        margin-right: -8px;
+                    }
+                }
+            }
+
+            .submenu:not(:first-child) {
+                > li > a {
+                    padding-left: 0;
+                    padding-right: 15px;
+                }
+
+                &.expanded {
+                    padding-left: 0;
+                    padding-right: 15px;
+                }
+
+                .active > a {
+                    border-width: 0 8px 0 0;
+                    padding-right: 7px;
+                }
+            }
+        }
+
+        .nav-open {
+            .page-wrapper {
+                right: 80%;
+                right: calc(~'100% - @{active-nav-indent}');
+            }
+
+            .nav-sections {
+                right: 0;
+            }
+        }
+    }
+}

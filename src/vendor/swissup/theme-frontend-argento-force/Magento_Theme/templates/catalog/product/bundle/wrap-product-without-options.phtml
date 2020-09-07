@@ -1,0 +1,11 @@
+<script type="text/javascript">
+require([
+    'jquery'
+], function ($) {
+    'use strict';
+
+    $('.nested.options-list').each(function () {
+        $('> span, > input', this).wrapAll('<div class="field choice no-options"><div></div></div>');
+    });
+});
+</script>

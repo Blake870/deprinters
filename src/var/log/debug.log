@@ -1,0 +1,6 @@
+[2020-09-07 19:11:04] main.DEBUG: cache_invalidate:  {"method":"GET","url":"http:/","invalidateInfo":{"identifier":"interception"}} []
+[2020-09-07 19:14:25] main.DEBUG: cache_invalidate:  {"method":"GET","url":"https://deprinters.local/admin","invalidateInfo":{"identifier":"interception"}} []
+[2020-09-07 19:25:13] main.DEBUG: cache_invalidate:  {"method":"GET","url":"http:/","invalidateInfo":{"identifier":"interception"}} []
+[2020-09-07 19:25:42] main.DEBUG: cache_invalidate:  {"method":"GET","url":"https://deprinters.local/admin","invalidateInfo":{"identifier":"interception"}} []
+[2020-09-07 19:30:20] main.DEBUG: cache_invalidate:  {"method":"GET","url":"http:/","invalidateInfo":{"identifier":"interception"}} []
+[2020-09-07 19:30:38] main.DEBUG: cache_invalidate:  {"method":"GET","url":"http:/","invalidateInfo":{"identifier":"interception"}} []

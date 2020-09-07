@@ -1,0 +1,40 @@
+& when (@media-common = true) {
+    .block-carousel {
+        .block-content {
+            padding: 0 30px;
+            .slick-prev {
+                left: -25px;
+            }
+            .slick-next {
+                right: -25px;
+            }
+        }
+    }
+
+    .argento-init-slick {
+        .products-grid {
+            padding: 0 @indent__l;
+
+            .slick-slide {
+                padding: 0 10px;
+            }
+
+            .slick-prev {
+                left: ~"calc(-@{indent__l} + 5px)";
+            }
+            .slick-next {
+                right: ~"calc(-@{indent__l} + 5px)";
+            }
+
+            .product-item {
+                margin: 0;
+
+                &-details {
+                    :last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

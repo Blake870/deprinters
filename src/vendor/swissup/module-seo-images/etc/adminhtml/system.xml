@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="seo_images" type="text" sortOrder="2100" showInDefault="1">
+            <class>separator-top</class>
+            <label>SEO Images</label>
+            <tab>swissup_seocore</tab>
+            <resource>Swissup_SeoImages::config_seo_images</resource>
+            <group id="general" translate="label comment" sortOrder="10" showInDefault="1">
+                <label>General</label>
+                <comment>None of settings affects original images. Everything can be turned off easy and reverted to default Magento behaviour.</comment>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use SEO enhancements for your store images.</comment>
+                </field>
+            </group>
+
+            <group id="misc_string" translate="label comment" sortOrder="20" showInDefault="1">
+                <label>Misc. string in path of resized image</label>
+                <comment>Magento codes all resize parameters of image into hash string. Adds this hash to resized image path. With option below you can enable clear parameters presentation. Instead of "ea013e3e574bd4924b1531f962e2c015" you will get "240x300".</comment>
+                <field id="clear_params" translate="label" type="select" sortOrder="10" showInDefault="1">
+                    <label>Use clear parameters for product images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="image_name" translate="label" sortOrder="30" showInDefault="1">
+                <label>Image Name</label>
+                <field id="product_image" translate="label comment" type="text" sortOrder="10" showInDefault="1" canRestore="1">
+                    <label>Product image template</label>
+                    <comment><![CDATA[Magento adds file extension at the end. Template supports directives:<br /><b>{{sku}}</b> - product SKU;<br /><b>{{name}}</b> - product name;<br /><b>{{attribute code="attr_code"}}</b> - returns value of product attribute with code `attr_code`.<br />Check module docs for more details about template.]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

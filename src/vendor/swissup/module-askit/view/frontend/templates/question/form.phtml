@@ -1,0 +1,85 @@
+<?php
+    /** @var \Swissup\Askit\Block\Question\Form $block */
+
+    if (!$block->isSuitablePageType()) {
+        return;
+    }
+    $isLoggedIn = $block->isCustomerLoggedIn();
+    $configHelper = $block->getConfigHelper();
+    $isAllowedCustomerQuestion = $configHelper->isAllowedCustomerQuestion();
+    $isAllowedGuestQuestion = $configHelper->isAllowedGuestQuestion();
+
+    $showNewQuestionForm = ($isAllowedCustomerQuestion && $isLoggedIn) || $isAllowedGuestQuestion;
+    if (!$showNewQuestionForm) :
+        if ($isAllowedCustomerQuestion && !$isLoggedIn) : ?>
+            <div class="message info notlogged">
+                <div>
+                 <?php /* @escapeNotVerified */ echo __('Only registered users can write questions. Please <a href="%1">Sign in</a> or <a href="%2">Create an account</a>', $block->escapeUrl($block->getLoginLink()), $block->escapeUrl($block->getRegisterUrl())) ?>
+                </div>
+            </div>
+        <?php endif; ?>
+    <?php
+        return;
+    endif;
+    /* @var \Swissup\Askit\Helper\Form */
+    $formHelper = $block->getFormHelper();
+?>
+<div class="block askit-question-form" id="askit-question-form">
+    <button type="button" class="action askit-show-form"><?= $block->escapeHtml(__('Ask Your Question')) ?></button>
+    <div class="title block-title">
+        <strong><?= $block->escapeHtml(__('Ask Your Question')) ?></strong>
+    </div>
+    <div class="block-content">
+        <form action="<?php echo $block->escapeUrl($block->getAction()); ?>" method="post" id="askit-new-question-form" data-mage-init='{"validation":{}}'>
+            <div class="field note no-label">
+                <?php echo $block->escapeHtml(__('Jot us a note and we’ll get back to you as quickly as possible.')); ?>
+            </div>
+            <fieldset class="fieldset">
+                <?php /* @escapeNotVerified */ echo $block->getBlockHtml('formkey'); ?>
+                <input id="item_type_id" type="hidden" name="item_type_id" value="<?php echo $block->escapeHtmlAttr($block->getItemTypeId()); ?>" />
+                <input id="item_id" type="hidden" name="item_id" value="<?php echo $block->escapeHtmlAttr($block->getItemId());?>"/>
+
+                <div class="field name required">
+                    <label class="label" for="question_customer_name"><span><?php echo $block->escapeHtml(__('Name')); ?></span></label>
+                    <div class="control">
+                        <input name="customer_name" id="question_customer_name" title="<?php echo $block->escapeHtmlAttr(__('Name')); ?>" value="<?php echo $block->escapeHtml($formHelper->getUserName()) ?>" class="input-text" type="text"  data-validate="{required:true}" />
+                    </div>
+                </div>
+                <div class="field email required">
+                    <label class="label" for="question_email"><span><?php echo $block->escapeHtml(__('Email')); ?></span></label>
+                    <div class="control">
+                        <input name="email" id="question_email" title="<?php echo $block->escapeHtmlAttr(__('Email')); ?>" value="<?php echo $block->escapeHtml($formHelper->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true}" />
+                    </div>
+                </div>
+                <?php if ($isLoggedIn) :?>
+                <div class="field">
+                    <div class="control">
+                        <input name="is_private" id="question_is_private" title="<?php echo $block->escapeHtmlAttr(__('Post a private question') );?>" value="1" type="checkbox" />
+                        <label class="label" for="question_is_private">
+                            <span><?php echo $block->escapeHtml(__('Post a private question')); ?></span>
+                        </label>
+                    </div>
+                </div>
+                <?php else : ?>
+                    <input type="hidden" name="is_private" value="0" />
+                <?php endif ?>
+
+                <div class="field text required">
+                    <label class="label" for="question_text"><span><?php echo $block->escapeHtml(__('Question')); ?></span></label>
+                    <div class="control">
+                        <textarea name="text" id="question_text" title="<?php echo $block->escapeHtmlAttr(__('Question')); ?>" class="input-text" cols="5" rows="3" data-validate="{required:true}"><?php echo $block->escapeHtml($formHelper->getPostValue('text')) ?></textarea>
+                    </div>
+                </div>
+                <?php /* @escapeNotVerified */ echo $block->getChildHtml('captcha'); ?>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <!-- <input type="hidden" name="hideit" id="hideit" value="" /> -->
+                    <button type="submit" title="<?php echo $block->escapeHtml(__('Submit')); ?>" class="action submit">
+                        <span><?php echo $block->escapeHtml(__('Submit Question')); ?></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

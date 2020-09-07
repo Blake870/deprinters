@@ -1,0 +1,16 @@
+<?php
+/** @var $block Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare */
+
+$postDataParams = $block->getPostDataParams() ?:
+    $block->getCompareHelper()->getPostDataParams($block->getProduct());
+$ampHelper = $this->helper('Swissup\Amp\Helper\Catalog');
+$url = $ampHelper->getUrlFromJson('catalog/product_compare/add', $postDataParams);
+?>
+<span class="separator">|</span>
+<a href="<?= $url ?>"
+    class="action tocompare"
+    title="<?= $block->escapeHtml(__('Add to Compare')) ?>"
+    aria-label="<?= $block->escapeHtml(__('Add to Compare')) ?>"
+    role="button">
+    <span><?= /* @escapeNotVerified */ __('Add to Compare') ?></span>
+</a>

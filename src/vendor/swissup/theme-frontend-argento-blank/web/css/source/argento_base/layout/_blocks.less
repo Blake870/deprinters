@@ -1,0 +1,186 @@
+& when (@media-common = true) {
+    .page-main {
+        > .messages {
+            margin-left: auto;
+            margin-right: auto;
+            .lib-css(max-width, @layout__max-width);
+            .message {
+                margin: 15px 0;
+            }
+        }
+    }
+
+    //
+    //  Services sidebar
+    //
+    .block-product-sidebar {
+        .list-attributepages {
+            margin: 0 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid @color-gray-light5;
+        }
+        .block-services-sidebar {
+            .block-title {
+                display: none;
+            }
+        }
+    }
+    .block-services-sidebar {
+        .icon-section {
+            margin-bottom: 15px;
+            .lib-clearer();
+            .icon {
+                .float(left);
+                color: #219291;
+                .margin(0, 5px, 0, 0);
+            }
+            .section-info {
+                .margin-left(61px);
+                .section-title {
+                    margin: 0 0 0.5rem;
+                }
+            }
+        }
+    }
+
+    //
+    //  Promo Blocks
+    //  _____________________________________________
+    .block-promo {
+        .lib-css(border, @block-promo__border);
+        .lib-css(border-width, @block-promo__border-width);
+        margin: 15px 0;
+        .block-title {
+            margin: 0;
+            padding: 10px;
+            .lib-css(border, @block-promo-title__border);
+            .lib-css(border-width, @block-promo-title__border-width);
+        }
+    }
+
+    //
+    //  Secondary Blocks
+    //
+    .blocks-secondary {
+        .block {
+            border: 3px solid @tab-control__border-color;
+            padding: 5px 10px 0;
+            margin: 0 0 12px !important;
+            .block-title {
+                strong {
+                    font-weight: 300;
+                }
+            }
+            .product-item-info {
+                .lib-clearer();
+            }
+            .product-item-actions {
+                display: none;
+            }
+            .actions-toolbar {
+                border-top: 1px dashed @tab-control__border-color;
+                padding: 13px 10px 12px;
+                margin: 7px -10px 0; // -10px is taken from block padding
+                .secondary a.action {
+                    margin: 0;
+                }
+            }
+        }
+        .product-items {
+            .column.main & {
+                margin: 0;
+            }
+            margin: 0;
+            .product-item {
+                padding: 10px 0 0;
+                margin-bottom: 10px;
+                border-top: 1px solid @tab-control__border-color;
+                &:first-child {
+                    padding: 0;
+                    border-top: none;
+                }
+            }
+        }
+    }
+
+    //
+    //  Newsletter
+    //  _____________________________________________
+    .block.newsletter {
+        input {
+            padding: 0; // reset paddings for checkboxes
+            .margin-right(5px);
+        }
+        input[type="email"] {
+            .lib-css(height, @argento-newsletter-input__height);
+            .lib-css(border, @argento-newsletter-input__border);
+            .lib-css(font-size, @argento-newsletter-input__font-size);
+            .padding(@argento-newsletter-input__padding);
+            margin: 0;
+        }
+        .field .control:before {
+            line-height: 30px;
+        }
+        // Magento 2.3.2 fix for FontAwesome's sr-only class
+        .action.subscribe {
+            margin: 0 0 0 -1px;
+            position: static;
+            width: auto;
+            height: auto;
+        }
+        .mage-error {
+            .text-align(left);
+        }
+    }
+
+    //
+    //  Block with product grid and slick carousel
+    //  _____________________________________________
+    .argento-init-slick {
+        .block.widget .products-grid {
+            .product-item {
+                margin: 0 !important; // force slides in one line
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .block-collapsible-nav {
+        background: #fff;
+        & when not (@header__margin-bottom = false) {
+            top: -(@header__margin-bottom + 1px);
+        }
+        .title {
+            .lib-css(border-top, @collapsible-nav-title__border-top);
+            .lib-css(text-transform, @collapsible-nav-title__text-transform);
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-main {
+        > .messages {
+            .message {
+                .breadcrumbs ~ & {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+& when (@media-target = desktop) {
+    @media (min-width: @screen__m) and (max-width: 900px) {
+        .block-services-sidebar {
+            .icon-section {
+                .icon {
+                    font-size: 1.3em;
+                }
+                .section-info {
+                    .margin-left(0);
+                }
+            }
+        }
+    }
+}

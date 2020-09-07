@@ -1,0 +1,339 @@
+// mixin for plus sign
+// -----------------------------------
+.soldtogether-plus () {
+    position: relative;
+    padding-left: 32px;
+
+    &::before {
+        position: absolute;
+        content: '';
+        background-image: url(../images/plus.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        display: block;
+        height: 32px;
+        width: 32px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.addtocart-checkboxes {
+
+    .products-grid .item {
+        padding-bottom: 50px;
+    }
+
+    .product-image-wrapper {
+        position: relative;
+
+        .checkbox {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+    }
+}
+
+.soldtogether-block {
+
+    clear: both;
+
+    .amazonstyle{
+
+        &-images {
+            margin: 10px 0;
+            padding: 0;
+            zoom: 1;
+
+            &::after {
+                clear: both;
+                content: '.';
+                display: block;
+                font-size: 0;
+                height: 0;
+                visibility: hidden;
+            }
+
+            li {
+                display: inline-block;
+                opacity: 1;
+                transition: opacity .25s ease-in-out;
+                -webkit-transition: opacity .25s ease-in-out;
+
+                &.item {
+                    .soldtogether-plus();
+                }
+
+                &.item-inactive {
+                    opacity: 0.3;
+                }
+
+            }
+
+        }
+
+        &-checkboxes {
+            clear: both;
+            padding: 0;
+
+            .price-box {
+                display: inline;
+                margin: 10px 0;
+
+                .minimal-price-link,
+                p {
+                    display: inline;
+                }
+
+            }
+
+            .minimal-price .price-label {
+                font-weight: normal;
+            }
+
+            li {
+                margin: 0;
+                padding: 2px 5px;
+                list-style: none;
+
+                &.button-cart {
+                    display: inline-block;
+                    margin: 10px 0 0 0;
+                }
+
+            }
+        }
+
+    }
+
+    .price {
+        &-including-tax,
+        &-excluding-tax {
+            display: inline;
+        }
+    }
+
+    .product-item-name {
+        display: inline;
+        padding-right: 5px;
+    }
+
+    .totalprice {
+        display: inline;
+        font-weight: bold;
+
+        h5 {
+            display: inline;
+            margin: 5px;
+        }
+
+    }
+
+    &.amazon-stripe {
+
+        .amazonstyle-images {
+            text-align: center;
+            margin: 10px 5px;
+        }
+
+        .amazonstyle-images li.first {
+            display: none;
+
+            + li.plus + li {
+                padding-left: 0;
+
+                &::before {
+                    display: none;
+                }
+            }
+        }
+
+        .product-photo-wrapper {
+            display: inline-block;
+            position: relative;
+
+            .checkbox {
+                margin: 0;
+                position: absolute;
+                top: .5rem;
+                right: .5rem;
+                z-index: 2;
+            }
+        }
+
+        .amazonstyle-checkboxes {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            padding: 1rem;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .soldtogether-block {
+        &.amazon-stripe {
+
+            .block-content {
+                display: flex;
+
+                .amazonstyle-images {
+                    flex: 4;
+                    display: flex;
+                    justify-content: space-around;
+
+                    li {
+                        padding-left: 0;
+
+                        &::before {
+                            display: none;
+                        }
+
+                        &:not(.first) + li.plus {
+                            .soldtogether-plus();
+                        }
+                    }
+                }
+
+                .amazonstyle-checkboxes {
+                    flex: 1;
+                    flex-direction: column-reverse;
+                    justify-content: center;
+                    padding: 0;
+                }
+            }
+
+        }
+    }
+}
+
+.soldtogether-customer-slick {
+    clear: both;
+    max-width: 100%;
+
+    .slick-slide {
+        margin: 15px;
+
+        &:first-child {
+            display: block; // show first slide before init to prevent huge page jump
+        }
+    }
+
+    .product {
+
+        &-item {
+            text-align: center;
+        }
+
+        &-item-name,
+        &.name a {
+            min-height: 40px;
+            overflow: hidden;
+        }
+
+        &-item-details {
+            margin-bottom: 20px;
+        }
+
+    }
+
+    .field.choice {
+        border: 1px solid rgba(0, 0, 0, 0.1); /* rgba(255, 255, 255, 0.2) */
+        border-radius: 3px;
+        display: inline-block;
+        padding: 7px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            border: 1px solid rgba(0, 0, 0, 0.12); /* rgba(255, 255, 255, 0.4) */
+            background: rgba(0, 0, 0, 0.05); /* rgba(255, 255, 255, 0.05) */
+            transition: all 0.3s ease;
+        }
+    }
+
+}
+
+/* WORKAROUND for rtl (porto_rtl) -- START */
+html:not([lang="he-IL"]) .soldtogether-block .amazonstyle-images .first {
+    padding-left: 0;
+    margin-left: 0;
+
+    &::before {
+        display: none;
+    }
+}
+
+html[lang="he-IL"] .soldtogether-block .amazonstyle-images li {
+    float: right;
+
+    &:last-child {
+        padding-left: 0;
+
+        &::before {
+            display: none;
+        }
+    }
+}
+/* WORKAROUND for rtl (porto_rtl) -- END */
+
+@media screen and (max-width: 770px) {
+    .soldtogether-block .amazonstyle-images .product-image-container { width: 100px !important; }
+}
+
+/* RTL */
+
+body.rtl {
+    .addtocart-checkboxes .product-image-wrapper .checkbox {
+        left: 0;
+        right: auto;
+    }
+
+    .soldtogether-block {
+        .amazonstyle-images li.item:not(.first) {
+            padding-left: 0;
+            padding-right: 32px;
+
+            &::before {
+                left: auto;
+                right: 0;
+            }
+        }
+
+        .product-item-name {
+            padding-left: 5px;
+            padding-right: 0;
+        }
+
+        &.amazon-stripe {
+            .amazonstyle-images li.first + li.plus + li {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .product-photo-wrapper .checkbox {
+                left: .5rem;
+                right: 0;
+            }
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .soldtogether-block.amazon-stripe .block-content .amazonstyle-images li {
+            padding-left: 0;
+            padding-right: 0;
+
+            &:not(.first) + li.plus {
+                padding-left: 0;
+                padding-right: 32px;
+
+                &::before {
+                    left: auto;
+                    right: 0;
+                }
+            }
+        }
+    }
+}

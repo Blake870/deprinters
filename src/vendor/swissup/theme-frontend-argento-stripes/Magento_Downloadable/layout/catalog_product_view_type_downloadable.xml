@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="product.info" destination="product.info.media" after="-" />
+        <move element="product.info.downloadable.samples" destination="product.info.main" before="extrahint" />
+        <move element="product.info.social" destination="product.info.extrahint" />
+        <move element="product.info.addto" destination="product.info.addtocart.additional" before="-"/>
+    </body>
+</page>

@@ -1,0 +1,36 @@
+.CodeMirror {
+    border: 1px solid #adadad;
+    border-radius: 1px;
+    transition: border-color 0.1s linear;
+
+    &:hover {
+        border-color: #878787;
+    }
+
+    textarea[disabled] + & {
+        opacity: .5;
+    }
+
+    .ui-resizable-s {
+        bottom: 0;
+        display: block;
+        opacity: 0;
+        transition: opacity .2s ease-in-out;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &::before {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 20%;
+            left: 40%;
+            height: 3px;
+            border: solid #adadad;
+            border-width: 1px 0;
+        }
+    }
+}

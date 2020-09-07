@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="page.main.title" destination="content.top" before="-" />
+        <move element="category.view.container" destination="content.top" after="page.main.title" />
+        <referenceBlock name="catalog.product.viewed">
+            <arguments>
+                <argument name="show_buttons" xsi:type="string">add_to_cart,add_to_compare,add_to_wishlist</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

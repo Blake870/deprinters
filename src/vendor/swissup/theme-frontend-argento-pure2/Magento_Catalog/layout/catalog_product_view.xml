@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="sidebar.additional">
+            <block class="Magento\Cms\Block\Block" name="product_sidebar" before="-">
+                <action method="setBlockId">
+                    <argument name="id" xsi:type="string">product_sidebar</argument>
+                </action>
+            </block>
+        </referenceContainer>
+
+        <move element="catalog.product.related" destination="sidebar.additional" after="product_sidebar"/>
+        <referenceBlock name="catalog.product.related">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">product/column/list.phtml</argument>
+            </action>
+            <action method="setCollectionMethod">
+                <argument name="method" xsi:type="string">getItems</argument>
+            </action>
+            <action method="setTitle">
+                <argument name="title" xsi:type="string">Related Products</argument>
+            </action>
+            <action method="setShowActions">
+                <argument name="flag" xsi:type="boolean">false</argument>
+            </action>
+        </referenceBlock>
+
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+    </body>
+</page>

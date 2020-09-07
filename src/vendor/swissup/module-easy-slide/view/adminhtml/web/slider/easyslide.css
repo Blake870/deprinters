@@ -1,0 +1,4 @@
+.admin__scope-old .image.active { box-shadow: none; }
+.gallery { background: none; }
+.image-panel-controls, .image-panel-preview { width: auto !important; max-width: 65.9574%; }
+.action-make-base { display: none; }

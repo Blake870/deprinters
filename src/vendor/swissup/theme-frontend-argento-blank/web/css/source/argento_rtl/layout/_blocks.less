@@ -1,0 +1,24 @@
+& when (@media-common = true) {
+    & when (@argento-dir = rtl) {
+        .block.newsletter {
+            .action.subscribe {
+                margin-left: 0;
+                margin-right: -1px;
+                border-radius: 3px;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            .field .control:before {
+                margin: 0 8px 0 0;
+            }
+        }
+
+        .block-wishlist {
+            .product-item-name {
+                margin-left: @indent__m;
+                margin-right: 0;
+            }
+        }
+    }
+}

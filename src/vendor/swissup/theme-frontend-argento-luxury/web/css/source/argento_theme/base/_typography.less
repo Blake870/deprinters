@@ -1,0 +1,250 @@
+/* Typography CMS page styles */
+.cms-typography {
+    section.typography-3-columns {
+        .luxury-icon {
+            width: 47px;
+            height: 47px;
+            margin-bottom: .5em;
+        }
+
+        p {
+            font-size: 16px;
+            width: 70%;
+            margin: 0 auto;
+        }
+    }
+}
+
+/* Typography Icons list*/
+.cms-page-view .icon:before {
+    width: 12px;
+}
+.icon-leaf::before {
+    content: '🍂' !important;
+}
+.icon-pencil::before {
+    content: '🖉' !important;
+}
+.icon-heart::before {
+    content: '💛' !important;
+}
+.icon-lens::before {
+    content: '🔍' !important;
+}
+
+/* Headings */
+h1.page-title {
+    font-size: 48px;
+    color: #010101;
+    letter-spacing: 0.33em;
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: .6em;
+    margin-top: 1em;
+}
+
+h3, .h3 {
+    margin-bottom: 1em;
+}
+
+.catalog-product-view .product h1.page-title,
+.ajaxpro-modal-popup .product h1.page-title {
+    font-weight: 700;
+    font-size: 36px;
+    color: #000000;
+    letter-spacing: 0.038em;
+    margin-bottom: .6em;
+    margin-top: 0;
+    text-transform: none;
+    .text-align(left);
+}
+
+h1.page-title,
+.catalog-product-view .product h1.page-title,
+h2,
+.h2,
+.content div.block .block-title [role="heading"][aria-level="2"] {
+    &::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 5px;
+        background-color: @luxury-orange__color;
+        margin-top: 16px;
+    }
+}
+
+.content div.block .block-title [role="heading"][aria-level="2"] {
+    .lib-heading(h2);
+}
+
+.page-title-wrapper {
+    text-align: center;
+
+    h1.page-title:after {
+        margin: 16px auto;
+    }
+
+    &.product h1.page-title:after {
+        margin: 16px 0 0 0;
+    }
+}
+
+@media (max-width: 480px) {
+    h1,
+    .h1 {
+        font-size: 23px;
+    }
+
+    h1.page-title {
+        font-size: 24px;
+    }
+
+    h2,
+    .h2,
+    .content div.block .block-title [role="heading"][aria-level="2"],
+    .catalog-product-view .product h1.page-title {
+        font-size: 18px;
+    }
+
+    h3,
+    .h3 {
+        font-size: 16px;
+    }
+
+    h4,
+    .h4 {
+        font-size: 14px;
+    }
+
+    h5,
+    .h5 {
+        font-size: 12px;
+    }
+
+    h6,
+    .h6 {
+        font-size: 10px;
+    }
+}
+
+/* Media Object styling took from Bootstrap Media component */
+.media {
+    overflow: hidden;
+    zoom: 1;
+}
+.media-body, .media-left, .media-right {
+    display: table-cell;
+    vertical-align: top;
+}
+
+@media(max-width: 480px){
+    section {
+        .padding-left(10px);
+        .padding-right(10px);
+
+        .col-md-5 {
+            margin-bottom: 4em;
+        }
+    }
+    .media-body, .media-left, .media-right {
+        display: block;
+    }
+    .media-left, .media-right {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 4em;
+    }
+
+}
+
+.media-left, .media > .pull-left {
+    .padding-right(35px);
+}
+.media-right, .media > .pull-right {
+    .padding-left(35px);
+}
+
+.media .media-left .luxury-icon {
+    width: 64px;
+    height: 64px;
+}
+
+/* Paragraphs */
+p {
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-bottom: 1.5em;
+}
+
+.subtitle {
+    font-weight: 300;
+    font-size: 18px !important;
+    color: #6D6D6D !important;
+    line-height: 30px;
+}
+
+/* Hero contrainer*/
+.hero {
+    text-align: center !important;
+
+    .subtitle{
+        width: 70%;
+        margin: 0 auto !important;
+    }
+}
+
+/* Lists */
+ul, ol {
+    list-style: none;
+
+    li:before {
+        color: #CACACA; /* or whatever color you prefer */
+        .padding-right(8px);
+    }
+}
+
+.cms-page-view .column.main,
+.product-info-main .data.item.content {
+    ul, ol {
+        .padding-left(1.5em);
+
+        &.review-items,
+        &.product-items {
+            .padding-left(0);
+        }
+    }
+
+    ul:not(.pages-items) li:not(.product-item) {
+        .padding-left(1em);
+        text-indent: -.7em;
+
+        &::before {
+            content: "‣";
+        }
+    }
+
+    ul.circles li::before {
+        content: "⚬";
+    }
+
+    ol:not(.product-items) {
+        counter-reset: item;
+
+        li {
+            display: block;
+
+            &:before {
+                content: counter(item) ".";
+                counter-increment: item;
+                color: #cacaca;
+            }
+
+            &.review-item:before {
+                content: '';
+            }
+        }
+    }
+}

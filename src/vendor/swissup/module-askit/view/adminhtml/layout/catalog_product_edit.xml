@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <body>
+        <!-- <referenceBlock name="product_tabs" remove="true" /> -->
+        <!-- integration move to Swissup\Askit\Plugin\Model\Product\DataProvider -->
+        <!-- <referenceBlock name="product_tabs">
+            <block class="Magento\Backend\Block\Widget\Tab" name="product_tabs.questions" as="questions">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Questions</argument>
+                    <argument name="url" xsi:type="url" path="askit/question/grid">
+                        <param name="_current">1</param>
+                        <param name="item_type_id">1</param>
+                        < ! - - <param name="componentJson">1</param> - - >
+                    </argument>
+                    <argument name="class" xsi:type="string">ajax</argument>
+                </arguments>
+                <action method="setGroupCode">
+                    < ! - - <argument name="group_code" xsi:type="string">basic</argument> - - >
+                    <argument name="group_code" xsi:type="string">advanced</argument>
+                </action>
+            </block>
+            <action method="addTab">
+                <argument name="name" xsi:type="string">questions</argument>
+                <argument name="block" xsi:type="string">questions</argument>
+            </action>
+        </referenceBlock> -->
+    </body>
+</page>

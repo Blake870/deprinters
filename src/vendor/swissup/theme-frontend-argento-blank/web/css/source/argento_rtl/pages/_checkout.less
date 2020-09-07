@@ -1,0 +1,254 @@
+& when (@media-common = true) {
+    & when (@argento-dir = rtl) {
+        .authentication-wrapper {
+            float: left;
+        }
+
+        .block-authentication {
+            .actions-toolbar > .secondary {
+                text-align: right;
+            }
+
+            .block[class] {
+                ul {
+                    padding-left: 0;
+                    padding-right: @indent__s;
+                }
+            }
+        }
+
+        .modal-popup,
+        .modal-slide,
+        .modal-custom {
+            .action-close {
+                left: 0;
+                right: auto;
+            }
+        }
+
+        .field-tooltip {
+            left: 0;
+            right: auto;
+
+            .field-tooltip-content {
+                left: auto;
+                right: 38px;
+
+                &:before {
+                    right: -21px;
+                    border-left-color: #666666;
+                    border-right-color: transparent;
+                }
+
+                &:after {
+                    right: -21px;
+                    border-left-color: #f4f4f4;
+                    border-right-color: transparent;
+                }
+            }
+        }
+
+        .field .control._with-tooltip input {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+
+        select {
+            background-position: 0 45%;
+            padding-left: 25px;
+            padding-right: 10px;
+        }
+
+        .opc-block-summary {
+            .items-in-cart,
+            .items-in-cart.active {
+                & > .title {
+                    padding: 10px 0 10px 40px;
+
+                    &:after {
+                        left: 0;
+                        right: auto;
+                    }
+                }
+            }
+
+            .column.main & {
+                .product-item {
+                    padding-right: 0;
+                }
+            }
+
+            .product-item {
+                .product-item-name-block {
+                    padding-left: @indent__xs;
+                    padding-right: 0;
+                    text-align: right;
+                }
+
+                .subtotal {
+                    text-align: right;
+                }
+            }
+
+            .actions-toolbar {
+                text-align: right;
+            }
+        }
+
+        .message.warning {
+            padding: 12px 25px 12px 20px;
+            padding-right: 45px;
+
+            & > *:first-child:before {
+                left: auto;
+                right: 0;
+            }
+        }
+
+        .checkout-payment-method {
+            .payment-method-title {
+                .payment-icon {
+                    margin-left: @indent__xs;
+                    margin-right: 0;
+                }
+
+                .action-help {
+                    margin-left: 0;
+                    margin-right: @indent__xs;
+                }
+            }
+
+            .payment-method-content,
+            .payment-option-content {
+                padding: 0 @checkout-payment-option-content__padding__xl @indent__base 0;
+            }
+
+            .payment-option-title {
+                .action-toggle:after {
+                    margin: 0 10px 0 0;
+                }
+            }
+
+            .checkout-billing-address {
+                .billing-address-details {
+                    padding: 0 23px 0 0;
+                }
+
+                .primary .action-update {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        input[type="checkbox"] {
+            margin: 2px 0 0 5px;
+        }
+
+        .opc-block-shipping-information {
+            .shipping-information-title {
+                .action-edit {
+                    left: 0;
+                    right: auto;
+                }
+            }
+
+            .shipping-information-content {
+                .actions-toolbar {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        .opc-estimated-wrapper {
+            .estimated-block {
+                float: right;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when (@argento-dir = rtl) {
+        .authentication-dropdown {
+            text-align: right;
+        }
+
+        .authentication-wrapper {
+            text-align: left;
+        }
+
+        .block-authentication .actions-toolbar {
+            > .primary {
+                float: left;
+                margin-left: 0;
+
+                .action {
+                    margin-left: 0;
+                }
+            }
+
+            > .secondary {
+                float: right;
+                margin-left: 2rem;
+                margin-right: 0;
+            }
+        }
+
+        .popup-authentication .block[class] {
+            float: right;
+
+            & + .block {
+                border-left: none;
+                border-right: 1px solid @color-gray-light5;
+                padding: @indent__s @indent__xl 0 0;
+            }
+        }
+
+        .opc-sidebar {
+            float: left;
+        }
+
+        .opc-wrapper {
+            float: right;
+            padding-left: @indent__l;
+            padding-right: 0;
+        }
+
+        .checkout-shipping-method .actions-toolbar > .primary {
+            float: left;
+        }
+
+        .checkout-payment-method {
+            .actions-toolbar .primary {
+                float: left;
+            }
+
+            .payment-option-title {
+                padding-left: 0;
+                padding-right: 22px;
+            }
+
+            .payment-option-content {
+                .payment-option-inner {
+                    + .actions-toolbar {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+
+        .checkout-billing-address {
+            .action-update {
+                float: left;
+            }
+
+            .actions-toolbar .action-cancel {
+                margin: 6px 0 0 @indent__base;
+            }
+        }
+
+        .modal-popup.modal-slide .modal-footer {
+            text-align: left;
+        }
+    }
+}

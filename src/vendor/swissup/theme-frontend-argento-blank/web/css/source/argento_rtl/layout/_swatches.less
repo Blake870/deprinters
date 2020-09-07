@@ -1,0 +1,60 @@
+& when (@media-common = true) {
+    & when (@argento-dir = rtl) {
+        .swatch-attribute-label.required {
+            padding-left: 10px;
+            padding-right: 0;
+        }
+
+        .swatch-attribute-label[data-required="1"]:after {
+            left: -11px;
+            right: auto;
+        }
+
+        .swatch-attribute-selected-option {
+            padding-left: 17px;
+            padding-right: 0;
+        }
+
+        .swatch-layered,
+        .product-info-main,
+        .product-item-details {
+            .swatch-option {
+                float: right;
+                margin: 0 0 5px 10px;
+
+                &.text {
+                    margin-left: 7px;
+                    margin-right: 0;
+                }
+
+                &-disabled:after {
+                    left: auto;
+                    right: -4px;
+                }
+            }
+        }
+
+        .swatch-input {
+            left: auto;
+            right: -1000px;
+        }
+
+        .swatch-option-tooltip,
+        .swatch-option-tooltip-layered {
+            .corner {
+                left: auto !important;
+                right: 40%;
+
+                &:before {
+                    left: auto;
+                    right: 0;
+                }
+
+                &:after {
+                    left: auto;
+                    right: -16px;
+                }
+            }
+        }
+    }
+}

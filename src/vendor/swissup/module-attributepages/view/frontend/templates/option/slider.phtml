@@ -1,0 +1,37 @@
+<?php
+    $_optionCollection = $block->getLoadedOptionCollection();
+?>
+
+<div class="attributepages-slider-content">
+<?php if (!$_optionCollection || !$_optionCollection->count()) : ?>
+    <div class="message info empty"><div><?php /* @escapeNotVerified */ echo __('There are no options matching the selection.') ?></div></div>
+<?php else: ?>
+    <?php
+        $_isImageMode    = ($block->getListingMode() == \Swissup\Attributepages\Model\Entity::LISTING_MODE_IMAGE);
+        $_imageHelper = $block->getImageHelper();
+        $_width    = $block->getImageWidth();
+        $_height   = $block->getImageHeight();
+        $_sliderId = $block->getSliderId();
+        $_slidesToShow = $block->getSlidesToShow();
+        $_slidesToScroll = $block->getSlidesToScroll();
+        $_autoplay = $block->getAutoplay();
+    ?>
+    <div data-mage-init='{"slick": {"slidesToShow": <?php echo $_slidesToShow ?>, "slidesToScroll": <?php echo $_slidesToScroll ?>, "dots": false, "rows": 0, "autoplay": <?php echo $_autoplay ?>}}' class="attributepages-slider-<?php echo $_sliderId ?> <?php echo $_isImageMode ? 'mode-image' : 'mode-link' ?>">
+        <?php foreach ($_optionCollection as $_option):
+            $_optionTitle = $block->escapeHtml($_option->getTitle());
+        ?>
+        <div>
+            <?php if ($_isImageMode): ?>
+                <a href="<?php echo $_option->getUrl() ?>" title="<?php echo $_optionTitle ?>" class="option-image">
+                    <img src="<?php echo $_imageHelper->init($_option, 'image')->resize($_width, $_height); ?>" alt="<?php echo $_optionTitle ?>" />
+                </a>
+            <?php else: ?>
+                <a href="<?php echo $_option->getUrl() ?>" title="<?php echo $_optionTitle ?>" class="option-title">
+                    <?php echo $_optionTitle ?>
+                </a>
+            <?php endif; ?>
+        </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+</div>

@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="richsnippets" translate="label" type="text" sortOrder="1833" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Rich Snippets</label>
+            <tab>swissup_seocore</tab>
+            <resource>Swissup_RichSnippets::config_richsnippets</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="product_format" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Page structured data format</label>
+                    <source_model>Swissup\RichSnippets\Model\Config\Source\StructuredDataFormat</source_model>
+                </field>
+                <field id="minify" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minify structured data</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Applies only for JSON-LD format of structured data</comment>
+                </field>
+            </group>
+
+            <group id="breadcrumbs" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Breadcrumbs</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+
+            <group id="product" translate="label comment" type="text" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Structured Data</label>
+                <comment>Settings in this section works only with structured data format JSON-LD.</comment>
+                <field id="structured_data" translate="label" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Structured data</label>
+                    <frontend_model>Swissup\RichSnippets\Block\Adminhtml\Form\Field\StructuredData</frontend_model>
+                    <backend_model>Swissup\RichSnippets\Model\Config\Backend\StructuredData</backend_model>
+                </field>
+                <field id="price_valid_until" translate="label comment" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Price Valid Until</label>
+                    <comment><![CDATA[The date (in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href="https://developers.google.com/search/docs/data-types/product#offer_properties">Google guides</a> to find out more.]]></comment>
+                </field>
+                <field id="brand_attribute" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Brand Attribute</label>
+                    <comment>When 'None' selected - brand is disabled in structured data.</comment>
+                    <source_model>Swissup\RichSnippets\Model\Config\Source\ProductAttributes</source_model>
+                </field>
+                <field id="condition_attribute" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Condition Attribute</label>
+                    <comment>All attributes have type "Dropdown". When 'None' selected - product condition is always new.</comment>
+                    <source_model>Swissup\RichSnippets\Model\Config\Source\ProductDropdownAttributes</source_model>
+                </field>
+                <field id="condition_new_option" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>New Option</label>
+                    <comment>Value from Admin label of attribute option. Leave empty to ignore.</comment>
+                </field>
+                <field id="condition_used_option" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Used Option</label>
+                    <comment>Value from Admin label of attribute option. Leave empty to ignore.</comment>
+                </field>
+                <field id="condition_damaged_option" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Damaged Option</label>
+                    <comment>Value from Admin label of attribute option. Leave empty to ignore.</comment>
+                </field>
+                <field id="condition_refurbished_option" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Refurbished Option</label>
+                    <comment>Value from Admin label of attribute option. Leave empty to ignore.</comment>
+                </field>
+            </group>
+
+            <group id="organization" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Organization</label>
+                <field id="name" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Organization Name</label>
+                </field>
+                <field id="street" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Street</label>
+                </field>
+                <field id="locality" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Locality</label>
+                </field>
+                <field id="region" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Region</label>
+                </field>
+                <field id="country" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Country</label>
+                </field>
+                <field id="postal_code" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Postal code</label>
+                </field>
+                <field id="phone" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Phone</label>
+                </field>
+                <field id="url" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Url</label>
+                </field>
+                <field id="email" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email</label>
+                </field>
+            </group>
+
+            <group id="social" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Social Links</label>
+                <field id="facebook" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://facebook.com/</label>
+                </field>
+                <field id="twitter" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://twitter.com/</label>
+                </field>
+                <field id="googleplus" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://plus.google.com/</label>
+                </field>
+                <field id="instagram" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://instagram.com/</label>
+                </field>
+                <field id="pinterest" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://pinterest.com/</label>
+                </field>
+                <field id="linkedin" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://linkedin.com/</label>
+                </field>
+            </group>
+
+            <group id="website" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Website</label>
+                <field id="sitename" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Site Name</label>
+                </field>
+                <field id="siteurl" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Site Url</label>
+                </field>
+            </group>
+
+        </section>
+    </system>
+</config>

@@ -1,0 +1,48 @@
+& when (@media-common = true) {
+    & when (@argento-dir = rtl) {
+        .product-reviews-summary {
+            .reviews-actions {
+                a:not(:last-child) {
+                    margin-left: 30px;
+                    margin-right: 0;
+                }
+
+                a.action.add {
+                    float: left;
+                }
+            }
+        }
+
+        .customer-review,
+        .product-info-main {
+            .rating-summary {
+                margin-left: 30px;
+                margin-right: 0;
+            }
+        }
+
+        .customer-review {
+            .product-media {
+                float: right;
+                margin-left: 3%;
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    & when (@argento-dir = rtl) {
+        .review {
+            &-ratings {
+                float: right;
+            }
+
+            &-ratings ~ &-content,
+            &-ratings ~ &-details {
+                margin-left: 0;
+                margin-right: @review-ratings-left;
+            }
+        }
+    }
+}

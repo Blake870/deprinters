@@ -1,0 +1,80 @@
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .nav-sections {
+        .navpro-shop-all {
+            display: none;
+        }
+    }
+    .navpro-transformable .navpro-icon-caret::before {
+        .right(12px);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .nav-sections {
+        .nav-sections-items {
+            position: static; // allow to use fullscreen and fullwidth dropdowns
+            text-align: center;
+            .navigation {
+                li {
+                    .text-align(left);
+                }
+            }
+            .navigation:not(.navpro) {
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+        }
+
+        .orientation-horizontal {
+            ul {
+                padding: 0 20px;
+            }
+            .level0 {
+                > .nav-a-icon-more {
+                    padding-top: 30px !important;
+                    padding-bottom: 30px !important;
+                    svg {
+                        height: 24px;
+                    }
+                }
+
+                > a.level-top {
+                    .padding(30px 15px);
+                    font-size: 20px;
+                    border-bottom: 2px solid transparent;
+                    margin-bottom: -2px;
+                    > .navpro-icon-caret::before {
+                        display: none;
+                    }
+                }
+
+                &.active,
+                &.has-active {
+                    > .level-top {
+                        border-bottom: 2px solid transparent;
+                    }
+                }
+
+                &:hover,
+                &.opened {
+                    > .level-top {
+                        border-bottom: 2px solid #ede734;
+                        z-index: 505;
+                    }
+                }
+            }
+
+            &.navpro-slideout {
+                .level0 {
+                    > a.level-top {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .navpro-dropdown-level1 {
+        border-top-width: 2px;
+    }
+}

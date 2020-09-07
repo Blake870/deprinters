@@ -1,0 +1,74 @@
+& when (@media-common = true) {
+    .breadcrumbs {
+        .item:not(:last-child) {
+            &::after {
+                .force-icon('arrow-right', null, 9px, 5px 9px);
+                padding: 0 8px;
+                filter: contrast(0);
+            }
+        }
+    }
+
+    .price-box {
+        .lib-css(font-family, @font-additional);
+    }
+
+    .modal-custom,
+    .modal-popup,
+    .modal-slide {
+        .action-close {
+            margin: 0;
+            padding: 15px;
+
+            .argento-close-icon(
+                @_icon-position-left: 8px,
+                @_icon-position-right: false,
+                @_icon-position-top: 12px
+            );
+        }
+    }
+
+    .tocart.action {
+        &:extend(.abs-argento-button-tocart all);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .form.password.reset,
+    .form.send.confirmation,
+    .form.password.forget,
+    .form.create.account,
+    .form.form-orders-search {
+        margin: 0 auto;
+    }
+}
+
+.argento-force-button-with-icon(
+    @_icon: 'arrow-right',
+    @_icon-size: 17px,
+    @_hover-icon-variant: 'white'
+) {
+    .lib-button();
+    .add-force-button-icon(@_icon, @_icon-size, @_hover-icon-variant);
+}
+
+.add-force-button-icon(
+    @_icon: 'arrow-right',
+    @_icon-size: 17px,
+    @_hover-icon-variant: 'white'
+) {
+    span::after {
+        .force-icon(@_icon, null, @_icon-size);
+        .margin-left(10px);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        text-decoration: none;
+
+        span::after {
+            .force-icon-set(@_icon, @_hover-icon-variant);
+        }
+    }
+}

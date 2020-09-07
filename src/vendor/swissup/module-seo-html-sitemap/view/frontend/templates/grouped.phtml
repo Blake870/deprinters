@@ -1,0 +1,47 @@
+<?php
+    $config = $this->helper('Swissup\SeoHtmlSitemap\Helper\Config');
+    $helper = $this->helper('Swissup\SeoHtmlSitemap\Helper\Data');
+    $items = $block->getCollection();
+    if ($items && count($items)):
+        $columnsNumber = $this->config->getColumnsNumber();
+        $groupedItems = $helper->groupCollectionByFirstLetter($items);
+?>
+<?php if ($items): ?>
+<div class="sitemap-block sitemap-links-grouped">
+    <h3 class="block-subtitle subtitle"><?php echo $this->getTitle() ?></h3>
+    <div class="sitemap-block-content">
+        <ul class="list-links-grouped">
+        <?php foreach ($groupedItems as $letter => $items): ?>
+            <li class="links-group">
+                <div class="links-group-title">
+                    <?php echo $helper->getGroupTitle($letter) ?>
+                </div>
+                <?php if ($columnsNumber > 1): ?>
+                <div class="col<?php echo $columnsNumber?>-set">
+                    <div class="col-1">
+                <?php endif ?>
+                    <?php
+                        $itemsNumber = count($items);
+                        $itemsPerColumn = (int)ceil($itemsNumber / $columnsNumber);
+                        $i = 0; $col = 1;
+                    ?>
+                    <?php foreach ($items as $item): ?>
+                        <div><a href="<?php echo $block->getItemUrl($item) ?>">
+                            <?php echo $block->getItemName($item) ?></a></div>
+                    <?php $i++; ?>
+                    <?php if ($columnsNumber > 1 && $col < $columnsNumber && $i == $itemsPerColumn): $col++; $i = 0; ?>
+                    </div>
+                    <div class="col-<?php echo $col ?>">
+                    <?php endif ?>
+                <?php endforeach; ?>
+                <?php if ($columnsNumber > 1): ?>
+                    </div>
+                </div>
+                <?php endif ?>
+            </li>
+        <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php endif ?>
+<?php endif ?>

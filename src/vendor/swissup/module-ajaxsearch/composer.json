@@ -1,0 +1,37 @@
+{
+    "name": "swissup/module-ajaxsearch",
+    "description": "Advanced ajax search",
+    "keywords": [
+        "ajaxsearch",
+        "search"
+    ],
+    "type": "magento2-module",
+    "version": "1.8.6",
+    "license": "OSL-3.0",
+    "require": {
+        "magento/framework": "^101.0|^102.0",
+        "magento/module-checkout": "^100.2",
+        "magento/module-catalog": "^102.0|^103.0",
+        "magento/module-search": "^100.2|^101.0",
+        "magento/module-cms": "^102.0|^103.0",
+        "magento/module-store": "^100.2|^101.0",
+        "swissup/module-core": "^1.10.0",
+        "swissup/module-rtl": "^1.3.3"
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Swissup\\Ajaxsearch\\": ""
+        }
+    },
+    "extra": {
+        "swissup": {
+            "links": {
+                "marketplace"   : "https://marketplace.magento.com/swissup-ajaxsearch.html",
+                "store"         : "https://swissuplabs.com/",
+                "docs"          : "http://docs.swissuplabs.com/m2/extensions/ajaxsearch/",
+                "changelog"     : "http://docs.swissuplabs.com/m2/extensions/ajaxsearch/changelog/"
+            }
+        }
+    }
+}

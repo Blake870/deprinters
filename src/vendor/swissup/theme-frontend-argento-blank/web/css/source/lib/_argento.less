@@ -1,0 +1,1005 @@
+//
+//  Argento mixins
+//  ---------------------------------------------
+
+.argento-center-block() {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.argento-center-text() {
+    text-align: center;
+}
+.argento-pull-left() {
+    float: left;
+}
+.argento-pull-right() {
+    float: right;
+}
+
+& when (@media-common = true) {
+    .is_stuck {
+        z-index: @sticky-kit__z-index;
+    }
+    .a-center-block {
+        .argento-center-block();
+    }
+    .a-center {
+        .argento-center-text();
+    }
+    .pull-left {
+        .argento-pull-left();
+    }
+    .pull-right {
+        .argento-pull-right();
+    }
+    .argento-scrollbar {
+        -webkit-overflow-scrolling: touch;
+        &::-webkit-scrollbar {
+            width: @argento-scrollbar__size;
+            height: @argento-scrollbar__size;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: @argento-scrollbar__background;
+            border-radius: @argento-scrollbar__radius;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: @argento-scrollbar__color;
+            border-radius: @argento-scrollbar__radius;
+        }
+    }
+}
+
+//
+//  Typography
+//  ---------------------------------------------
+.lib-typography-headings() {
+    .h1 {
+        .lib-heading(h1);
+    }
+    h1, .h1 {
+        .lib-css(text-transform, @h1__text-transform);
+    }
+
+    .modal-content h1 {
+        margin-top: 0;
+    }
+
+    .h2 {
+        .lib-heading(h2);
+    }
+    h2, .h2 {
+        .lib-css(text-transform, @h2__text-transform);
+    }
+
+    .h3 {
+        .lib-heading(h3);
+    }
+    h3, .h3 {
+        .lib-css(text-transform, @h3__text-transform);
+    }
+
+    .h4 {
+        .lib-heading(h4);
+    }
+    h4, .h4 {
+        .lib-css(text-transform, @h4__text-transform);
+    }
+
+    .h5 {
+        .lib-heading(h5);
+    }
+    h5, .h5 {
+        .lib-css(text-transform, @h5__text-transform);
+    }
+
+    .h6 {
+        .lib-heading(h6);
+    }
+    h6, .h6 {
+        .lib-css(text-transform, @h6__text-transform);
+    }
+
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+        small,
+        .small {
+            .lib-typography(
+                @heading__small-size,
+                @heading__small-color,
+                @_line-height: @heading__small-line-height
+            );
+        }
+    }
+
+    div.block { // div - is the hack to override all other styles
+        .block-title {
+            .lib-css(text-align, @block-title__text-align);
+            strong {
+                .lib-heading(block-title);
+                .lib-css(text-transform, @block-title__text-transform);
+            }
+        }
+    }
+
+    div.hero {
+        .block-title {
+            .lib-css(padding, @hero-title__padding);
+            .lib-css(text-align, @hero-title__text-align);
+            strong {
+                .lib-heading(hero-title);
+                .lib-css(text-transform, @hero-title__text-transform);
+            }
+            .subtitle,
+            .subtitle a {
+                .lib-css(font-size, @hero-subtitle__font-size);
+                .lib-css(color, @hero-subtitle__font-color);
+            }
+        }
+    }
+}
+
+
+//
+//  Layout mixins
+//  ---------------------------------------------
+.argento-page-container(
+    @_content-selector : ~"> .content",
+    @_padding: 5px @layout-indent__width
+) {
+    @{_content-selector} {
+        .lib-clearer();
+        padding: @_padding;
+        margin: 0 auto;
+        width: auto;
+        max-width: @layout__max-width;
+        box-sizing: border-box;
+    }
+}
+
+//
+//  Button mixins
+//  ---------------------------------------------
+.argento-button(
+    @_button-border-color: @button__border-color,
+    @_button-border-color-hover: @button__border-color-hover,
+    @_button-border-color-active: @button__border-color-active,
+
+    @_button-text-transform: @button__text-transform,
+
+    @_button-text-shadow: @button__text-shadow,
+    @_button-text-shadow-hover: @button__text-shadow-hover,
+    @_button-text-shadow-active: @button__text-shadow-active,
+
+    @_button-border-width: @button__border-width,
+    @_button-border-width-hover: @button__border-width-hover,
+    @_button-border-width-active: @button__border-width-active,
+
+    @_button-box-shadow: @button__box-shadow,
+    @_button-box-shadow-hover: @button__box-shadow-hover,
+    @_button-box-shadow-active: @button__box-shadow-active
+) {
+    .lib-css(border-width, @_button-border-width);
+    .lib-css(border-color, @_button-border-color);
+    .lib-css(text-shadow, @_button-text-shadow);
+    .lib-css(box-shadow, @_button-box-shadow);
+    .lib-css(text-transform, @_button-text-transform);
+    .lib-css(line-height, @button__line-height);
+
+    &:focus,
+    &:active {
+        .lib-css(border-width, @_button-border-width-active);
+        .lib-css(border-color, @_button-border-color-active);
+        .lib-css(text-shadow, @_button-text-shadow-active);
+        .lib-css(box-shadow, @_button-box-shadow-active);
+    }
+    &:hover {
+        .lib-css(border-width, @_button-border-width-hover);
+        .lib-css(border-color, @_button-border-color-hover);
+        .lib-css(text-shadow, @_button-text-shadow-hover);
+        .lib-css(box-shadow, @_button-box-shadow-hover);
+    }
+}
+
+.lib-button {
+    .argento-button();
+}
+
+.lib-button-primary {
+    .argento-button(
+        @_button-border-color: @button-primary__border-color,
+        @_button-border-color-hover: @button-primary__border-color-hover,
+        @_button-border-color-active: @button-primary__border-color-active,
+
+        @_button-text-shadow: @button-primary__text-shadow,
+        @_button-text-shadow-hover: @button-primary__text-shadow-hover,
+        @_button-text-shadow-active: @button-primary__text-shadow-active,
+
+        @_button-border-width: @button-primary__border-width,
+        @_button-border-width-hover: @button-primary__border-width-hover,
+        @_button-border-width-active: @button-primary__border-width-active,
+
+        @_button-box-shadow: @button-primary__box-shadow,
+        @_button-box-shadow-hover: @button-primary__box-shadow-hover,
+        @_button-box-shadow-active: @button-primary__box-shadow-active
+    );
+}
+
+.lib-button-reset() {
+    text-transform: none;
+    color: @primary__color;
+    &:focus,
+    &:active {
+        color: @primary__color;
+    }
+    &:hover {
+        color: @primary__color
+    }
+}
+
+.argento-button-invert-state(
+    @_button-background: @button__hover__background,
+    @_button-color: @button__hover__color,
+    @_button-border: @button__hover__border,
+
+    @_button-background-hover: @button__background,
+    @_button-color-hover: @button__color,
+    @_button-border-hover: @button__border,
+
+    @_button-background-active: @button__background,
+    @_button-color-active: @button__color,
+    @_button-border-active: @button__border
+) {
+    .lib-css(background, @_button-background);
+    .lib-css(color, @_button-color);
+    .lib-css(border, @_button-border);
+
+    &:focus,
+    &:active {
+        .lib-css(background, @_button-background-active);
+        .lib-css(color, @_button-color-active);
+        .lib-css(border, @_button-border-active);
+    }
+    &:hover {
+        .lib-css(background, @_button-background-hover);
+        .lib-css(color, @_button-color-hover);
+        .lib-css(border, @_button-border-hover);
+    }
+}
+
+.argento-button-primary-invert-state(
+    @_button-background: @button-primary__hover__background,
+    @_button-color: @button-primary__hover__color,
+    @_button-border: @button-primary__hover__border,
+
+    @_button-background-hover: @button-primary__background,
+    @_button-color-hover: @button-primary__color,
+    @_button-border-hover: @button-primary__border,
+
+    @_button-background-active: @button-primary__background,
+    @_button-color-active: @button-primary__color,
+    @_button-border-active: @button-primary__border
+) {
+    .argento-button-invert-state(
+        @_button-background: @button-primary__hover__background,
+        @_button-color: @button-primary__hover__color,
+        @_button-border: @button-primary__hover__border,
+
+        @_button-background-hover: @button-primary__background,
+        @_button-color-hover: @button-primary__color,
+        @_button-border-hover: @button-primary__border,
+
+        @_button-background-active: @button-primary__background,
+        @_button-color-active: @button-primary__color,
+        @_button-border-active: @button-primary__border
+    );
+}
+
+//
+//  Fixed different border width support
+//  (when bottom border is used as shadow)
+//  ---------------------------------------------
+.abs-revert-secondary-color {
+    .argento-button();
+}
+
+.abs-action-button-as-link {
+    text-transform: none;
+    text-shadow: none;
+    font-size: inherit;
+    font-family: inherit;
+    &:focus,
+    &:active {
+        text-shadow: none;
+    }
+    &:hover {
+        text-shadow: none;
+    }
+}
+
+//
+//  Ability to properly align order status label at account page
+//  ---------------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .abs-status-desktop {
+        margin-top: @argento-abs-status__desktop__margin-top;
+    }
+}
+
+.argento-lib-dropdown-reset(
+    @_toggle-selector: ~".action.toggle",
+    @_options-selector: ~"ul.dropdown"
+) {
+    display: block;
+    position: static;
+    .argento-dropdown-icon-reset(
+        @_icon-font-position: after
+    );
+
+    @{_toggle-selector} {
+        padding: 0;
+        display: none;
+        &.active {
+            display: none;
+        }
+    }
+
+    .ui-dialog {
+        display: inherit !important;
+    }
+
+    @{_options-selector} {
+        padding: 10px 0;
+        background: none;
+        border: none;
+        height: auto;
+        width: auto;
+        margin: 0;
+        display: inherit;
+        box-shadow: none;
+        position: static;
+        &:before,
+        &:after {
+            display: none;
+        }
+        li {
+            margin: 0 0 7px;
+            &:hover {
+                background-color: transparent;
+            }
+            &:last-child {
+                margin: 0;
+            }
+            a {
+                padding: 0;
+            }
+        }
+    }
+
+    &.active {
+        overflow: inherit;
+        @{_options-selector} {
+            position: static;
+        }
+    }
+}
+
+.argento-dropdown-to-left(
+    @_dropdown-offset: 0,
+    @_arrow-offset: 10px
+) {
+    .left(auto);
+    .right(@_dropdown-offset);
+    &:before {
+        .left(auto);
+        .right(@_arrow-offset);
+    }
+    &:after {
+        .left(auto);
+        .right(@_arrow-offset - 1px);
+    }
+}
+.argento-dropdown-to-right(
+    @_dropdown-offset: 0,
+    @_arrow-offset: 10px
+) {
+    .left(@_dropdown-offset);
+    .right(auto);
+    &:before {
+        .left(@_arrow-offset);
+        .right(auto);
+    }
+    &:after {
+        .left(@_arrow-offset - 1px);
+        .right(auto);
+    }
+}
+
+.lib-form-field {
+    .choice {
+        input when (@argento-fancy-checkbox = true) {
+            .lib-css(vertical-align, @argento-fancy-checkbox__vertical-align);
+        }
+    }
+}
+
+//
+// Checkbox / radiobutton
+//  ---------------------------------------------
+.argento-checkbox(
+    @_checkbox-background: @color-white,
+    @_checkbox-border: 1px solid @color-black,
+    @_checkbox-border-radius: 2px,
+    @_checkbox-width: 2rem,
+    @_checkbox-height: 2rem,
+    @_checkbox-checkmark-color: @color-black,
+    @_checkbox-checkmark-width: 3px
+){
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    .lib-css(background, @_checkbox-background);
+    .lib-css(border, @_checkbox-border);
+    .lib-css(border-radius, @_checkbox-border-radius);
+    width: @_checkbox-width;
+    height: @_checkbox-height;
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+        content: ' ';
+        position: absolute;
+        opacity: 0;
+        height: @_checkbox-height / 3;
+        width: @_checkbox-width / 1.5;
+        border: @_checkbox-checkmark-width solid @_checkbox-checkmark-color;
+        border-top: none;
+        border-right: none;
+        box-sizing: border-box;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -75%) rotate(-45deg);
+    }
+
+    &:checked::after {
+        opacity: 1;
+    }
+}
+
+.argento-radio(
+    @_radio-background: @color-white,
+    @_radio-border: 1px solid @color-black,
+    @_radio-border-radius: 50%,
+    @_radio-width: 2rem,
+    @_radio-height: 2rem,
+    @_radio-checkmark-color: @color-black,
+    @_radio-checkmark-width: 3px,
+    @_radio-checkmark-height: 3px,
+    @_radio-checkmark-border-radius: 50%
+) {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    .lib-css(background, @_radio-background);
+    .lib-css(border, @_radio-border);
+    .lib-css(border-radius, @_radio-border-radius);
+    width: @_radio-width;
+    min-width: @_radio-width;
+    height: @_radio-height;
+    min-height: @_radio-height;
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+        content: ' ';
+        position: absolute;
+        opacity: 0;
+        height: @_radio-checkmark-height;
+        width: @_radio-checkmark-width;
+        background: @_radio-checkmark-color;
+        .lib-css(border-radius, @_radio-checkmark-border-radius);
+        box-sizing: border-box;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &:checked::after {
+        opacity: 1;
+    }
+}
+
+.argento-input-placeholder(
+    @_color: false
+) {
+    // DO NOT GROUP THESE LINES TOGETHER!
+    &::-webkit-input-placeholder {
+        .lib-css(color, @_color);
+    }
+    &::-moz-placeholder {
+        .lib-css(color, @_color);
+    }
+    &:-ms-input-placeholder {
+        .lib-css(color, @_color);
+    }
+    &::-ms-input-placeholder {
+        .lib-css(color, @_color);
+    }
+    &::placeholder {
+        .lib-css(color, @_color);
+    }
+}
+
+//
+//  Navigation
+//  ---------------------------------------------
+.argento-desktop-navigation(
+    @_nav-level0-item-font-family: @navigation-desktop-level0-item__font-family,
+    @_nav-level0-item-text-transform: @navigation-desktop-level0-item__text-transform
+) {
+    .navigation {
+        li {
+            position: relative;
+        }
+
+        .level0 {
+            > .level-top {
+                .lib-css(text-transform, @_nav-level0-item-text-transform);
+                .lib-css(font-family, @_nav-level0-item-font-family);
+            }
+        }
+    }
+}
+
+.lib-main-navigation-desktop {
+    .argento-desktop-navigation();
+}
+
+.lib-breadcrumbs {
+    .lib-css(text-transform, @argento-breadcrumbs__text-transform);
+
+    a {
+        .lib-css(font-weight, @argento-breadcrumbs-link__font-weight);
+    }
+}
+
+& when (@media-common = true) {
+    .abs-input-qty {
+        height: auto;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .abs-pager-toolbar {
+        .pages {
+            text-align: center;
+        }
+    }
+}
+
+//
+//  Icons
+//  ---------------------------------------------
+.abs-actions-addto {
+    .lib-icon-font-size(
+        @_icon-font-size: 16px,
+        @_icon-font-line-height: 16px
+    );
+}
+
+._lib-icon-font(
+    @_icon-font-content,
+    @_icon-font,
+    @_icon-font-size,
+    @_icon-font-line-height,
+    @_icon-font-color,
+    @_icon-font-margin,
+    @_icon-font-vertical-align
+) {
+    overflow: visible;
+}
+
+.argento-icon-reset() {
+    content: '';
+    content: none;
+}
+.argento-dropdown-icon-reset(
+    @_toggle-selector : ~".action.toggle",
+    @_icon-font-position: after
+) when (@_icon-font-position = after) {
+    @{_toggle-selector} {
+        &:after {
+            .argento-icon-reset();
+        }
+        &.active {
+            &:after {
+                .argento-icon-reset();
+            }
+        }
+    }
+}
+.argento-dropdown-icon-reset(
+    @_toggle-selector : ~".action.toggle",
+    @_icon-font-position: before
+) when (@_icon-font-position = before) {
+    @{_toggle-selector} {
+        &:before {
+            .argento-icon-reset();
+        }
+        &.active {
+            &:before {
+                .argento-icon-reset();
+            }
+        }
+    }
+}
+
+.argento-ratings-icons-image-width(
+    @_icon-count: @rating-icon__count,
+    @_icon-width: @argento-rating-icon__width
+) when (@_icon-count > 0) {
+    .rating-@{_icon-count}:before {
+        display: inline-block;
+        width: @_icon-width * @_icon-count;
+    }
+    .argento-ratings-icons-image-width((@_icon-count - 1), @_icon-width);
+}
+
+.argento-close-icon(
+    @_icon-position-left,
+    @_icon-position-right,
+    @_icon-position-top,
+    @_icon-line-width: 2px,
+    @_icon-line-height: 20px,
+    @_icon-line-color: #333
+) {
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        .left(@_icon-position-left);
+        .right(@_icon-position-right);
+        .lib-css(top, @_icon-position-top);
+        height: @_icon-line-height;
+        width: @_icon-line-width;
+        background-color: @_icon-line-color;
+    }
+    &::before {
+        transform: rotate(45deg);
+    }
+    &::after {
+        transform: rotate(-45deg);
+    }
+}
+
+//
+//  Bootstrap grid
+//
+//  Examples:
+//  .argento-grid .col-md-5
+//  .argento-grid .col-md-11
+//  ---------------------------------------------
+& when (@media-common = true) {
+    .argento-grid {
+        .lib-clearer();
+        .make-row();
+    }
+    .argento-grid-container {
+        .lib-clearer();
+        padding-left:  ceil((@grid-gutter-width / 2));
+        padding-right: floor((@grid-gutter-width / 2));
+    }
+    .make-grid-columns();
+    .make-grid(xs);
+
+    @media (min-width: @screen__xs) {
+        .make-grid(sm);
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .make-grid(md);
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .make-grid(lg);
+}
+
+//
+//  Tabs
+//
+.lib-data-tabs() {
+    > .item.title {
+        > .switch {
+            .lib-css(text-transform, @tab-control__text-transform);
+            .lib-css(text-shadow, @tab-control__text-shadow);
+            .lib-css(box-shadow, @tab-control__box-shadow);
+            .lib-css(border-color, @tab-control__inactive__border-color);
+            .lib-css(margin-top, @tab-control__inactive__margin-top);
+        }
+        &.active > .switch,
+        &.active > .switch:focus,
+        &.active > .switch:hover {
+            .lib-css(box-shadow, @tab-control__active__box-shadow);
+            .lib-css(border-color, @tab-control__border-color);
+            .lib-css(z-index, @tab-control__active__z-index);
+            .lib-css(padding-top, @tab-control__active__padding-top);
+            .lib-css(padding-bottom, @tab-control__active__padding-bottom + @tab-control__border-width);
+            margin-top: 0;
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .argento-tabs {
+        .lib-data-tabs();
+        > .item.title {
+            cursor: pointer;
+        }
+        > .block {
+            margin: 0;
+        }
+        > .widget {
+            clear: none;
+        }
+    }
+}
+
+.argento-vertical-tabs-calculate-top(
+    @tab-height,
+    @limit: 10,
+    @nth-child: 1,
+    @counter: 1
+) when (@counter < @limit) {
+    &:nth-child(@{nth-child}) {
+        top: (@tab-height * (@counter - 1));
+    }
+
+    // (@nth-child + 2) because titles are always odd (1,3,5...)
+    .argento-vertical-tabs-calculate-top(
+        @tab-height,
+        @limit,
+        @nth-child + 2,
+        @counter + 1
+    );
+}
+.argento-vertical-tabs() {
+    padding: 0 !important;
+    position: relative;
+    &:extend(.clearer all);
+
+    > .item.title {
+        width: @tab-vertical-control__width - @tab-vertical-control__offset;
+        margin: 0;
+        position: absolute;
+        left: @tab-vertical-control__offset;
+        top: 0;
+        white-space: nowrap;
+        transition:
+            width 100ms ease-out,
+            left 100ms ease-out;
+
+        &.active {
+            width: @tab-vertical-control__width + 1;
+            left: 0;
+        }
+
+        .argento-vertical-tabs-calculate-top(
+            @tab-vertical-control__height +
+            @tab-vertical-control__padding-top +
+            @tab-vertical-control__padding-bottom +
+            @tab-vertical-control__border-top-width +
+            @tab-vertical-control__border-bottom-width +
+            @tab-vertical-control__gap
+        );
+        > .switch {
+            transition:
+                color 100ms ease-out,
+                background-color 100ms ease-out;
+            box-shadow: none;
+            margin: 0;
+            padding: @tab-vertical-control__padding-top @tab-vertical-control__padding-right;
+            line-height: @tab-vertical-control__height;
+            border-style: @tab-vertical-control__border-style;
+            border-color: @tab-vertical-control__border-color;
+            border-width: @tab-vertical-control__border-top-width @tab-vertical-control__border-right-width @tab-vertical-control__border-bottom-width @tab-vertical-control__border-left-width;
+        }
+        &:not(.disabled) > .switch:active,
+        &.active > .switch,
+        &.active > .switch:focus,
+        &.active > .switch:hover {
+            box-shadow: none;
+            margin: 0;
+            padding: @tab-vertical-control__padding-top @tab-vertical-control__padding-right;
+        }
+    }
+    > .item.content {
+        width: auto;
+        float: none;
+        border: @tab-vertical-content__border;
+        border-width: @tab-vertical-content__border-width;
+        padding: @tab-vertical-content__padding;
+        margin-top: 0px;
+        margin-left: @tab-vertical-control__width;
+        min-height: @tab-vertical-content__min-height;
+    }
+}
+
+.lib-data-accordion() {
+    > .item.title {
+        cursor: pointer;
+        > .switch {
+            .lib-css(text-transform, @accordion-control__text-transform);
+            .lib-css(text-shadow, @accordion-control__text-shadow);
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .argento-tabs {
+        .lib-data-accordion();
+        .data.item {
+            display: block;
+        }
+        .item.title {
+            > a,
+            > strong,
+            > span {
+                position: relative;
+                .lib-icon-font(
+                    @_icon-font-content: @icon-down,
+                    @_icon-font-size: @accordion-control__font-size,
+                    @_icon-font-line-height: @accordion-control__line-height,
+                    @_icon-font-color: @accordion-control__color,
+                    @_icon-font-color-hover: @accordion-control__hover__color,
+                    @_icon-font-color-active: @accordion-control__active__color,
+                    @_icon-font-margin: @icon-font__margin,
+                    @_icon-font-vertical-align: @icon-font__vertical-align,
+                    @_icon-font-position: after,
+                    @_icon-font-display: false
+                );
+                &:after {
+                    position: absolute;
+                    right: @accordion-control__padding-right;
+                    top: @accordion-control__padding-top;
+                }
+            }
+            &.active {
+                > a,
+                > strong,
+                > span {
+                    &:after {
+                        content: @icon-up;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+//  Product Listing Mixins
+//
+
+// 1. Equal height with squama effect
+.argento-listing-squama(
+    @item__height    : @argento-listing-squama__height,
+    @item__padding   : @argento-listing-squama__padding,
+    @item__border    : @argento-listing-squama__border,
+    @item__box-shadow: @argento-listing-squama__box-shadow,
+
+    @item__hover__enlargement   : @argento-listing-squama__hover__enlargement,
+    @item__hover__border        : @argento-listing-squama__hover__border,
+    @item__hover__box-shadow    : @argento-listing-squama__hover__box-shadow,
+    @item__hover__z-index       : 4
+) {
+    position: relative;
+    overflow: hidden;
+    height: @item__height;
+    border: @item__border;
+    box-shadow: @item__box-shadow;
+    background-color: #fff;
+
+    // gradient at the bottom
+    &:before {
+        content: ' ';
+        display: block;
+        height: 15px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: @item__hover__z-index - 1;
+        background: linear-gradient(
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.8) 100%
+        );
+        pointer-events: none;
+    }
+    .product-item-info {
+        padding: @item__padding;
+        overflow: hidden;
+        transition: box-shadow 0.1s ease-in-out;
+        @{argento-listing-squama__selector} {
+            display: none; // prevent focusing and scroll to hidden element, when tab is pressed
+        }
+    }
+    .product-item-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    &:hover {
+        z-index: @item__hover__z-index;
+        border: none;
+        overflow: visible;
+        &:before {
+            background: none;
+        }
+        .product-item-info {
+            border: @item__hover__border;
+            overflow: visible;
+            height: auto;
+            position: absolute;
+            left: -@item__hover__enlargement;
+            right: -@item__hover__enlargement;
+            top: -@item__hover__enlargement;
+            z-index: 3;
+            background: #fff;
+            box-shadow: @item__hover__box-shadow;
+            padding: @item__padding + @item__hover__enlargement;
+
+            @{argento-listing-squama__selector} {
+                display: block;
+            }
+        }
+        .product-item-name {
+            white-space: normal;
+        }
+    }
+}
+.argento-listing-squama-reset() {
+    height: auto;
+    overflow: visible;
+    border: none;
+    box-shadow: none;
+    background-color: inherit;
+    &:before {
+        content: none;
+        display: block;
+        height: auto;
+        background: none;
+    }
+    .product-item-info {
+        padding: @product-grid-item-padding;
+        overflow: visible;
+        @{argento-listing-squama__selector} {
+            display: block;
+        }
+    }
+    .product-item-name {
+        white-space: normal;
+    }
+    &:hover {
+        .product-item-info {
+            border: none;
+            position: static;
+            left: auto;
+            right: auto;
+            top: auto;
+            background: transparent;
+            box-shadow: none;
+            padding: @product-grid-item-padding;
+        }
+    }
+}
+
+//
+//  Append lib mixin. Original doesn't set icon background.
+//  _____________________________________________
+._lib-message-icon-inner(
+    @_message-icon,
+    @_message-icon-color,
+    @_message-icon-background,
+    @_message-icon-top,
+    @_message-icon-left,
+    @_message-icon-bottom,
+    @_message-icon-right
+) {
+    > :first-child:before {
+        .lib-css(background, @_message-icon-background);
+    }
+}

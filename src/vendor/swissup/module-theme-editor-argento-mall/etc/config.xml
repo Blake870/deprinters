@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <swissup_argento_mall>
+            <layout>
+                <body_backgroundColor>#fff</body_backgroundColor>
+                <body_backgroundImage></body_backgroundImage>
+                <body_backgroundRepeat>no-repeat</body_backgroundRepeat>
+                <body_backgroundPosition>0,0</body_backgroundPosition>
+                <page_maxWidth>none</page_maxWidth>
+                <contentContainer_maxWidth>980px</contentContainer_maxWidth>
+            </layout>
+            <header>
+                <header_backgroundColor>#00355f</header_backgroundColor>
+                <topToolbarContainer>
+                    <topToolbarContainer_backgroundColor>#fff</topToolbarContainer_backgroundColor>
+                    <topToolbarContainer_backgroundImage></topToolbarContainer_backgroundImage>
+                    <topToolbarContainer_backgroundRepeat>no-repeat</topToolbarContainer_backgroundRepeat>
+                    <topToolbarContainer_backgroundPosition>0,0</topToolbarContainer_backgroundPosition>
+                    <topToolbarText_color>#8f8f8f</topToolbarText_color>
+                    <topToolbarText_fontSize>14px</topToolbarText_fontSize>
+                </topToolbarContainer>
+                <navigation>
+                    <navigationContainer_backgroundColor>transparent</navigationContainer_backgroundColor>
+                    <navigationContainer_backgroundImage></navigationContainer_backgroundImage>
+                    <navigationContainer_backgroundRepeat>no-repeat</navigationContainer_backgroundRepeat>
+                    <navigationContainer_backgroundPosition>0,0</navigationContainer_backgroundPosition>
+                    <topLevelLi_borderLeftColor>rgb(51, 51, 51)</topLevelLi_borderLeftColor>
+                    <topLevelLi_borderRightColor>rgba(255, 255, 255, 0.17)</topLevelLi_borderRightColor>
+                    <topLevelLink_fontFamily>'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif</topLevelLink_fontFamily>
+                    <topLevelLink_fontSize>13px</topLevelLink_fontSize>
+                    <topLevelLink_textTransform>none</topLevelLink_textTransform>
+                    <topLevelLink_color>#ffffff</topLevelLink_color>
+                    <topLevelLinkHover_color>#ffac1f</topLevelLinkHover_color>
+                    <topLevelLinkActive_color>#ffac1f</topLevelLinkActive_color>
+                    <topLevelArrow_fontSize>14px</topLevelArrow_fontSize>
+                    <lowLevelLink_fontFamily>'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif</lowLevelLink_fontFamily>
+                    <lowLevelLink_fontSize>13px</lowLevelLink_fontSize>
+                    <lowLevelLink_textTransform>none</lowLevelLink_textTransform>
+                    <lowLevelLink_backgroundColor>#ffffff</lowLevelLink_backgroundColor>
+                    <lowLevelLinkHover_backgroundColor>#efefef</lowLevelLinkHover_backgroundColor>
+                    <lowLevelLinkActive_backgroundColor>#efefef</lowLevelLinkActive_backgroundColor>
+                    <lowLevelLink_color>#303030</lowLevelLink_color>
+                    <lowLevelLinkHover_color>#303030</lowLevelLinkHover_color>
+                    <lowLevelLinkActive_color>#d96708</lowLevelLinkActive_color>
+                    <lowLevelArrow_fontSize>14px</lowLevelArrow_fontSize>
+                </navigation>
+            </header>
+            <footer>
+                <footer>
+                    <footer_backgroundColor>transparent</footer_backgroundColor>
+                    <footer_backgroundImage>none</footer_backgroundImage>
+                    <footer_backgroundRepeat>no-repeat</footer_backgroundRepeat>
+                    <footer_backgroundPosition>0px,0px</footer_backgroundPosition>
+                    <footerText_color>#333333</footerText_color>
+                    <footerLinks_color>#023761</footerLinks_color>
+                </footer>
+                <bottomToolbarContainer>
+                    <footerBottomToolbar_backgroundColor>transparent</footerBottomToolbar_backgroundColor>
+                    <footerBottomToolbar_backgroundImage>none</footerBottomToolbar_backgroundImage>
+                    <footerBottomToolbar_backgroundRepeat>no-repeat</footerBottomToolbar_backgroundRepeat>
+                    <footerBottomToolbar_backgroundPosition>0px,0px</footerBottomToolbar_backgroundPosition>
+                    <footerBottomToolbarText_color>#888888</footerBottomToolbarText_color>
+                </bottomToolbarContainer>
+            </footer>
+            <tabs>
+                <tab_padding>1px 25px 1px 25px</tab_padding>
+                <tab_fontFamily>'Noto Sans', sans-serif</tab_fontFamily>
+                <tab_fontSize>1.4rem</tab_fontSize>
+                <tab_fontWeight>700</tab_fontWeight>
+                <tab_textTransform>none</tab_textTransform>
+                <tab_color>#fff</tab_color>
+                <tabBorder_borderColor>#f5980e</tabBorder_borderColor>
+                <tab_background>#00355f</tab_background>
+                <tabHover_background>#003e6e</tabHover_background>
+                <tabHover_color>#fff</tabHover_color>
+                <tabActive_background>#f5970c</tabActive_background>
+                <tabActive_color>#fff</tabActive_color>
+            </tabs>
+            <buttons>
+                <button_background>linear-gradient(to bottom, #ffaf12 0%, #ed8108 100%)</button_background>
+                <button_color>#ffffff</button_color>
+                <buttonHover_background>linear-gradient(to bottom, #ffaf12 0%, #ed8108 100%)</buttonHover_background>
+                <buttonHover_color>#ffffff</buttonHover_color>
+                <buttonSecondary_background>#a2a2a2</buttonSecondary_background>
+                <buttonSecondary_color>#ffffff</buttonSecondary_color>
+                <buttonSecondaryHover_background>#a2a2a2</buttonSecondaryHover_background>
+                <buttonSecondaryHover_color>#ffffff</buttonSecondaryHover_color>
+            </buttons>
+            <fonts>
+                <pageTitle_fontFamily>'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif</pageTitle_fontFamily>
+                <pageTitle_fontSize>40px</pageTitle_fontSize>
+                <pageTitle_fontWeight>300</pageTitle_fontWeight>
+                <pageTitle_color>#333333</pageTitle_color>
+                <blockTitle_fontFamily>'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif</blockTitle_fontFamily>
+                <blockTitle_fontSize>1.8rem</blockTitle_fontSize>
+                <blockTitle_fontWeight>300</blockTitle_fontWeight>
+                <blockTitle_color>#ffffff</blockTitle_color>
+                <productNameLink_fontFamily>'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif</productNameLink_fontFamily>
+                <productNameLink_fontSize>1.4rem</productNameLink_fontSize>
+                <productNameLink_fontWeight>400</productNameLink_fontWeight>
+                <productNameLink_color>#333333</productNameLink_color>
+                <productNameLinkHover_color>#333333</productNameLinkHover_color>
+            </fonts>
+            <css_selector>
+                <body>body</body>
+                <page>.page-wrapper</page>
+                <header><![CDATA[.page-header .header.wrapper .header.content,.page-header .panel.wrapper .panel.header:before,.navigation,.page-header > .header.content]]></header>
+                <content-container><![CDATA[.navigation, .breadcrumbs, .page-header .header.panel, .header.content, .footer.content, .page-wrapper > .widget, .page-wrapper > .page-bottom, .block.category.event, .top-container, .page-main, .page-container > .content]]></content-container>
+                <top-toolbar-container>.page-header .panel.wrapper</top-toolbar-container>
+                <top-toolbar-text><![CDATA[.page-header .panel.wrapper, .header.panel > .header.links > li, .header.panel > .header.links > li > a, .header.panel > .header.links > li > a:hover, .header.panel > .header.links > li > a:visited]]></top-toolbar-text>
+                <navigation-container>.nav-sections</navigation-container>
+                <top-level-li>.navigation li.level-top</top-level-li>
+                <top-level-link>.nav-sections .navigation a.level-top</top-level-link>
+                <top-level-link-hover><![CDATA[.navigation .level0 > .level-top:hover,.navigation .level0 > .level-top.ui-state-focus]]></top-level-link-hover>
+                <top-level-link-active><![CDATA[.navigation .level0.active > .level-top,.navigation .level0.has-active > .level-top]]></top-level-link-active>
+                <top-level-arrow>.nav-sections .navigation .parent a.level-top:after</top-level-arrow>
+                <low-level-link>.nav-sections .navigation .level0 .submenu a</low-level-link>
+                <low-level-link-hover>.nav-sections .navigation .level0 .submenu a:hover,.navigation .level0 .submenu a.ui-state-focus</low-level-link-hover>
+                <low-level-link-active><![CDATA[.nav-sections .navigation .level0 .submenu .active > a]]></low-level-link-active>
+                <low-level-arrow><![CDATA[.nav-sections .navigation .parent > a:after]]></low-level-arrow>
+                <footer>.page-footer</footer>
+                <footer-text>.footer.content</footer-text>
+                <footer-links>.footer.content a, .footer.content a:hover, .footer.content a:visited, .footer.content .links a, .footer.content .links a:hover, .footer.content .links a:visited</footer-links>
+                <footer-content>.page-footer .footer.content</footer-content>
+                <footer-bottom-toolbar>.page-footer .footer-toolbar-bottom</footer-bottom-toolbar>
+                <footer-bottom-toolbar-text>.footer-toolbar-bottom .copyright, .footer-toolbar-bottom a, .footer-toolbar-bottom a:visited, .footer-toolbar-bottom a:hover</footer-bottom-toolbar-text>
+                <tab-border><![CDATA[.catalog-product-view .column.main .product.data.items > .item.content, .product.data.items > .item.title > .switch, .product.data.items > .item.title.active > .switch, .product.data.items > .item.title.active > .switch:focus, .product.data.items > .item.title.active > .switch:hover, .argento-tabs > .item.content, .argento-tabs > .item.title > .switch]]></tab-border>
+                <tab><![CDATA[.product.data.items > .item.title > .switch, .product.data.items > .item.title > .switch:visited, .argento-tabs > .item.title > .switch]]></tab>
+                <tab-hover><![CDATA[.product.data.items > .item.title > .switch:hover, .product.data.items > .item.title:not(.disabled) > .switch:focus,.product.data.items > .item.title:not(.disabled) > .switch:hover,.argento-tabs > .item.title:not(.disabled) > .switch:focus,.argento-tabs > .item.title:not(.disabled) > .switch:hover]]></tab-hover>
+                <tab-active><![CDATA[.product.data.items > .item.title:not(.disabled) > .switch:active,.product.data.items > .item.title.active > .switch,.product.data.items > .item.title.active > .switch:focus,.product.data.items > .item.title.active > .switch:hover, .argento-tabs > .item.title:not(.disabled) > .switch:active,.argento-tabs > .item.title.active > .switch,.argento-tabs > .item.title.active > .switch:focus,.argento-tabs > .item.title.active > .switch:hover]]></tab-active>
+                <button>.action.primary</button>
+                <button-hover>.action.primary:hover, .action.primary:focus, .action.primary:active</button-hover>
+                <button-secondary><![CDATA[button, .abs-revert-to-action-secondary, .paypal-review .block .actions-toolbar .action.primary, .abs-discount-block .actions-toolbar .action.primary, .abs-discount-block .actions-toolbar .action.cancel, .block-compare .action.primary, .cart-summary .block .actions-toolbar > .primary .action.primary, .cart-summary .form.giftregistry .fieldset .action.primary, .paypal-review-discount .actions-toolbar .action.primary, .paypal-review-discount .actions-toolbar .action.cancel, .cart-discount .actions-toolbar .action.primary, .cart-discount .actions-toolbar .action.cancel, .review-form .action.submit.primary]]></button-secondary>
+                <button-secondary-hover><![CDATA[button:hover, .abs-revert-secondary-color:hover, .abs-revert-to-action-secondary:hover, .paypal-review .block .actions-toolbar .action.primary:hover,.abs-discount-block .actions-toolbar .action.primary:hover, .abs-discount-block .actions-toolbar .action.cancel:hover, .block-compare .action.primary:hover, .cart-summary .block .actions-toolbar > .primary .action.primary:hover, .cart-summary .form.giftregistry .fieldset .action.primary:hover, .paypal-review-discount .actions-toolbar .action.primary:hover, .paypal-review-discount .actions-toolbar .action.cancel:hover, .cart-discount .actions-toolbar .action.primary:hover, .cart-discount .actions-toolbar .action.cancel:hover, .review-form .action.submit.primary:hover]]></button-secondary-hover>
+                <page-title>h1, h1.page-title</page-title>
+                <block-title>.sidebar .block .block-title span strong, .sidebar .block .block-title span span, .sidebar .block .block-title strong, .sidebar .block .block-title span, .block .block-title strong, .sidebar .block.filter .block-content strong.block-subtitle</block-title>
+                <product-name-link>.products-grid .product-item-name a, .products-list .product-item-name a</product-name-link>
+                <product-name-link-hover>.products-grid .product-item-name a:hover, .products-list .product-item-name a:hover</product-name-link-hover>
+            </css_selector>
+            <media_query>
+                <tabs><![CDATA[@media (min-width: 768px)]]></tabs>
+            </media_query>
+        </swissup_argento_mall>
+    </default>
+</config>

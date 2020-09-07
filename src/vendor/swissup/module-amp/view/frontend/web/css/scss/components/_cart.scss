@@ -1,0 +1,24 @@
+$cart-icon: $fa-icon-cart !default;
+$cart-icon-size: null !default;
+$cart-icon-color: null !default;
+$cart-icon-width: 40px !default;
+$cart-icon-height: 40px !default;
+$cart-icon-weight: null !default;
+
+.minicart {
+    align-self: center;
+    .cart-icon {
+        text-align: center;
+        @include on-event {
+            text-decoration: none;
+        }
+        @include icon-fa(
+            $icon: $cart-icon,
+            $size: $cart-icon-size,
+            $color: $cart-icon-color,
+            $width: $cart-icon-width,
+            $height: $cart-icon-height,
+            $weight: $cart-icon-weight
+        );
+    }
+}

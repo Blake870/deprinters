@@ -1,0 +1,70 @@
+& when (@media-common = true) {
+    .block-swissup-ajaxsearch {
+        .input-text {
+            left: auto;
+            background: @ajaxsearch-input__background;
+            border: @ajaxsearch-input__border;
+            .lib-css(border-radius, @ajaxsearch-input__border-radius);
+            .padding(@ajaxsearch-input__padding);
+            &:focus {
+                border: @ajaxsearch-input__focus__border;
+            }
+            &::placeholder {
+                .lib-css(color, @ajaxsearch-input-placeholder__color);
+            }
+        }
+        .action.search {
+            display: block;
+            position: absolute;
+            top: -1000px;
+        }
+        .action.close {
+            text-align: center;
+            cursor: pointer;
+            display: block;
+            opacity: 0;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+        .twitter-typeahead {
+            width: 100%;
+        }
+        .tt-hint {
+            // Hide autocompletion 'cos it works bad when RTL site has latin product names
+            .modrtl(color, #999, ~"transparent !important");
+        }
+        .loading-mask {
+            .right(@ajaxsearch-loader__right);
+            .left(auto);
+            background-color: transparent;
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .block-search.block-swissup-ajaxsearch {
+        .action.search {
+            display: block;
+            position: absolute;
+            top: 0;
+        }
+        .field.search {
+            display: flex;
+            flex-wrap: nowrap;
+            .origin {
+               flex-grow: 1;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .block-swissup-ajaxsearch {
+        .minisearch .inactive {
+            display: none;
+        }
+    }
+}
