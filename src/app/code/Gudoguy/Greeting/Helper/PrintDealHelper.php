@@ -10,7 +10,7 @@ class PrintDealHelper extends AbstractHelper {
         return true;
     }
 
-    private function request($url, $options = []) {
+    /*private function request($url, $options = []) {
         $url = "https://api.printdeal.com/api/" . $url;
         $curl = curl_init($url);
 
@@ -27,10 +27,32 @@ class PrintDealHelper extends AbstractHelper {
             ),
         ]));
 
+        //session_write_close();
         $response = curl_exec($curl);
+        //session_start();
 
         curl_close($curl);
         return $response;
+    }*/
+
+    public function request($url, $options = []) {
+        $url = "https://api.printdeal.com/api/" . $url;
+        $curl = curl_init($url);
+
+        curl_setopt($curl, CURLOPT_HTTPHEADER, [
+            "User-ID: 8f5d3ccf-daab-44d9-9b41-3c2f13772a3a",
+            "API-Secret: eo38LCDmMKW1KaBWNDfV6o1nHKJljrsxnAMMsT3Iet/yZGRw",
+        ]);
+
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+
+        curl_setopt_array($curl, $options);
+
+        return json_decode(curl_exec($curl), true);
     }
 
     private function get($url) {
